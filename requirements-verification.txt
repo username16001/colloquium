@@ -1,0 +1,4 @@
+# Optional: only for executing lecture examples. App/build use the standard library.
+numpy==2.3.5
+pandas==3.0.1
+pytest==8.4.2
