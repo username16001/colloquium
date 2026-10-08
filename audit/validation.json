@@ -1,0 +1,16 @@
+{
+  "errors": [],
+  "warnings": [
+    {
+      "id": "O03-2-002",
+      "field": "answer",
+      "message": "Missing answer; legacy correction may be separate"
+    }
+  ],
+  "stats": {
+    "records": 438,
+    "original": 138,
+    "new": 300,
+    "available": 437
+  }
+}

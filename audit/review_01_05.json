@@ -1,0 +1,3197 @@
+{
+  "scope": {
+    "lectures": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "new_question_count": 104,
+    "original_readme_question_count": 138
+  },
+  "method": "Содержательный аудит моделью: прочитаны формулировка, код, ответ, объяснение каждого из 104 вопросов, все 690 ячеек пяти реальных ноутбуков, 138 исходных вопросов README как стиль/шкала/проверка близких тем. Не является независимой человеческой рецензией.",
+  "source_indexing": "Номера cells отсчитываются с0. source_cells_verified относится к текущим ссылкам до updates; false означает, что требуется заменить или дополнить релевантные ячейки. Все текущие ячейки физически существуют, все предложенные также проверены по диапазону и содержанию.",
+  "criteria_definition": {
+    "style": "соответствие краткому устному стилю исходников",
+    "relevance": "содержательная учебная релевантность",
+    "wording": "ясность формулировки",
+    "context": "самодостаточность условия и кода",
+    "answer": "правильность и полнота ответа",
+    "explanation": "механизм и фактическая правильность объяснения",
+    "source_cells": "соответствие конкретным ячейкам",
+    "ambiguity": "отсутствие неоднозначных допущений",
+    "duplicates": "смысловые дубли и отдельный проверяемый механизм",
+    "difficulty": "соответствие исходной шкале сложности"
+  },
+  "related_ids_definition": "Связанные темы и близкие задания; наличие related_ids само по себе не означает дубль. Теория, трассировка, доказательство и крайний случай сохраняются как разные учебные механизмы. Один близкий смысловой дубль N04-002 переориентирован на размеры объектов/ссылок и границы платформенной модели.",
+  "read_files": [
+    "originals/README.md",
+    "questions.json",
+    "lectures/BasicTypes.ipynb",
+    "lectures/ControlFlow.ipynb",
+    "lectures/Containers.ipynb",
+    "lectures/References.ipynb",
+    "lectures/Functions.ipynb"
+  ],
+  "lecture_caveats": [
+    {
+      "file": "lectures/BasicTypes.ipynb",
+      "cells": [
+        129
+      ],
+      "finding": "Утверждение об обязательности list нельзя переносить на sum; N01-013 уже даёт правильный ответ."
+    },
+    {
+      "file": "lectures/ControlFlow.ipynb",
+      "cells": [
+        68
+      ],
+      "finding": "first в capture pattern связывает имя, не требует заранее равного значения; новые literal patterns1 разобраны правильно."
+    },
+    {
+      "file": "lectures/Containers.ipynb",
+      "cells": [
+        9
+      ],
+      "finding": "set.pop возвращает произвольный элемент, не гарантированно равномерно случайный; N03-002 верен."
+    },
+    {
+      "file": "lectures/References.ipynb",
+      "cells": [
+        37,
+        44
+      ],
+      "finding": "8байт — размер ссылки на конкретной платформе; удвоение — учебная модель, не реальная фиксированная политика CPython. Новые вопросы должны задавать модель явно."
+    },
+    {
+      "file": "lectures/References.ipynb",
+      "cells": [
+        31,
+        33
+      ],
+      "finding": "Равные большие int не обязаны иметь разные id: компилятор может объединять константы. N04-015 уже правильно избегает гарантий интернирования."
+    },
+    {
+      "file": "lectures/References.ipynb",
+      "cells": [
+        58,
+        60
+      ],
+      "finding": "t += [5,6] даёт несовместимую конкатенацию, а не мутацию вложенного элемента с последующим отказом записи. Не использовать как доказательство неатомарного t[2]+=list."
+    },
+    {
+      "file": "lectures/Functions.ipynb",
+      "cells": [
+        39,
+        42
+      ],
+      "finding": "Аннотация *abilities:list[str] требует отдельных списков, тогда как вызовы передают строки; **traits:dict[...] требует значений-словарей. Аннотации автоматически не проверяются."
+    },
+    {
+      "file": "lectures/Functions.ipynb",
+      "cells": [
+        69,
+        74
+      ],
+      "finding": "__init__ инициализирует созданный __new__ экземпляр и должен вернуть None. Self/комментарий о возврате экземпляра и формулировка этапа конструирования неточны; N05-012 уже корректен."
+    },
+    {
+      "file": "lectures/Functions.ipynb",
+      "cells": [
+        107,
+        108
+      ],
+      "finding": "Присутствия __hash__ в dir недостаточно: возможно __hash__=None или TypeError внутри метода. N05-016 уточняется без копирования ошибки лекции."
+    }
+  ],
+  "evidence_sources": [
+    {
+      "url": "https://docs.python.org/3/reference/datamodel.html#object.__hash__",
+      "applies_to": [
+        "N03-013",
+        "N04-015",
+        "N05-012",
+        "N05-016"
+      ]
+    },
+    {
+      "url": "https://docs.python.org/3/reference/expressions.html#calls",
+      "applies_to": [
+        "N05-008",
+        "N05-013",
+        "N05-017",
+        "N05-021"
+      ]
+    },
+    {
+      "url": "https://peps.python.org/pep-0570/#semantic-corner-case",
+      "applies_to": [
+        "N05-013",
+        "N05-017"
+      ]
+    },
+    {
+      "url": "https://docs.python.org/3/library/copy.html",
+      "applies_to": [
+        "N04-008",
+        "N04-009",
+        "N04-013"
+      ]
+    }
+  ],
+  "code_verification": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "mode": "Только предварительно прочитанные короткие code-fragments этого диапазона, после применения предлагаемых updates в памяти: отдельный процесс -I, таймаут3сек, stdout и класс исключения. Это не Windows sandbox для непроверенных произвольных программ и не выполнение целых ноутбуков.",
+    "count": 48,
+    "passed": 48,
+    "rows": [
+      {
+        "id": "N01-006",
+        "passed": true,
+        "stdout": "-4 3\n-4 -3\n",
+        "exception": null
+      },
+      {
+        "id": "N01-007",
+        "passed": true,
+        "stdout": "fd\nadg\n",
+        "exception": null
+      },
+      {
+        "id": "N01-008",
+        "passed": true,
+        "stdout": "-3 -4.0\n2 4\n",
+        "exception": null
+      },
+      {
+        "id": "N01-009",
+        "passed": true,
+        "stdout": "24\n8\n8 6\n",
+        "exception": null
+      },
+      {
+        "id": "N01-010",
+        "passed": true,
+        "stdout": "3 int\nTrue False\nTrue True\n",
+        "exception": null
+      },
+      {
+        "id": "N01-011",
+        "passed": true,
+        "stdout": "xyxy\nNone\n",
+        "exception": null
+      },
+      {
+        "id": "N01-017",
+        "passed": true,
+        "stdout": "False True\nTrue True\nTrue False\n",
+        "exception": null
+      },
+      {
+        "id": "N01-018",
+        "passed": true,
+        "stdout": "1 2\nstr int\nTrue\n",
+        "exception": null
+      },
+      {
+        "id": "N02-006",
+        "passed": true,
+        "stdout": "[0007] x=7\n[   Hi] Pyt\n",
+        "exception": null
+      },
+      {
+        "id": "N02-007",
+        "passed": true,
+        "stdout": "10\n11\n12\n12\n",
+        "exception": null
+      },
+      {
+        "id": "N02-008",
+        "passed": true,
+        "stdout": "1\n3\ndone\n",
+        "exception": null
+      },
+      {
+        "id": "N02-009",
+        "passed": true,
+        "stdout": "4 ('A', 8)\n5 ('B', 9)\n",
+        "exception": null
+      },
+      {
+        "id": "N02-010",
+        "passed": true,
+        "stdout": "[(0, 1), (1, 0), (2, 0), (2, 1)]\n",
+        "exception": null
+      },
+      {
+        "id": "N02-011",
+        "passed": true,
+        "stdout": "[]\n[9, 8]\n5\n",
+        "exception": null
+      },
+      {
+        "id": "N02-018",
+        "passed": true,
+        "stdout": "9\n0\n",
+        "exception": null
+      },
+      {
+        "id": "N02-019",
+        "passed": true,
+        "stdout": "[2, 3, 4]\n",
+        "exception": null
+      },
+      {
+        "id": "N02-020",
+        "passed": true,
+        "stdout": "start\n",
+        "exception": "ValueError"
+      },
+      {
+        "id": "N03-007",
+        "passed": true,
+        "stdout": "0\n8\n{'a': 0, 'b': 8}\n",
+        "exception": null
+      },
+      {
+        "id": "N03-008",
+        "passed": true,
+        "stdout": "{'x': 9, 'y': 2, 'z': 3}\n{'x': 1, 'y': 2}\n",
+        "exception": null
+      },
+      {
+        "id": "N03-009",
+        "passed": true,
+        "stdout": "['a', 'b'] ['a']\n",
+        "exception": null
+      },
+      {
+        "id": "N03-010",
+        "passed": true,
+        "stdout": "[2] [1, 3, 4]\n[1, 4] None\n",
+        "exception": null
+      },
+      {
+        "id": "N03-011",
+        "passed": true,
+        "stdout": "True\n[2, 1] [1, 2]\n",
+        "exception": null
+      },
+      {
+        "id": "N03-012",
+        "passed": true,
+        "stdout": "('a', 4)\n{'b': 2}\n",
+        "exception": null
+      },
+      {
+        "id": "N03-019",
+        "passed": true,
+        "stdout": "{'a': [1, 2], 'b': [1, 2]}\nTrue\n",
+        "exception": null
+      },
+      {
+        "id": "N03-020",
+        "passed": true,
+        "stdout": "ready\n",
+        "exception": "TypeError"
+      },
+      {
+        "id": "N03-021",
+        "passed": true,
+        "stdout": "True None\nFalse None\n",
+        "exception": null
+      },
+      {
+        "id": "N03-022",
+        "passed": true,
+        "stdout": "[1, 2, 3]\n",
+        "exception": "TypeError"
+      },
+      {
+        "id": "N04-006",
+        "passed": true,
+        "stdout": "[[1, 3], 2] [[1, 3], 9]\nFalse True\n",
+        "exception": null
+      },
+      {
+        "id": "N04-007",
+        "passed": true,
+        "stdout": "[[[5]], [[5]]]\nFalse True\n",
+        "exception": null
+      },
+      {
+        "id": "N04-008",
+        "passed": true,
+        "stdout": "[[], []] [[4], [4]]\nTrue False\n",
+        "exception": null
+      },
+      {
+        "id": "N04-009",
+        "passed": true,
+        "stdout": "False True\n1 1\n",
+        "exception": null
+      },
+      {
+        "id": "N04-010",
+        "passed": true,
+        "stdout": "bytearray(b'aXcd')\nb'Xc'\n",
+        "exception": null
+      },
+      {
+        "id": "N04-011",
+        "passed": true,
+        "stdout": "1 second 5\n",
+        "exception": null
+      },
+      {
+        "id": "N04-012",
+        "passed": true,
+        "stdout": "in 2\nin 1\nin 0\nout 0\nout 1\nout 2\n",
+        "exception": null
+      },
+      {
+        "id": "N04-019",
+        "passed": true,
+        "stdout": "b'b'\n",
+        "exception": "BufferError"
+      },
+      {
+        "id": "N04-020",
+        "passed": true,
+        "stdout": "1 2 False\n",
+        "exception": null
+      },
+      {
+        "id": "N04-021",
+        "passed": true,
+        "stdout": "1\n",
+        "exception": "TypeError"
+      },
+      {
+        "id": "N04-022",
+        "passed": true,
+        "stdout": "[[1, 2]] [[1, 2]] False\n",
+        "exception": null
+      },
+      {
+        "id": "N05-006",
+        "passed": true,
+        "stdout": "14\n16\n",
+        "exception": null
+      },
+      {
+        "id": "N05-007",
+        "passed": true,
+        "stdout": "fox ('run', 'rare') common {'color': 'red'}\n",
+        "exception": null
+      },
+      {
+        "id": "N05-008",
+        "passed": true,
+        "stdout": "3 8\n",
+        "exception": null
+      },
+      {
+        "id": "N05-009",
+        "passed": true,
+        "stdout": "",
+        "exception": "UnboundLocalError"
+      },
+      {
+        "id": "N05-010",
+        "passed": true,
+        "stdout": "9 7\n7\n",
+        "exception": null
+      },
+      {
+        "id": "N05-011",
+        "passed": true,
+        "stdout": "12 12\n",
+        "exception": null
+      },
+      {
+        "id": "N05-012",
+        "passed": true,
+        "stdout": "",
+        "exception": "TypeError"
+      },
+      {
+        "id": "N05-020",
+        "passed": true,
+        "stdout": "6\n",
+        "exception": "TypeError"
+      },
+      {
+        "id": "N05-021",
+        "passed": true,
+        "stdout": "before\n",
+        "exception": "TypeError"
+      },
+      {
+        "id": "N05-022",
+        "passed": true,
+        "stdout": "[] [1] False\n[1] [1] True\n",
+        "exception": null
+      }
+    ]
+  },
+  "semantic_probes": [
+    {
+      "name": "hash_class_creation_vs_patch",
+      "code": "class Created:\n    def __eq__(self, other):\n        return True\nprint(Created.__hash__ is None)\nclass Patched:\n    pass\nold_hash = Patched.__hash__\nPatched.__eq__ = lambda self, other: True\nprint(Patched.__hash__ is old_hash)",
+      "stdout": "True\nTrue\n",
+      "passed": true,
+      "exception": null
+    },
+    {
+      "name": "positional_only_kwargs_corner",
+      "code": "def f(a):\n    return a\ndef g(a, /, **kwargs):\n    return a, kwargs\ntry:\n    f(1, **{\"a\": 2})\nexcept TypeError:\n    print(\"TypeError\")\nprint(g(1, **{\"a\": 2}))",
+      "stdout": "TypeError\n(1, {'a': 2})\n",
+      "passed": true,
+      "exception": null
+    },
+    {
+      "name": "concrete_mixed_signature_binding",
+      "code": "def f(a, /, b=1, *args, c, d=2, **kwargs):\n    print(a, b, args, c, d, kwargs)\nf(10, 20, 30, c=40, a=50)",
+      "stdout": "10 20 (30,) 40 2 {'a': 50}\n",
+      "passed": true,
+      "exception": null
+    }
+  ],
+  "limitations": [
+    "Не выполнялись138 исходных фрагментов или целые Jupyter-ноутбуки; исходные ошибки лекций зафиксированы, исходники не менялись.",
+    "Числовые оценки памяти/адресации проверены как модель, не как гарантия размеров всех реализаций Python.",
+    "Дополнительный содержательный аудит остальных лекций и браузерного интерфейса выполняется другими участниками; данный файл относится только к1–5.",
+    "Теоретические ответы и доказательства проверены рассуждением и при необходимости первичной документацией, не объявляются доказанными автоматическим stdout-тестом."
+  ],
+  "rows": [
+    {
+      "id": "N01-001",
+      "result": "revise",
+      "rationale": "Присваивание и пример x+1 разобраны верно; убрать ложную развилку «тип имени или тип объекта»: имя не типизировано, прежний объект не меняется.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "revise",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O04-1-003"
+      ]
+    },
+    {
+      "id": "N01-002",
+      "result": "keep",
+      "rationale": "Чётко разделены произвольная величина int, ограниченность float и математический смысл //; оба примера результата и типа корректны, ячейки17/25 релевантны.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N01-003",
+      "result": "keep",
+      "rationale": "Короткий самостоятельный вопрос о символах и байтах; пример café совпадает с ячейками51/56 и не зависит от контекста исполнения.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N01-004",
+      "result": "revise",
+      "rationale": "Правила выбора операнда и короткого замыкания верны, но ячейка106 посвящена ==/is; нужны фактические ячейки108/110/111/114 о защите второго операнда.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O01-1-006",
+        "N02-018"
+      ]
+    },
+    {
+      "id": "N01-005",
+      "result": "revise",
+      "rationale": "Различие strip/replace и отсутствие мутации верны, но обещание нового объекта слишком сильное: неизменяемая строка может быть переиспользована при неизменившемся результате. Заменить обещание идентичности на возврат результирующей строки.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "revise",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N01-006",
+      "result": "keep",
+      "rationale": "Обе строки вывода и тождества деления проверены вручную; отрицательные делители разобраны корректно по ячейкам27/29, это иной механизм, чем простое положительное деление.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N01-014"
+      ]
+    },
+    {
+      "id": "N01-007",
+      "result": "keep",
+      "rationale": "Код полностью задаёт строку и границы; индексы5/3 и0/3/6 дают fd/adg. Срез с большим stop не вызывает IndexError; ссылки39/40 соответствуют теме.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N01-016"
+      ]
+    },
+    {
+      "id": "N01-008",
+      "result": "revise",
+      "rationale": "Вывод -3/-4.0 и округление ties-to-even корректны; текущие ссылки81/82 подтверждают только int/round, для // с float добавить25/26.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N01-009",
+      "result": "keep",
+      "rationale": "Разбор приоритетов и двоичных &/^ верен; код самодостаточен, ссылки117/122 непосредственно подтверждают используемые операции.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O01-1-004",
+        "O01-1-007",
+        "N01-015"
+      ]
+    },
+    {
+      "id": "N01-010",
+      "result": "revise",
+      "rationale": "Арифметика bool, числовое равенство и непустые строки разобраны правильно; добавить83/84 для третьей строки с bool(\"False\") и bool(\"0\").",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N01-011",
+      "result": "keep",
+      "rationale": "В примере одновременно проверяются отсутствие runtime-проверки аннотаций и различие print/return; вывод xyxy/None и ссылки146/150 корректны.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O05-1-004",
+        "O05-1-006"
+      ]
+    },
+    {
+      "id": "N01-012",
+      "result": "revise",
+      "rationale": "«Обычно» и «короткая» не задают длину, от которой зависит IndexError; зафиксировать len(s)<100. Ячейка44 об изменяемости, а не выходе за границу; сложность этой базовой ловушки завышена.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "revise",
+        "duplicates": "pass",
+        "difficulty": "revise"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N01-013",
+      "result": "keep",
+      "rationale": "Ответ правильно ограничивает необходимость list целью задачи; ячейка129 утверждает обязательность list в своём примере, но для sum это неверно. split остаётся eager, а int выполняется при потреблении map.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N01-014",
+      "result": "keep",
+      "rationale": "Доказательство для обоих знаков ненулевого делителя математически корректно: при b<0 меняются направления неравенств; не смешивается математическое a/b с вычислением float.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N01-006"
+      ]
+    },
+    {
+      "id": "N01-015",
+      "result": "keep",
+      "rationale": "Двоичное разложение доказывает левый сдвиг без фиксированной разрядности; область n,k неотрицательных задана, ячейки117/121 соответствуют.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N01-016",
+      "result": "keep",
+      "rationale": "Нормализованные границы явно оговорены, формула ceil((j-i)/k) применяется только при j>i; случай пустого диапазона и нормализация не смешаны.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N01-017",
+      "result": "revise",
+      "rationale": "Пример показывает обе реальные ошибки bool(find): индекс0 ложен, отсутствие -1 истинно. Это короткая трассировка известного метода и проверки истинности, уровень «Сложные» завышен относительно исходных вопросов.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "revise"
+      },
+      "related_ids": [
+        "N01-005"
+      ]
+    },
+    {
+      "id": "N01-018",
+      "result": "revise",
+      "rationale": "Вывод и байтовый диапазон верны; вопрос о «том же объекте» смешивает идентичность и тип результата. Уточнить вопрос о типах и добавить ячейки51/54 с bytes и UTF-8.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "revise",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N01-003"
+      ]
+    },
+    {
+      "id": "N02-001",
+      "result": "revise",
+      "rationale": "Форматирование числа и усечение строки объяснены верно; ссылка16 относится к отладочному =, а строковую точность показывает14.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-002",
+      "result": "keep",
+      "rationale": "Самостоятельное сравнение управления потоком: первая подходящая ветвь против независимых проверок. Ячейки21/24 подтверждают взаимное перекрытие условий.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-003",
+      "result": "keep",
+      "rationale": "Условие нормального завершения сформулировано точнее лекционного «без break»: учтены пустой for, continue, return и исключение. Ссылки48/52 по теме.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N02-008",
+        "N02-015"
+      ]
+    },
+    {
+      "id": "N02-004",
+      "result": "keep",
+      "rationale": "Правильно различены очистка w и добавление a; encoding и with объяснены без смешения символов/байтов или ожидания гарантированной записи на физический диск.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-005",
+      "result": "revise",
+      "rationale": "Ответ верно использует литеральный образец1; в ячейке68 неточно описан capture first как проверка равенства. Ячейка69 действительно показывает [1,*rest], её следует цитировать вместо68.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N02-011",
+        "O02-2-002"
+      ]
+    },
+    {
+      "id": "N02-006",
+      "result": "revise",
+      "rationale": "Вывод нулевого заполнения, выравнивания и .3 верен; источники13/17 не охватывают усечение и описание спецификации, добавить10/14.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-007",
+      "result": "revise",
+      "rationale": "Трассировка 10/11/12/12 верна; индексирование enumerate в44 к этому вопросу не относится, нужны34/39 с range и переназначением переменной цикла.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-008",
+      "result": "keep",
+      "rationale": "Ясный пример отличие continue от break; else после естественного исчерпания корректно даёт done, источники48/50 достаточны.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N02-003"
+      ]
+    },
+    {
+      "id": "N02-009",
+      "result": "keep",
+      "rationale": "Составленный пример zip/enumerate имеет два элемента, номера4/5 и точный tuple repr; не требует иных данных, ссылки43/45 подтверждают оба механизма.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-010",
+      "result": "keep",
+      "rationale": "Порядок внешнего x и внутреннего y, фильтрация диагонали и список результата согласованы с59/60; это трассировка, отличная от доказательства общего n*m.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N02-017"
+      ]
+    },
+    {
+      "id": "N02-011",
+      "result": "keep",
+      "rationale": "Три входа заданы полностью; first-match и связывание rest/a/b дают [],[9,8],5. Источник69 корректен, ответ не копирует ошибочную трактовку first в68.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N02-005"
+      ]
+    },
+    {
+      "id": "N02-012",
+      "result": "revise",
+      "rationale": "Ответ о предварительном построении списка правильный. Для строгой формулировки нужны конечный вход и успешно возвращающая bool функция; дать явный способ ленивой замены.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "revise",
+        "answer": "pass",
+        "explanation": "revise",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-013",
+      "result": "keep",
+      "rationale": "Учитывает реальный контрпример огромной строки к обещанию малой памяти при построчном чтении; readlines верно отличён от итерации. Этот нюанс расширяет исходный вопрос о больших файлах.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O02-3-001"
+      ]
+    },
+    {
+      "id": "N02-014",
+      "result": "keep",
+      "rationale": "Сырой литерал правильно трактуется как синтаксис записи str, не отдельный тип; пример18/19 по теме, вопрос не требует отсутствующих данных.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-015",
+      "result": "keep",
+      "rationale": "Инвариант проверенного префикса и пустой вход доказывают корректность поиска при описанном break; вопрос описывает алгоритм словами, отдельный невидимый фрагмент не требуется.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N02-003"
+      ]
+    },
+    {
+      "id": "N02-016",
+      "result": "keep",
+      "rationale": "После k шагов n=2^k, минимальное k с2^k≥M равно ceil(log2 M); M>1 задано, стоимость операций над растущими int не объявлена константной без оговорки.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-017",
+      "result": "revise",
+      "rationale": "Для произвольного ys число проверок неоднозначно из-за исчерпаемости и мутации. Задать конечные списки n/m и отсутствие изменения входов p/f; исходный ответ уже оговаривает одноразовый итератор.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "revise",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N02-010"
+      ]
+    },
+    {
+      "id": "N02-018",
+      "result": "revise",
+      "rationale": "Контрпример a=True,b=0 показывает существенную ошибку idiom and/or; это одна базовая развилка над булевыми операторами, поэтому «Средние» точнее «Сложные».",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "revise"
+      },
+      "related_ids": [
+        "O02-1-003",
+        "N01-004"
+      ]
+    },
+    {
+      "id": "N02-019",
+      "result": "keep",
+      "rationale": "Сдвиг после remove и продвижение индексного итератора объясняют остающийся2; конечный код без неопределённого set-порядка, ссылка40 соответствует.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N02-020",
+      "result": "keep",
+      "rationale": "ValueError возникает при создании range до тела цикла; stdout start задан верно. Не перепутан момент ошибки с бесконечной итерацией.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N03-001",
+      "result": "keep",
+      "rationale": "Новая разность и in-place обновление различены по возврату None и общим ссылкам; источники9/15 относятся к требуемым методам.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N03-010"
+      ]
+    },
+    {
+      "id": "N03-002",
+      "result": "keep",
+      "rationale": "Удаление заданного элемента отделено от произвольного pop, KeyError пустого множества учтён; ответ правильно исправляет лекционное «рандомный» на отсутствие гарантии случайного распределения.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N03-003",
+      "result": "keep",
+      "rationale": "Упорядочение и хешируемость не смешаны: sorted возвращает list, а возможность содержать элемент в set не обеспечивает его сравнимость; ячейки28/30 подтверждают.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N03-004",
+      "result": "keep",
+      "rationale": "Модель packed values против ссылок корректна для числового array/list; фиксированный формат, диапазон и платформенные размеры не скрыты.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N03-015",
+        "N03-022"
+      ]
+    },
+    {
+      "id": "N03-005",
+      "result": "revise",
+      "rationale": "Обновление, удаление и повторная вставка описаны правильно; текущие121/122 почти целиком о pop/setdefault, добавить120 и165 с обновлением и порядком вставки.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N03-012"
+      ]
+    },
+    {
+      "id": "N03-006",
+      "result": "keep",
+      "rationale": "Коллизия правильно отделена от равенства, два неравных ключа допустимы; источник59 — конкретная коллизия -1/-2, объяснение не обещает отсутствия столкновений.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O03-2-007",
+        "N03-016"
+      ]
+    },
+    {
+      "id": "N03-007",
+      "result": "revise",
+      "rationale": "setdefault сохраняет имеющийся0 и создаёт b=8; ссылка123 про update посторонняя, заменить на122 с фактическим вызовом setdefault.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N03-019"
+      ]
+    },
+    {
+      "id": "N03-008",
+      "result": "revise",
+      "rationale": "| не изменяет левый dict и применяет правый приоритет. Ячейка130 только вводит **-распаковку; добавить132/135 для слияния и отличия |=.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N03-009",
+      "result": "keep",
+      "rationale": "Динамическое keys-view и материализованный снимок противопоставлены точно; изменение словаря на месте не выдаётся за новую копию.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O03-3-001",
+        "N03-014"
+      ]
+    },
+    {
+      "id": "N03-010",
+      "result": "keep",
+      "rationale": "Множества и результат difference_update/None посчитаны правильно; sorted делает stdout определённым независимо от порядка set.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N03-001"
+      ]
+    },
+    {
+      "id": "N03-011",
+      "result": "revise",
+      "rationale": "Пары равны, история вставки разная; ссылка154 — только заголовок, нужны конкретные157/159/162, показывающие порядок и равенство.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N03-012",
+      "result": "revise",
+      "rationale": "popitem возвращает последнюю повторно вставленную пару, stdout точен; источник165 нужен для основания о порядке вставки,121/122 поддерживают popitem.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N03-005"
+      ]
+    },
+    {
+      "id": "N03-013",
+      "result": "keep",
+      "rationale": "Корректный контрпример к запрету всех изменяемых ключей: идентичностный контракт допускает изменение полей. Вопрос явно задаёт этот контракт и не зависит от невидимого класса.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O03-3-006",
+        "N05-016"
+      ]
+    },
+    {
+      "id": "N03-014",
+      "result": "revise",
+      "rationale": "Фраза «сравнивать все пары items» не определяет операцию. Сформулировать два конкретных пересечения и хешируемые значения; ответ указать через ключи и полные пары с контрпримером.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "revise",
+        "explanation": "revise",
+        "source_cells": "pass",
+        "ambiguity": "revise",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N03-015",
+      "result": "keep",
+      "rationale": "Учитывает объекты вне размера list и общие ссылки без двойного счёта; платформенные детали вынесены в условие интерпретации, точные байты не обещаны.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N03-004"
+      ]
+    },
+    {
+      "id": "N03-016",
+      "result": "keep",
+      "rationale": "Контракт равенства/хеша обоснован размещением и последующей проверкой eq; импликация не обращена, ссылки54/55 соответствуют доказательству.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N03-006"
+      ]
+    },
+    {
+      "id": "N03-017",
+      "result": "revise",
+      "rationale": "Итоги O(nm) и среднее O(n+m) верны с оговорённой стоимостью hash/eq. Уточнить что n — размер исходного списка, m — количество запросов, а set нужно сначала построить.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N03-018",
+      "result": "revise",
+      "rationale": "Группировка value→list(keys) сохраняет повторяющиеся значения, в отличие от исходного инвертирования dict. Ячейка138 — dict comprehension, а нужный явный цикл показан140.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O03-3-004",
+        "N03-019"
+      ]
+    },
+    {
+      "id": "N03-019",
+      "result": "revise",
+      "rationale": "Общность shared и stdout правильны; источник138 с comprehension не про setdefault. Уровень сопоставим со средней исходной задачей об общих строках матрицы, поэтому снизить до «Средние».",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "revise"
+      },
+      "related_ids": [
+        "N03-007",
+        "N03-018",
+        "O04-2-004"
+      ]
+    },
+    {
+      "id": "N03-020",
+      "result": "revise",
+      "rationale": "Ошибка только при требовании хеша, не при создании tuple. Ссылки95/97 описывают ключи вообще; добавить реальный tuple со списком и hash в65/66.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O03-2-001",
+        "O03-3-005"
+      ]
+    },
+    {
+      "id": "N03-021",
+      "result": "revise",
+      "rationale": "stdout показывает ключ None и отсутствие без ложного сравнения значений; для полного источника нужны116 с default=None и125/128 с in, а не113 про обычный KeyError.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O03-2-010"
+      ]
+    },
+    {
+      "id": "N03-022",
+      "result": "keep",
+      "rationale": "После добавления3 состояние сохранено, float3.5 отвергнут TypeError; использование маленьких чисел array(\"i\") переносимо по размеру платформенного C int.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N04-001",
+      "result": "keep",
+      "rationale": "Вопрос ясно ограничен поверхностным копированием списка и различает замену ячейки и изменение вложенного объекта; общий обзор copy/deepcopy исходника не дублируется дословно.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O04-2-001",
+        "N04-006",
+        "N04-022"
+      ]
+    },
+    {
+      "id": "N04-002",
+      "result": "revise",
+      "rationale": "Близкий смысловой дубль исходного O04-3-001. Сместить новый вопрос к ошибочному предположению «все объекты8байт», границе платформенных деталей и вычислению адреса ссылки; это сложный вопрос по исходной шкале.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "revise",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "revise",
+        "difficulty": "revise"
+      },
+      "related_ids": [
+        "O04-3-001",
+        "N04-016"
+      ]
+    },
+    {
+      "id": "N04-003",
+      "result": "keep",
+      "rationale": "Копия bytearray и окно memoryview различены; наличие метаданных view не выдаётся за отсутствие всякой памяти, отрицательная проверка memoryview(list) верна.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N04-010",
+        "N04-014",
+        "N04-019"
+      ]
+    },
+    {
+      "id": "N04-004",
+      "result": "revise",
+      "rationale": "Три свойства чистоты описаны верно. Ссылка116 про функции как объекты посторонняя, оставить113; лекционное «грязный код»120 относится к стилю и не означает нечистую функцию.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N04-005",
+      "result": "revise",
+      "rationale": "База должна быть достижима, но отрицательный факториал зависит от точного условия: лекционное n<=1 сразу остановится. Дать явно базу n==0 и отличить завершение от корректности для недопустимого входа.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "revise",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O04-3-005"
+      ]
+    },
+    {
+      "id": "N04-006",
+      "result": "keep",
+      "rationale": "Внешние ссылки различны, вложенная общая; оба вывода и замена числа9 корректны. Задача проверяет граф после конкретных действий, а не повторяет определение shallow copy.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N04-001"
+      ]
+    },
+    {
+      "id": "N04-007",
+      "result": "revise",
+      "rationale": "Слово «строки» без слова «матрица» двусмысленно со str. Уточнить сравнение внешних строк и внутренних списков; реальные ссылки74–78 раскрывают матрицу и независимость строк.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "revise",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O04-2-004"
+      ]
+    },
+    {
+      "id": "N04-008",
+      "result": "revise",
+      "rationale": "deepcopy сохраняет внутреннюю общность ссылок и разрывает связь с исходным x; output верен. Ячейка84 — только вводный заголовок, заменить на85 с графом повторных ссылок.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N04-009",
+        "N04-013"
+      ]
+    },
+    {
+      "id": "N04-009",
+      "result": "revise",
+      "rationale": "После deepcopy b новый, но b[0] есть b; memo объясняет цикл без бесконечного рекурсивного копирования. Добавить81 о deepcopy вместо85, не содержащей копирования.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N04-008",
+        "O04-2-005"
+      ]
+    },
+    {
+      "id": "N04-010",
+      "result": "keep",
+      "rationale": "Срез view[1:3] отображает индексы1/2, запись v[0] меняет исходный bytearray; bytes(v) материализует новый bytes, stdout корректен.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N04-011",
+      "result": "keep",
+      "rationale": "Присваивание g=f сохраняет объект функции и один ключ, значение заменяется; код отличается от исходного определения функций первого класса конкретной хеш-таблицей.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N04-012",
+      "result": "keep",
+      "rationale": "Печать до и после вызова правильно отражает стек2→1→0 и обратный порядок; начальное значение задано, нет зависимости от прежних notebook-ячеек.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N04-013",
+      "result": "revise",
+      "rationale": "Ответ правильно ограничивает deepcopy политикой объектов и неизменяемыми частями, в отличие от слишком сильного обещания «все новые». Цитировать82 с собственно спорным утверждением вместо83 с рекомендациями.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O04-2-001",
+        "N04-008"
+      ]
+    },
+    {
+      "id": "N04-014",
+      "result": "revise",
+      "rationale": "Действующее представление не допускает изменение размера bytearray; одиночная запись байта допустима. Добавить105 с непосредственным ограничением, не только106 с ошибочным вызовом.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N04-019"
+      ]
+    },
+    {
+      "id": "N04-015",
+      "result": "revise",
+      "rationale": "Правильно не обещает границу интернирования и одинаковую идентичность. «Два запуска» уточнить разными способами создания/средами: один и тот же фиксированный код не обязан случайно менять результат.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "revise",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O04-2-002"
+      ]
+    },
+    {
+      "id": "N04-016",
+      "result": "revise",
+      "rationale": "Формула head+i*w верна именно для неотрицательного допустимого индекса плотного массива ссылок. Перенести эти предпосылки в условие и включить40 с указателями.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "revise",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N04-002"
+      ]
+    },
+    {
+      "id": "N04-017",
+      "result": "revise",
+      "rationale": "Геометрическая сумма и отличие от вероятностного среднего правильны. Для O(n) всей серии не хватало пустого стартового массива, начальной ёмкости и единичной цены копирования ссылки.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "revise",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O04-3-002"
+      ]
+    },
+    {
+      "id": "N04-018",
+      "result": "keep",
+      "rationale": "Инвариант (i-1)! и случай n=0 корректны, алгоритм уже полностью описан в условии; размеры растущего int не смешаны с числом умножений.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N04-019",
+      "result": "revise",
+      "rationale": "BufferError и stdout корректны. Уточнить конкретный append вместо абстрактного resize и добавить105 с экспортированным буфером; срез view действительно сохраняет экспорт.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N04-014"
+      ]
+    },
+    {
+      "id": "N04-020",
+      "result": "keep",
+      "rationale": "Новое def создаёт другой объект функции, а g сохраняет прежний; вывод1/2/False и ссылка132/134 о присваивании/идентичности согласованы.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N04-021",
+      "result": "revise",
+      "rationale": "Новое объяснение правильно: += над int не мутирует прежнее число, запрет срабатывает при записи в tuple. Ячейка58 выполняет t+=list и не соответствует этому случаю; привязать к неизменяемости48/49 и изменяемому вложению53.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O04-3-003"
+      ]
+    },
+    {
+      "id": "N04-022",
+      "result": "revise",
+      "rationale": "Конкатенация поверхностна, вывод общий вложенный список/False верен; ячейка167 вычисляет факториалы и не относится к копированию, нужны62/66/70.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O04-1-005",
+        "N04-001"
+      ]
+    },
+    {
+      "id": "N05-001",
+      "result": "keep",
+      "rationale": "Конкретная сигнатура полностью задаёт / и *; ответ по трём параметрам и значениям по умолчанию корректен, дополнительные определения не нужны.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O05-3-002",
+        "N05-017"
+      ]
+    },
+    {
+      "id": "N05-002",
+      "result": "revise",
+      "rationale": "Направление упаковки и распаковки аргументов верно. Источник41 только поясняет названия; добавить37/39 с реальными вызовами и variadic определением.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O05-2-003",
+        "O05-2-004"
+      ]
+    },
+    {
+      "id": "N05-003",
+      "result": "keep",
+      "rationale": "Описан контракт сохранения переданного пустого контейнера; None не смешивается с любым ложным значением. Теоретическое сравнение обосновано31.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N05-019",
+        "N05-022"
+      ]
+    },
+    {
+      "id": "N05-004",
+      "result": "keep",
+      "rationale": "Callable означает контракт вызываемого объекта и не запускает runtime-валидацию; необязательный пример __call__ по смыслу корректен, источники21/24 релевантны.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N05-005",
+      "result": "revise",
+      "rationale": "Класс и instance __dict__ различены правильно, slots оговорены как исключение. Для утверждения о поиске вне instance dict нужны99/102, а не лишь пустой instance67.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N05-010"
+      ]
+    },
+    {
+      "id": "N05-006",
+      "result": "revise",
+      "rationale": "Расчёты a+b*c и оба связывания дают14/16; распаковка корректна. Добавить36/37, где показан именно unpacking, вместо обобщённого примера4.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N05-007",
+      "result": "keep",
+      "rationale": "\"rare\" остаётся позиционной skills, keyword-only rarity не меняется; это прямой разбор ловушки лекционного вызова42, stdout полон.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O05-3-002"
+      ]
+    },
+    {
+      "id": "N05-008",
+      "result": "revise",
+      "rationale": "Сохранён default3, явный n передаёт8; числа неизменяемы, поэтому назвать действие переназначением n, а не изменением внешнего числа, и цитировать26 с def.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "revise",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O05-1-005",
+        "O05-2-001"
+      ]
+    },
+    {
+      "id": "N05-009",
+      "result": "revise",
+      "rationale": "UnboundLocalError возникает до print из-за локального x во всём теле; глобальное значение не резервный вариант. Нужны содержательные scope-ячейки45/48/52/53 вместо заголовка44.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N05-010",
+      "result": "revise",
+      "rationale": "Создание и удаление собственного value затеняет/открывает обычный class attribute; stdout9/7/7 корректен. Добавить конкретные87/101/102 вместо общего комментария86.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N05-005"
+      ]
+    },
+    {
+      "id": "N05-011",
+      "result": "keep",
+      "rationale": "Обычный bound method и вызов функции из класса с явным self эквивалентны в заданном простом классе; scale не является staticmethod/property, контекст достаточен.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N05-012",
+      "result": "keep",
+      "rationale": "Новый ответ верен независимо от ошибок исходной лекции69/74: __init__ должен вернуть None, он не конструирует и не возвращает экземпляр; return7 даёт TypeError после записи поля.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N05-013",
+      "result": "revise",
+      "rationale": "Без сигнатуры «может быть ошибкой» допускает несколько случаев. Показать f(a) и g(a,/,**kwargs) и сравнить обычный конфликт с независимым kwargs-ключом, подтверждённым PEP570.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "revise",
+        "answer": "revise",
+        "explanation": "revise",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N05-017",
+        "N05-021"
+      ]
+    },
+    {
+      "id": "N05-014",
+      "result": "revise",
+      "rationale": "В variadic-аннотации str относится к каждому элементу, не tuple; новое объяснение верно исправляет *abilities:list[str] при фактических строках. Цитировать39/42 вместо общего абзаца7.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O05-3-002"
+      ]
+    },
+    {
+      "id": "N05-015",
+      "result": "keep",
+      "rationale": "Интерфейс фабрики уже описан самостоятельно, отличие создания и выполнения функции чёткое; сохранённый f не объявляется автоматически чистым.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "O05-1-001"
+      ]
+    },
+    {
+      "id": "N05-016",
+      "result": "revise",
+      "rationale": "Автоматическое __hash__=None относится к определению __eq__ при создании класса, не к произвольному последующему добавлению метода. Уточнить условие/ответ и предупредить что dir не проверяет возможность hash.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "pass",
+        "answer": "revise",
+        "explanation": "revise",
+        "source_cells": "revise",
+        "ambiguity": "revise",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N03-013"
+      ]
+    },
+    {
+      "id": "N05-017",
+      "result": "revise",
+      "rationale": "Точная сигнатура отсутствовала, а объяснение слишком широко запрещало имя positional-only при **kwargs. Дать конкретную смешанную сигнатуру и показать допустимый kwargs[\"a\"] отдельно от a.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "revise",
+        "answer": "revise",
+        "explanation": "revise",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N05-001",
+        "N05-013"
+      ]
+    },
+    {
+      "id": "N05-018",
+      "result": "keep",
+      "rationale": "Точки, размерность и ортогональные оси заданы; два применения Пифагора дают симметричную норму разности, источник18 буквально содержит формулу.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N05-019",
+      "result": "revise",
+      "rationale": "Нужно явно указать, что новый [] создаётся только при is None: «создание внутри» само по себе не описывает ветвление. Ячейки31/32/33 непосредственно демонстрируют независимые вызовы.",
+      "source_cells_verified": false,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "revise",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "revise",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N05-003",
+        "O05-2-001"
+      ]
+    },
+    {
+      "id": "N05-020",
+      "result": "keep",
+      "rationale": "Разделитель / задан, **kwargs нет, поэтому f(x=3) точно запрещён; stdout6 появляется до TypeError, тело второго вызова не выполняется.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": []
+    },
+    {
+      "id": "N05-021",
+      "result": "keep",
+      "rationale": "Дублированный keyword приводит к TypeError при вызове, а не правому приоритету dict-слияния; фактический stdout толькоbefore, код самостоятельный.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "pass",
+        "context": "pass",
+        "answer": "pass",
+        "explanation": "pass",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "pass"
+      },
+      "related_ids": [
+        "N05-013"
+      ]
+    },
+    {
+      "id": "N05-022",
+      "result": "revise",
+      "rationale": "Условие просит сравнить две проверки, но code содержит одну. Добавить реальную g с is None и обе трассировки, обновить stdout/ответ; после этого уровень «Средние» согласуется с исходной задачей defaults.",
+      "source_cells_verified": true,
+      "lecture_match": true,
+      "criteria": {
+        "style": "pass",
+        "relevance": "pass",
+        "wording": "revise",
+        "context": "revise",
+        "answer": "revise",
+        "explanation": "revise",
+        "source_cells": "pass",
+        "ambiguity": "pass",
+        "duplicates": "pass",
+        "difficulty": "revise"
+      },
+      "related_ids": [
+        "N05-003",
+        "N05-019"
+      ]
+    }
+  ],
+  "updates": {
+    "N01-001": {
+      "question": "Что происходит с именем x и объектами при последовательных присваиваниях x = 7 и x = \"7\"? Меняется ли тип прежнего объекта?"
+    },
+    "N01-004": {
+      "source": {
+        "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+        "cells": [
+          100,
+          108,
+          110,
+          111,
+          114
+        ]
+      }
+    },
+    "N01-005": {
+      "answer": "strip(chars) удаляет любой символ из заданного набора только на краях строки. replace(old, new) заменяет вхождения целой подстроки по всей строке. Оба метода возвращают результирующую строку и не изменяют исходную; отдельный новый объект при неизменившемся результате не гарантируется."
+    },
+    "N01-008": {
+      "source": {
+        "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+        "cells": [
+          25,
+          26,
+          81,
+          82
+        ]
+      }
+    },
+    "N01-010": {
+      "source": {
+        "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+        "cells": [
+          83,
+          84,
+          91,
+          97
+        ]
+      }
+    },
+    "N01-012": {
+      "question": "Пусть s — строка длины меньше 100. Что произойдёт при s[100] и s[100:200], и почему результаты различаются?",
+      "difficulty": "Средние",
+      "source": {
+        "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+        "cells": [
+          39,
+          40
+        ]
+      }
+    },
+    "N01-017": {
+      "difficulty": "Средние"
+    },
+    "N01-018": {
+      "question": "Что выведет код? Почему тип результата индексации bytes отличается от типа результата индексации str?",
+      "source": {
+        "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+        "cells": [
+          51,
+          53,
+          54,
+          55
+        ]
+      }
+    },
+    "N02-001": {
+      "source": {
+        "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+        "cells": [
+          10,
+          14
+        ]
+      }
+    },
+    "N02-005": {
+      "source": {
+        "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+        "cells": [
+          66,
+          69
+        ]
+      }
+    },
+    "N02-006": {
+      "source": {
+        "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+        "cells": [
+          10,
+          13,
+          14,
+          17
+        ]
+      }
+    },
+    "N02-007": {
+      "source": {
+        "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+        "cells": [
+          34,
+          39
+        ]
+      }
+    },
+    "N02-012": {
+      "question": "Пусть xs — конечный список, а check(x) успешно возвращает bool для каждого его элемента. Почему any([check(x) for x in xs]) вызывает check даже для элементов после первого истинного результата? Как избежать этих вызовов?",
+      "explanation": "Списковое включение вычисляет все свои элементы до вызова any. Для остановки самих вызовов check на первой истине передают генераторное выражение any(check(x) for x in xs) либо используют явный цикл с break."
+    },
+    "N02-017": {
+      "question": "Пусть xs и ys — списки длины n и m; функции p и f не изменяют эти списки и успешно завершаются. Переведите [f(x,y) for x in xs for y in ys if p(x,y)] во вложенные циклы и определите число вызовов p.",
+      "source": {
+        "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+        "cells": [
+          58,
+          59,
+          60
+        ]
+      }
+    },
+    "N02-018": {
+      "difficulty": "Средние"
+    },
+    "N03-005": {
+      "source": {
+        "notebook": "0.03.Containers/lecture/Containers.ipynb",
+        "cells": [
+          120,
+          121,
+          165
+        ]
+      }
+    },
+    "N03-007": {
+      "source": {
+        "notebook": "0.03.Containers/lecture/Containers.ipynb",
+        "cells": [
+          121,
+          122
+        ]
+      }
+    },
+    "N03-008": {
+      "source": {
+        "notebook": "0.03.Containers/lecture/Containers.ipynb",
+        "cells": [
+          132,
+          134,
+          135
+        ]
+      }
+    },
+    "N03-011": {
+      "source": {
+        "notebook": "0.03.Containers/lecture/Containers.ipynb",
+        "cells": [
+          157,
+          159,
+          162,
+          165
+        ]
+      }
+    },
+    "N03-012": {
+      "source": {
+        "notebook": "0.03.Containers/lecture/Containers.ipynb",
+        "cells": [
+          121,
+          122,
+          165
+        ]
+      }
+    },
+    "N03-014": {
+      "question": "Даны два словаря d1 и d2 с хешируемыми значениями. Чем различаются d1.keys() & d2.keys() и d1.items() & d2.items()? Приведите пример, когда результаты отражают разную информацию.",
+      "answer": "Пересечение keys возвращает общие ключи независимо от значений. Пересечение items возвращает общие пары (ключ, значение), поэтому одинаковый ключ с разными значениями в него не попадёт.",
+      "explanation": "Для d1={\"a\":1} и d2={\"a\":2} пересечение ключей равно {\"a\"}, а пересечение пар пусто. Пары в результирующем множестве должны быть хешируемыми; заданная хешируемость значений вместе с хешируемостью ключей обеспечивает это. Промежуточные списки ключей или пар не нужны."
+    },
+    "N03-017": {
+      "question": "Есть список из n хешируемых элементов и m запросов проверки принадлежности. Сравните суммарную сложность линейного поиска в исходном списке и предварительного построения set с последующими запросами. Какую дополнительную память требует set?"
+    },
+    "N03-018": {
+      "source": {
+        "notebook": "0.03.Containers/lecture/Containers.ipynb",
+        "cells": [
+          121,
+          140
+        ]
+      }
+    },
+    "N03-019": {
+      "difficulty": "Средние",
+      "source": {
+        "notebook": "0.03.Containers/lecture/Containers.ipynb",
+        "cells": [
+          121,
+          122
+        ]
+      }
+    },
+    "N03-020": {
+      "source": {
+        "notebook": "0.03.Containers/lecture/Containers.ipynb",
+        "cells": [
+          65,
+          66,
+          95,
+          97
+        ]
+      }
+    },
+    "N03-021": {
+      "source": {
+        "notebook": "0.03.Containers/lecture/Containers.ipynb",
+        "cells": [
+          115,
+          116,
+          125,
+          128
+        ]
+      }
+    },
+    "N04-002": {
+      "question": "Верно ли, что строка и число внутри смешанного списка занимают по 8 байт? Объясните, как массив ссылок обеспечивает O(1) индексацию и какие размеры зависят от платформы.",
+      "answer": "Нет: Python-объекты имеют разные размеры. В обычной реализации CPython список содержит плотный массив ссылок одинакового размера, а объекты хранятся отдельно. Адрес ссылки вычисляется по индексу за O(1); размер ссылки и накладные расходы зависят от платформы и реализации.",
+      "difficulty": "Сложные",
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          35,
+          37,
+          40,
+          41,
+          43
+        ]
+      }
+    },
+    "N04-004": {
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          113
+        ]
+      }
+    },
+    "N04-005": {
+      "explanation": "Например, при базе n == 0 и шаге n - 1 неотрицательное целое n достигает базы. Отрицательное n при таком шаге отдаляется от неё, и вызовы закончатся RecursionError. Проверка n <= 1 остановила бы отрицательный вход, но не сделала бы результат корректным математическим факториалом: область допустимых аргументов тоже нужно задать."
+    },
+    "N04-007": {
+      "question": "Что выведет код? Независимы ли строки матрицы rows и списки внутри этих строк?",
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          74,
+          75,
+          77,
+          78
+        ]
+      }
+    },
+    "N04-008": {
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          81,
+          85
+        ]
+      }
+    },
+    "N04-009": {
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          81,
+          86
+        ]
+      }
+    },
+    "N04-013": {
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          81,
+          82
+        ]
+      }
+    },
+    "N04-014": {
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          102,
+          105,
+          106
+        ]
+      }
+    },
+    "N04-015": {
+      "question": "Почему проверки is для равных int могут давать разные результаты при разных способах создания чисел или в разных средах запуска?"
+    },
+    "N04-016": {
+      "question": "В модели плотного массива ссылок head — адрес нулевой ссылки, w — размер одной ссылки в байтах, i — допустимый неотрицательный индекс. Выведите адрес i-й ссылки и объясните O(1) индексацию при фиксированном w.",
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          37,
+          40,
+          43
+        ]
+      }
+    },
+    "N04-017": {
+      "question": "В учебной модели динамический массив изначально пуст, имеет ёмкость 1 и при заполнении удваивает её, копируя все ссылки. Считайте запись или копирование одной ссылки операцией O(1). Докажите O(1) амортизированную стоимость append для последовательности n вставок.",
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          44
+        ]
+      }
+    },
+    "N04-019": {
+      "question": "Будет ли добавлен байт в data вызовом append, если v хранит только срез memoryview? Объясните результат выполнения кода.",
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          95,
+          105,
+          106
+        ]
+      }
+    },
+    "N04-021": {
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          48,
+          49,
+          53
+        ]
+      }
+    },
+    "N04-022": {
+      "source": {
+        "notebook": "0.04.References/lecture/References.ipynb",
+        "cells": [
+          62,
+          66,
+          70
+        ]
+      }
+    },
+    "N05-002": {
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          35,
+          37,
+          39,
+          41
+        ]
+      }
+    },
+    "N05-005": {
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          63,
+          67,
+          99,
+          102
+        ]
+      }
+    },
+    "N05-006": {
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          11,
+          36,
+          37
+        ]
+      }
+    },
+    "N05-008": {
+      "question": "Когда вычисляется значение параметра по умолчанию x=n? Повлияет ли последующее переназначение n на вызов f() без аргумента?",
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          25,
+          26,
+          27,
+          28
+        ]
+      }
+    },
+    "N05-009": {
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          45,
+          48,
+          52,
+          53
+        ]
+      }
+    },
+    "N05-010": {
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          87,
+          99,
+          101,
+          102
+        ]
+      }
+    },
+    "N05-013": {
+      "question": "Даны функции с сигнатурами f(a) и g(a, /, **kwargs). Сравните связывание аргументов в вызовах f(1, **{\"a\":2}) и g(1, **{\"a\":2}). Будет ли выполнено тело каждой функции?",
+      "answer": "f получает два значения одного параметра a, поэтому TypeError возникает до выполнения её тела. У g позиционное значение 1 связывается с a, а именованный ключ \"a\" попадает в kwargs={\"a\":2}; связывание успешно и тело g выполняется.",
+      "explanation": "Имя positional-only параметра недоступно для связывания через keyword, но может независимо использоваться как ключ в **kwargs. Поэтому решение определяется точной сигнатурой; без **kwargs одноимённый keyword некуда поместить.",
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          11,
+          35,
+          39
+        ]
+      }
+    },
+    "N05-014": {
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          39,
+          42
+        ]
+      }
+    },
+    "N05-016": {
+      "question": "Почему класс, определяющий __eq__ в своём теле и не определяющий __hash__, становится нехешируемым, хотя object по умолчанию хешируем?",
+      "answer": "При создании такого класса Python автоматически задаёт __hash__ = None. Это предотвращает случайное сочетание нового равенства по значениям и унаследованного хеша по идентичности, при котором равные объекты могли бы иметь разные хеши.",
+      "explanation": "Одного присутствия имени __hash__ в dir недостаточно: значение может быть None или метод может выбрасывать TypeError. Для хешируемого класса нужно явно задать согласованный устойчивый хеш либо явно восстановить подходящий метод родителя. Это правило относится к созданию класса; простое присваивание Class.__eq__ после его создания само по себе не сбрасывает __hash__.",
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          81,
+          107,
+          108
+        ]
+      }
+    },
+    "N05-017": {
+      "question": "Для сигнатуры f(a, /, b=1, *args, c, d=2, **kwargs) опишите алгоритм связывания аргументов. Затем разберите вызов f(10, 20, 30, c=40, a=50).",
+      "answer": "Позиционные аргументы заполняют a и b, оставшиеся собираются в args. Именованные аргументы связываются с b, c, d, а остальные попадают в kwargs; затем незаполненные необязательные параметры получают значения по умолчанию. В указанном вызове a=10, b=20, args=(30,), c=40, d=2, kwargs={\"a\":50}.",
+      "explanation": "Параметр a передаётся только позиционно, поэтому одноимённый keyword не связывается с ним, а собирается в kwargs. Параметр c обязателен и передаётся только по имени. Повторное связывание b или c вызвало бы TypeError; аргументы, сохранённые в args и kwargs, не являются такими конфликтами.",
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          4,
+          11,
+          39
+        ]
+      }
+    },
+    "N05-019": {
+      "question": "В функции f(items=None) новый список [] создаётся в теле только при items is None. Докажите, что вызовы без items получают разные списки, а явно переданный пустой список сохраняется.",
+      "source": {
+        "notebook": "0.05.Functions/lecture/Functions.ipynb",
+        "cells": [
+          31,
+          32,
+          33,
+          49
+        ]
+      }
+    },
+    "N05-022": {
+      "question": "Что выведет код? Объясните, как две проверки отсутствия аргумента ведут себя на явно переданном пустом списке.",
+      "code": "def f(items=None):\n    if not items:\n        items = []\n    items.append(1)\n    return items\n\ndef g(items=None):\n    if items is None:\n        items = []\n    items.append(1)\n    return items\n\na = []\nr = f(a)\nprint(a, r, a is r)\nb = []\ns = g(b)\nprint(b, s, b is s)",
+      "expected_stdout": "[] [1] False\n[1] [1] True\n",
+      "answer": "Стандартный вывод:\n```text\n[] [1] False\n[1] [1] True\n```",
+      "explanation": "В f пустой a ложен, поэтому локальное имя items переназначается на новый список; a остаётся пустым. В g явно переданный b не равен None по идентичности, поэтому новый список не создаётся: append изменяет b, и s ссылается на него. Это различие важно, если контракт требует изменять переданный контейнер.",
+      "difficulty": "Средние"
+    }
+  }
+}

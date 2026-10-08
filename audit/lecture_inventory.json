@@ -1,0 +1,72 @@
+{
+  "Data.ipynb": {
+    "sha256": "1a6463d9128ed76eb04737ebdd0c93aea37e41bba85c615019ec3f926828dac0",
+    "cells": 74,
+    "source_characters": 11465
+  },
+  "Decorators.ipynb": {
+    "sha256": "5114949d577fa6746e1be070cc83ff9b97b57dcb78d3df6bcbf0a8c43e95515c",
+    "cells": 89,
+    "source_characters": 18794
+  },
+  "Descriptors.ipynb": {
+    "sha256": "c584959a357f77a1eb223f29da550bace452b18c91cce7c81efc5d75e11e0e06",
+    "cells": 112,
+    "source_characters": 20024
+  },
+  "Exceptions.ipynb": {
+    "sha256": "9f6b52b177c4c0a17c2bba9d99dcfd6da492b2c1de52ac8a0e743d5633226e86",
+    "cells": 116,
+    "source_characters": 25113
+  },
+  "Functions.ipynb": {
+    "sha256": "fd3afe75a234d398d09aff24d4c3d6506dc8db6cca45e39caa471c2e9d5907a4",
+    "cells": 110,
+    "source_characters": 13772
+  },
+  "Iterators.ipynb": {
+    "sha256": "105a2b62f0669f71ff68fc20b30e3d64488dcbfb81972159d958ec9d61924f83",
+    "cells": 114,
+    "source_characters": 18217
+  },
+  "NumPyPandas.ipynb": {
+    "sha256": "ce48732231a79298adeb397a5da75fb5e3783a0e1c6e9c049a05a76742531353",
+    "cells": 208,
+    "source_characters": 15802
+  },
+  "Protocols.ipynb": {
+    "sha256": "49f5e0d243549de6f1bb7228a34dd9fd79f233ebb9291cb79f44209f6688f3ed",
+    "cells": 85,
+    "source_characters": 16362
+  },
+  "References.ipynb": {
+    "sha256": "45214509ed20471ce361da520545f79b140bbe391620b3977b11358dba1ef7ab",
+    "cells": 174,
+    "source_characters": 20183
+  },
+  "Testing.ipynb": {
+    "sha256": "2736cd77c3308b9c252e1b0ccf5fdee7150fb7ee4f60a16a1652a9e0e50536c7",
+    "cells": 58,
+    "source_characters": 17499
+  },
+  "BasicTypes.ipynb": {
+    "sha256": "41861ee2720067a41cacca30f363b08d0ad0f50d10f359c853b6d8236feadfab",
+    "cells": 153,
+    "source_characters": 16522
+  },
+  "Collections.ipynb": {
+    "sha256": "1dbfceebd2e29fdaae6731f4dd0899fc979b42e121ede6ccec48d10abdabdb8b",
+    "cells": 109,
+    "source_characters": 19215
+  },
+  "Containers.ipynb": {
+    "sha256": "4768b2e287e3a5d9a84daf56dfcacdadfbb5e7c3adf6d2de0785376194601cba",
+    "cells": 166,
+    "source_characters": 16609
+  },
+  "ControlFlow.ipynb": {
+    "sha256": "997b9f77e15c7f78fc9dec011fbf7ecfb48766bb64796a0122dd34ec590b29e3",
+    "cells": 87,
+    "source_characters": 12325
+  }
+}

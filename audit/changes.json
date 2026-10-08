@@ -1,0 +1,2970 @@
+{
+  "date": "2026-10-09",
+  "records_reviewed": 300,
+  "records_changed": 126,
+  "source_only": 59,
+  "content_or_difficulty": 67,
+  "excluded_new": 0,
+  "changes": [
+    {
+      "id": "N01-001",
+      "fields": {
+        "question": {
+          "before": "Что меняется при последовательных присваиваниях x = 7 и x = \"7\": тип имени или тип объекта?",
+          "after": "Что происходит с именем x и объектами при последовательных присваиваниях x = 7 и x = \"7\"? Меняется ли тип прежнего объекта?"
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N01-004",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              106,
+              114
+            ]
+          },
+          "after": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              100,
+              108,
+              110,
+              111,
+              114
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N01-005",
+      "fields": {
+        "answer": {
+          "before": "strip(chars) удаляет любой символ из заданного набора только на краях строки. replace(old, new) заменяет вхождения целой подстроки по всей строке и возвращает новый объект.",
+          "after": "strip(chars) удаляет любой символ из заданного набора только на краях строки. replace(old, new) заменяет вхождения целой подстроки по всей строке. Оба метода возвращают результирующую строку и не изменяют исходную; отдельный новый объект при неизменившемся результате не гарантируется."
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N01-008",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              81,
+              82
+            ]
+          },
+          "after": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              25,
+              26,
+              81,
+              82
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N01-010",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              91,
+              97
+            ]
+          },
+          "after": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              83,
+              84,
+              91,
+              97
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N01-012",
+      "fields": {
+        "question": {
+          "before": "Почему s[100] обычно ошибочен, а s[100:200] допустим для короткой строки?",
+          "after": "Пусть s — строка длины меньше 100. Что произойдёт при s[100] и s[100:200], и почему результаты различаются?"
+        },
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              39,
+              44
+            ]
+          },
+          "after": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              39,
+              40
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N01-017",
+      "fields": {
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N01-018",
+      "fields": {
+        "question": {
+          "before": "Почему индекс UTF-8 данных не возвращает тот же объект, что индекс строки?",
+          "after": "Что выведет код? Почему тип результата индексации bytes отличается от типа результата индексации str?"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              53,
+              55
+            ]
+          },
+          "after": {
+            "notebook": "0.01.BasicTypes/lecture/BasicTypes.ipynb",
+            "cells": [
+              51,
+              53,
+              54,
+              55
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N02-001",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              10,
+              16
+            ]
+          },
+          "after": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              10,
+              14
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N02-005",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              66,
+              68
+            ]
+          },
+          "after": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              66,
+              69
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N02-006",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              13,
+              17
+            ]
+          },
+          "after": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              10,
+              13,
+              14,
+              17
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N02-007",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              39,
+              44
+            ]
+          },
+          "after": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              34,
+              39
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N02-012",
+      "fields": {
+        "question": {
+          "before": "Почему any([check(x) for x in xs]) не избегает всех лишних вызовов check?",
+          "after": "Пусть xs — конечный список, а check(x) успешно возвращает bool для каждого его элемента. Почему any([check(x) for x in xs]) вызывает check даже для элементов после первого истинного результата? Как избежать этих вызовов?"
+        },
+        "explanation": {
+          "before": "Чтобы короткое замыкание распространялось и на вычисление check, используют генераторное выражение либо явный цикл с break. Списковое включение вычисляется энергично независимо от поведения потребителя.",
+          "after": "Списковое включение вычисляет все свои элементы до вызова any. Для остановки самих вызовов check на первой истине передают генераторное выражение any(check(x) for x in xs) либо используют явный цикл с break."
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N02-017",
+      "fields": {
+        "question": {
+          "before": "Переведите [f(x,y) for x in xs for y in ys if p(x,y)] в алгоритм и оцените число проверок.",
+          "after": "Пусть xs и ys — списки длины n и m; функции p и f не изменяют эти списки и успешно завершаются. Переведите [f(x,y) for x in xs for y in ys if p(x,y)] во вложенные циклы и определите число вызовов p."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              58,
+              60
+            ]
+          },
+          "after": {
+            "notebook": "0.02.ControlFlow/lecture/ControlFlow.ipynb",
+            "cells": [
+              58,
+              59,
+              60
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N02-018",
+      "fields": {
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-005",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              121,
+              122
+            ]
+          },
+          "after": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              120,
+              121,
+              165
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-007",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              121,
+              123
+            ]
+          },
+          "after": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              121,
+              122
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-008",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              130,
+              134
+            ]
+          },
+          "after": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              132,
+              134,
+              135
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-011",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              154,
+              165
+            ]
+          },
+          "after": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              157,
+              159,
+              162,
+              165
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-012",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              121,
+              122
+            ]
+          },
+          "after": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              121,
+              122,
+              165
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-014",
+      "fields": {
+        "question": {
+          "before": "Когда полезнее пересечь d1.keys() и d2.keys(), чем сравнивать все пары items()?",
+          "after": "Даны два словаря d1 и d2 с хешируемыми значениями. Чем различаются d1.keys() & d2.keys() и d1.items() & d2.items()? Приведите пример, когда результаты отражают разную информацию."
+        },
+        "answer": {
+          "before": "Пересечение keys ищет общие имена независимо от значений. items подходит для поиска одинаковых пар, когда важны и ключ, и значение и значения позволяют нужную операцию.",
+          "after": "Пересечение keys возвращает общие ключи независимо от значений. Пересечение items возвращает общие пары (ключ, значение), поэтому одинаковый ключ с разными значениями в него не попадёт."
+        },
+        "explanation": {
+          "before": "Например, два словаря настроек могут иметь одинаковые поля с разными значениями. Пересечение ключей это обнаружит; пересечение пар таких полей не сохранит. Промежуточные списки ключей не нужны.",
+          "after": "Для d1={\"a\":1} и d2={\"a\":2} пересечение ключей равно {\"a\"}, а пересечение пар пусто. Пары в результирующем множестве должны быть хешируемыми; заданная хешируемость значений вместе с хешируемостью ключей обеспечивает это. Промежуточные списки ключей или пар не нужны."
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-017",
+      "fields": {
+        "question": {
+          "before": "Оцените обработку n элементов и m запросов принадлежности через list и через set.",
+          "after": "Есть список из n хешируемых элементов и m запросов проверки принадлежности. Сравните суммарную сложность линейного поиска в исходном списке и предварительного построения set с последующими запросами. Какую дополнительную память требует set?"
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-018",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              121,
+              138
+            ]
+          },
+          "after": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              121,
+              140
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-019",
+      "fields": {
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              121,
+              138
+            ]
+          },
+          "after": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              121,
+              122
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-020",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              95,
+              97
+            ]
+          },
+          "after": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              65,
+              66,
+              95,
+              97
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N03-021",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              113,
+              115
+            ]
+          },
+          "after": {
+            "notebook": "0.03.Containers/lecture/Containers.ipynb",
+            "cells": [
+              115,
+              116,
+              125,
+              128
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-002",
+      "fields": {
+        "question": {
+          "before": "Почему список может хранить строку и число рядом и при этом быстро индексироваться?",
+          "after": "Верно ли, что строка и число внутри смешанного списка занимают по 8 байт? Объясните, как массив ссылок обеспечивает O(1) индексацию и какие размеры зависят от платформы."
+        },
+        "answer": {
+          "before": "В массиве списка размещены ссылки одинакового размера, а сами объекты располагаются отдельно. Адрес нужной ссылки вычисляется по индексу, независимо от размера объекта.",
+          "after": "Нет: Python-объекты имеют разные размеры. В обычной реализации CPython список содержит плотный массив ссылок одинакового размера, а объекты хранятся отдельно. Адрес ссылки вычисляется по индексу за O(1); размер ссылки и накладные расходы зависят от платформы и реализации."
+        },
+        "difficulty": {
+          "before": "Средние",
+          "after": "Сложные"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              34,
+              43
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              35,
+              37,
+              40,
+              41,
+              43
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-004",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              113,
+              116
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              113
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-005",
+      "fields": {
+        "explanation": {
+          "before": "Для факториала неотрицательного n подходит уменьшение n на 1 с базой 0 или 1. Для отрицательного n такой переход без проверки входа не гарантирует завершения; Python ограничивает глубину стека.",
+          "after": "Например, при базе n == 0 и шаге n - 1 неотрицательное целое n достигает базы. Отрицательное n при таком шаге отдаляется от неё, и вызовы закончатся RecursionError. Проверка n <= 1 остановила бы отрицательный вход, но не сделала бы результат корректным математическим факториалом: область допустимых аргументов тоже нужно задать."
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-007",
+      "fields": {
+        "question": {
+          "before": "Чем различаются две строки, созданные включением с одинаковым вложенным объектом?",
+          "after": "Что выведет код? Независимы ли строки матрицы rows и списки внутри этих строк?"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              70,
+              78
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              74,
+              75,
+              77,
+              78
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-008",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              81,
+              84
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              81,
+              85
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-009",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              85,
+              86
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              81,
+              86
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-013",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              81,
+              83
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              81,
+              82
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-014",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              102,
+              106
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              102,
+              105,
+              106
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-015",
+      "fields": {
+        "question": {
+          "before": "Почему два запуска проверки идентичности равных int могут дать разные результаты?",
+          "after": "Почему проверки is для равных int могут давать разные результаты при разных способах создания чисел или в разных средах запуска?"
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-016",
+      "fields": {
+        "question": {
+          "before": "Выведите формулу адреса i-й ссылки списка при начале head и размере ссылки w.",
+          "after": "В модели плотного массива ссылок head — адрес нулевой ссылки, w — размер одной ссылки в байтах, i — допустимый неотрицательный индекс. Выведите адрес i-й ссылки и объясните O(1) индексацию при фиксированном w."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              37,
+              43
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              37,
+              40,
+              43
+            ]
+          }
+        },
+        "answer": {
+          "before": "Все предыдущие i ссылок занимают i·w байт, поэтому адрес ссылки равен head+i·w. Для чтения значения затем получают объект по хранящейся там ссылке.",
+          "after": "Формула адреса ссылки: $$\\mathrm{address}(i)=\\mathrm{head}+i\\,w.$$\nВсе предыдущие i ссылок занимают i·w байт, поэтому адрес ссылки равен head+i·w. Для чтения значения затем получают объект по хранящейся там ссылке."
+        }
+      },
+      "audit": "review_01_05.json",
+      "rendering_note": "Добавлена эквивалентная формула LaTeX для отображения; условия и математический смысл сохранены."
+    },
+    {
+      "id": "N04-017",
+      "fields": {
+        "question": {
+          "before": "Докажите O(1) амортизированную стоимость append в модели удвоения ёмкости.",
+          "after": "В учебной модели динамический массив изначально пуст, имеет ёмкость 1 и при заполнении удваивает её, копируя все ссылки. Считайте запись или копирование одной ссылки операцией O(1). Докажите O(1) амортизированную стоимость append для последовательности n вставок."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              44,
+              46
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              44
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-019",
+      "fields": {
+        "question": {
+          "before": "Почему resize bytearray упадёт даже при наличии только среза memoryview?",
+          "after": "Будет ли добавлен байт в data вызовом append, если v хранит только срез memoryview? Объясните результат выполнения кода."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              95,
+              106
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              95,
+              105,
+              106
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-021",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              47,
+              58
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              48,
+              49,
+              53
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N04-022",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              156,
+              167
+            ]
+          },
+          "after": {
+            "notebook": "0.04.References/lecture/References.ipynb",
+            "cells": [
+              62,
+              66,
+              70
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-002",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              35,
+              41
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              35,
+              37,
+              39,
+              41
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-005",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              62,
+              67
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              63,
+              67,
+              99,
+              102
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-006",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              4,
+              11
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              11,
+              36,
+              37
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-008",
+      "fields": {
+        "question": {
+          "before": "Когда вычисляется default и повлияет ли изменение внешнего числа на поздний вызов?",
+          "after": "Когда вычисляется значение параметра по умолчанию x=n? Повлияет ли последующее переназначение n на вызов f() без аргумента?"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              25,
+              28
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              25,
+              26,
+              27,
+              28
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-009",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              44,
+              52
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              45,
+              48,
+              52,
+              53
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-010",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              86,
+              99
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              87,
+              99,
+              101,
+              102
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-013",
+      "fields": {
+        "question": {
+          "before": "Почему f(1, **{\"a\":2}) может быть ошибкой, хотя распаковка словаря сама корректна?",
+          "after": "Даны функции с сигнатурами f(a) и g(a, /, **kwargs). Сравните связывание аргументов в вызовах f(1, **{\"a\":2}) и g(1, **{\"a\":2}). Будет ли выполнено тело каждой функции?"
+        },
+        "answer": {
+          "before": "Если a — обычный позиционный или именованный параметр, ему переданы два значения и возникает TypeError. Корректность словаря для ** не гарантирует корректность полного вызова.",
+          "after": "f получает два значения одного параметра a, поэтому TypeError возникает до выполнения её тела. У g позиционное значение 1 связывается с a, а именованный ключ \"a\" попадает в kwargs={\"a\":2}; связывание успешно и тело g выполняется."
+        },
+        "explanation": {
+          "before": "Для positional-only a при наличии **kwargs одноимённый ключ может уйти в kwargs и не конфликтовать. Нужно читать точную сигнатуру, а не судить только по именам.",
+          "after": "Имя positional-only параметра недоступно для связывания через keyword, но может независимо использоваться как ключ в **kwargs. Поэтому решение определяется точной сигнатурой; без **kwargs одноимённый keyword некуда поместить."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              11,
+              35
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              11,
+              35,
+              39
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-014",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              7,
+              39
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              39,
+              42
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-016",
+      "fields": {
+        "question": {
+          "before": "Почему добавление __eq__ без __hash__ способно сделать ранее хешируемый класс нехешируемым?",
+          "after": "Почему класс, определяющий __eq__ в своём теле и не определяющий __hash__, становится нехешируемым, хотя object по умолчанию хешируем?"
+        },
+        "answer": {
+          "before": "Python обычно устанавливает __hash__ = None, если класс определяет __eq__ без согласованного __hash__. Это предотвращает сочетание равенства по значениям и несогласованного идентичностного хеша.",
+          "after": "При создании такого класса Python автоматически задаёт __hash__ = None. Это предотвращает случайное сочетание нового равенства по значениям и унаследованного хеша по идентичности, при котором равные объекты могли бы иметь разные хеши."
+        },
+        "explanation": {
+          "before": "Одно лишь присутствие имени __hash__ в dir ничего не гарантирует: оно может содержать None. При необходимости ключей нужно определить устойчивый контракт хеша, а при изменяемых полях разумнее отказаться от него.",
+          "after": "Одного присутствия имени __hash__ в dir недостаточно: значение может быть None или метод может выбрасывать TypeError. Для хешируемого класса нужно явно задать согласованный устойчивый хеш либо явно восстановить подходящий метод родителя. Это правило относится к созданию класса; простое присваивание Class.__eq__ после его создания само по себе не сбрасывает __hash__."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              83,
+              107
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              81,
+              107,
+              108
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-017",
+      "fields": {
+        "question": {
+          "before": "Опишите порядок связывания аргументов для сигнатуры с /, defaults, *args и keyword-only.",
+          "after": "Для сигнатуры f(a, /, b=1, *args, c, d=2, **kwargs) опишите алгоритм связывания аргументов. Затем разберите вызов f(10, 20, 30, c=40, a=50)."
+        },
+        "answer": {
+          "before": "Позиционные значения последовательно занимают разрешённые места, остаток уходит в *args. Именованные связываются с доступными параметрами или **kwargs; затем отсутствующие необязательные параметры получают defaults.",
+          "after": "Позиционные аргументы заполняют a и b, оставшиеся собираются в args. Именованные аргументы связываются с b, c, d, а остальные попадают в kwargs; затем незаполненные необязательные параметры получают значения по умолчанию. В указанном вызове a=10, b=20, args=(30,), c=40, d=2, kwargs={\"a\":50}."
+        },
+        "explanation": {
+          "before": "Ошибками являются дубли значения, недостающий обязательный параметр, запрещённое имя positional-only и лишние аргументы без коллектора. Рассуждение должно учитывать точную сигнатуру, а не просто число переданных объектов.",
+          "after": "Параметр a передаётся только позиционно, поэтому одноимённый keyword не связывается с ним, а собирается в kwargs. Параметр c обязателен и передаётся только по имени. Повторное связывание b или c вызвало бы TypeError; аргументы, сохранённые в args и kwargs, не являются такими конфликтами."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              4,
+              11
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              4,
+              11,
+              39
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-019",
+      "fields": {
+        "question": {
+          "before": "Обоснуйте, что items=None с созданием [] внутри обеспечивает независимость отсутствующих аргументов.",
+          "after": "В функции f(items=None) новый список [] создаётся в теле только при items is None. Докажите, что вызовы без items получают разные списки, а явно переданный пустой список сохраняется."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              31,
+              49
+            ]
+          },
+          "after": {
+            "notebook": "0.05.Functions/lecture/Functions.ipynb",
+            "cells": [
+              31,
+              32,
+              33,
+              49
+            ]
+          }
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N05-022",
+      "fields": {
+        "question": {
+          "before": "Найдите отличие двух проверок отсутствия аргумента на явно переданном пустом списке.",
+          "after": "Что выведет код? Объясните, как две проверки отсутствия аргумента ведут себя на явно переданном пустом списке."
+        },
+        "code": {
+          "before": "def f(items=None):\n    if not items:\n        items = []\n    items.append(1)\n    return items\na = []\nr = f(a)\nprint(a, r, a is r)",
+          "after": "def f(items=None):\n    if not items:\n        items = []\n    items.append(1)\n    return items\n\ndef g(items=None):\n    if items is None:\n        items = []\n    items.append(1)\n    return items\n\na = []\nr = f(a)\nprint(a, r, a is r)\nb = []\ns = g(b)\nprint(b, s, b is s)"
+        },
+        "expected_stdout": {
+          "before": "[] [1] False\n",
+          "after": "[] [1] False\n[1] [1] True\n"
+        },
+        "answer": {
+          "before": "Стандартный вывод:\n```text\n[] [1] False\n```",
+          "after": "Стандартный вывод:\n```text\n[] [1] False\n[1] [1] True\n```"
+        },
+        "explanation": {
+          "before": "Пустой a ложен, поэтому функция заменяет локальную ссылку новым списком. Она изменяет новый контейнер и не пополняет a. Если контракт требует изменять переданный список, проверка должна быть items is None.",
+          "after": "В f пустой a ложен, поэтому локальное имя items переназначается на новый список; a остаётся пустым. В g явно переданный b не равен None по идентичности, поэтому новый список не создаётся: append изменяет b, и s ссылается на него. Это различие важно, если контракт требует изменять переданный контейнер."
+        },
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        }
+      },
+      "audit": "review_01_05.json"
+    },
+    {
+      "id": "N06-001",
+      "fields": {
+        "question": {
+          "before": "Как различаются неявные аргументы обычного, статического и классового метода?",
+          "after": "Каким специальным методом экземпляр пользовательского класса поддерживает вызов obj(x)? Где такой объект может хранить параметр операции между вызовами?"
+        },
+        "answer": {
+          "before": "Обычный метод через экземпляр получает self, classmethod получает cls, staticmethod не получает ни один из них автоматически. В остальных отношениях это вызываемые объекты со своими аргументами.",
+          "after": "Вызов obj(x) поддерживается методом __call__(self, x). Параметр операции можно хранить в атрибуте экземпляра и использовать при каждом вызове."
+        },
+        "explanation": {
+          "before": "classmethod полезен для фабрики, которая должна создавать экземпляр фактического класса-наследника. staticmethod удобен для операции, логически связанной с классом, но не нуждающейся в его состоянии.",
+          "after": "Например, объект Power сохраняет степень p в __init__, а __call__(a) возвращает a ** self.p. Разные экземпляры могут задавать разные степени. Сам экземпляр остаётся объектом с состоянием, хотя используется с синтаксисом вызова функции."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              3,
+              8
+            ]
+          },
+          "after": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              60,
+              61
+            ]
+          }
+        },
+        "topic": {
+          "before": "Методы",
+          "after": "Вызываемый экземпляр"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N06-007",
+      "fields": {
+        "question": {
+          "before": "Как наследование влияет на фабрику, использующую cls?",
+          "after": "Какой тип возвращает унаследованная статическая фабрика, если в ней явно записано A()? Объясните результат каждого вызова."
+        },
+        "code": {
+          "before": "class A:\n    @classmethod\n    def make(cls):\n        return cls()\nclass B(A):\n    pass\nprint(type(A.make()).__name__, type(B.make()).__name__)",
+          "after": "class A:\n    @staticmethod\n    def make():\n        return A()\n\nclass B(A):\n    pass\n\nprint(type(A.make()).__name__, type(B.make()).__name__)"
+        },
+        "expected_stdout": {
+          "before": "A B\n",
+          "after": "A A\n"
+        },
+        "answer": {
+          "before": "Стандартный вывод:\n```text\nA B\n```",
+          "after": "Стандартный вывод:\n```text\nA A\n```"
+        },
+        "explanation": {
+          "before": "При вызове A.make cls=A, при вызове B.make cls=B. Поэтому одна реализация создаёт соответствующие типы. Статическая фабрика с жёстко записанным A() всегда создала бы A.",
+          "after": "B наследует ту же функцию make. staticmethod не получает класс вызова как неявный аргумент; в теле оба раза явно вызывается A(). Наследование делает фабрику доступной через B, но не заменяет записанное в ней имя A на B."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              3,
+              8
+            ]
+          },
+          "after": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              6,
+              8,
+              9,
+              24,
+              26
+            ]
+          }
+        },
+        "topic": {
+          "before": "classmethod-фабрика",
+          "after": "Статическая фабрика и наследование"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N06-017",
+      "fields": {
+        "question": {
+          "before": "Докажите сохранение условия weight > 0 при setter, проверяющем значение до записи.",
+          "after": "У объекта уже установлен weight > 0. Setter принимает обычное конечное вещественное число value: если value > 0, записывает его во внутреннее поле; иначе вызывает ValueError до записи. Getter читает это поле. Докажите сохранение weight > 0 после любой попытки присваивания через setter. Прямые записи во внутреннее поле исключены."
+        },
+        "answer": {
+          "before": "Если прежний weight>0 и новое значение положительно, запись сохраняет условие. Если оно неположительно, setter бросает исключение до записи, оставляя прежнее положительное значение.",
+          "after": "Если value > 0, новое внутреннее значение положительно. Иначе setter вызывает ValueError до записи, поэтому прежнее положительное значение сохраняется. Оба исхода сохраняют инвариант."
+        },
+        "explanation": {
+          "before": "Инициализация должна пройти через ту же проверку; прямую запись в backing field следует считать обходом контракта. Доказательство использует разбор двух ветвей, а не одну успешную демонстрацию.",
+          "after": "Доказательство разбирает успешную и отклонённую ветви. Начальное положительное значение — база; каждая последующая попытка присваивания сохраняет её. Для гарантии с момента создания __init__ должен проходить такую же проверку, а обходные записи во внутреннее поле не входят в контракт."
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N06-019",
+      "fields": {
+        "question": {
+          "before": "Как сравнение order=True у dataclass сводится к лексикографическому сравнению полей?",
+          "after": "Как генерируемый порядок order=True у dataclass сравнивает два экземпляра одного и того же конкретного класса? Какие поля участвуют и что изменится при сравнении с объектом другого класса?"
+        },
+        "answer": {
+          "before": "Сравниваются значения участвующих полей в порядке объявления: первое различающееся поле определяет результат. Если все такие поля равны, экземпляры равны по генерируемому сравнению.",
+          "after": "Поля с compare=True участвуют в порядке объявления. Порядок соответствует лексикографическому сравнению этих значений: решает первое различающееся поле. Для другого конкретного класса генерируемый метод возвращает NotImplemented; если отражённая операция тоже не поддержана, сравнение порядка заканчивается TypeError."
+        },
+        "explanation": {
+          "before": "Поэтому существенный приоритет поля задаётся его позицией в классе. Поля должны поддерживать нужные сравнения; order=True не создаёт универсальную упорядочиваемость несравнимых объектов.",
+          "after": "Позиция поля задаёт его приоритет, а field(compare=False) исключает поле из сравнения. Значения участвующих полей сами должны поддерживать нужный порядок. order=True не создаёт порядок между произвольными классами или несравнимыми значениями; равенство и операции порядка также различаются."
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N07-003",
+      "fields": {
+        "question": {
+          "before": "Как отличаются raise Error(...) и raise без аргумента внутри except?",
+          "after": "Как отличаются raise ValueError(\"bad input\") и raise без аргумента внутри активного except?"
+        },
+        "answer": {
+          "before": "Первый создаёт или бросает указанное исключение. Голый raise повторно пробрасывает текущее обрабатываемое исключение с его трассировкой.",
+          "after": "Первый вариант возбуждает новый экземпляр ValueError. Голый raise повторно пробрасывает текущее обрабатываемое исключение с его трассировкой."
+        },
+        "explanation": {
+          "before": "Это позволяет записать диагностику и сохранить исходную причину ошибки. Голый raise вне активной обработки исключения недопустим; возврат None из обработчика, напротив, прекращает распространение ошибки.",
+          "after": "Голый raise позволяет добавить диагностику и передать исходную ошибку выше. Новый ValueError меняет итоговую ошибку, хотя первоначальное исключение может сохраниться в контексте или явной причине. Без активного обрабатываемого исключения голый raise сам вызовет RuntimeError."
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N07-014",
+      "fields": {
+        "question": {
+          "before": "Вызывается ли __exit__ менеджера, если его __enter__ завершился исключением?",
+          "after": "В конструкции with outer() as a, inner() as b первый менеджер успешно выполнил __enter__, а __enter__ второго вызвал ValueError. Оба вызова outer()/inner() сами успешны. Какие __exit__ будут вызваны, выполнится ли тело with и может ли возникшая ошибка быть подавлена?"
+        },
+        "answer": {
+          "before": "Нет: вход в этот контекст не завершился, и его __exit__ не вызывается протоколом with. Частично захваченные ресурсы должен корректно освободить сам код входа.",
+          "after": "Тело не выполнится. __exit__ второго менеджера не вызовется, но __exit__ первого получит сведения о ValueError. Если он вернёт истинное значение, ошибка будет подавлена; иначе распространится наружу."
+        },
+        "explanation": {
+          "before": "Вложенный внешний менеджер, в который уже вошли, при этом выйдет обычным образом. Поэтому обещание очистки через __exit__ начинается после успешного __enter__, а не до него.",
+          "after": "Несколько менеджеров эквивалентны вложенным with. К моменту отказа inner внешний контекст уже активен, поэтому должен завершиться. Правило вызова exit применяется отдельно к каждому успешному входу: неуспешный вход второго не отменяет обязанность завершить первый."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              91,
+              106
+            ]
+          },
+          "after": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              91,
+              101,
+              106
+            ]
+          }
+        },
+        "topic": {
+          "before": "Ошибка входа",
+          "after": "Вложенный вход в контекст"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N07-016",
+      "fields": {
+        "question": {
+          "before": "Опишите алгоритм движения управления по try/except/else/finally для нормального и аварийного пути.",
+          "after": "Опишите движение управления по try/except/else/finally при достижении конца try, исключении и выходе из try через return, break или continue. Считайте, что выполнение интерпретатора не прерывается извне."
+        },
+        "answer": {
+          "before": "При нормальном завершении try выполняется else, затем finally. При исключении ищется первый подходящий except; после него finally, а необработанная ошибка проходит дальше после finally.",
+          "after": "При достижении конца try выполняется else, затем finally. При исключении ищется первый подходящий except; после обработчика либо перед передачей необработанной ошибки выполняется finally, а else пропускается. При return/break/continue из try else также пропускается, finally выполняется перед завершением соответствующего перехода."
+        },
+        "explanation": {
+          "before": "Новый return или исключение из finally может заменить предыдущий исход. Поэтому finally используют для очистки, а не для скрытого изменения результата. Исключения внутри else и обработчика не перехватываются соседними except.",
+          "after": "else предназначен именно для нормального достижения конца защищённого блока. Исключение из else или самого обработчика не ловится соседними except, но finally всё равно выполняется. Если finally возбуждает новую ошибку или сам меняет управление, исходный результат может быть заменён; поэтому очистку следует отделять от возврата результата."
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N07-017",
+      "fields": {
+        "question": {
+          "before": "Обоснуйте, как __exit__ может подавить исключение и какие данные нужны для решения.",
+          "after": "Опишите алгоритм __exit__(self, typ, value, tb), который подавляет только LookupError и его подклассы. При успешном выходе и остальных исключениях он должен возвращать False. Как избежать ошибки проверки при typ=None?"
+        },
+        "answer": {
+          "before": "После ошибки тела __exit__ получает тип, экземпляр и traceback. Истинный результат означает обработку, ложный — продолжение распространения; для выборочного подавления проверяют тип ошибки.",
+          "after": "Сначала проверить typ is None и в этом случае вернуть False. Иначе вернуть issubclass(typ, LookupError). Равносильный вариант: return typ is not None and issubclass(typ, LookupError)."
+        },
+        "explanation": {
+          "before": "Тело не возобновляется на месте raise. При нормальном выходе три аргумента None, поэтому логика должна отдельно учитывать отсутствие ошибки. Это механизм контракта with, а не обработчик произвольной ошибки входа.",
+          "after": "При успешном выходе typ, value и tb равны None; issubclass(None, LookupError) недопустим. При ошибке typ — класс исключения, поэтому проверка подкласса включает IndexError и KeyError. Истинный результат подавляет подходящую ошибку после выхода из тела, но не возобновляет пропущенные строки."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              104,
+              106
+            ]
+          },
+          "after": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              28,
+              106,
+              109
+            ]
+          }
+        },
+        "topic": {
+          "before": "Протокол контекста",
+          "after": "Выборочное подавление исключений"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N07-021",
+      "fields": {
+        "question": {
+          "before": "Обработает ли except Exception специально возбуждённый KeyboardInterrupt?",
+          "after": "Что произойдёт при попытке возбудить целое число вместо исключения? Объясните, какая операция порождает пойманную ошибку."
+        },
+        "code": {
+          "before": "try:\n    try:\n        raise KeyboardInterrupt()\n    except Exception:\n        print(\"ordinary\")\nexcept KeyboardInterrupt:\n    print(\"interrupt\")",
+          "after": "try:\n    raise 1\nexcept TypeError:\n    print(\"invalid exception\")"
+        },
+        "answer": {
+          "before": "Стандартный вывод:\n```text\ninterrupt\n```",
+          "after": "Стандартный вывод:\n```text\ninvalid exception\n```"
+        },
+        "explanation": {
+          "before": "KeyboardInterrupt не принадлежит ветви Exception. Поэтому внутренняя ветвь пропускается, а внешний специально указанный обработчик ловит прерывание. Это исправляет распространённое смешение Exception и BaseException.",
+          "after": "Оператор raise принимает экземпляр исключения либо класс исключения, производный от BaseException. Число 1 не удовлетворяет этому контракту, поэтому сама инструкция raise вызывает TypeError. Это не возбуждение ошибки с числовым кодом 1."
+        },
+        "expected_stdout": {
+          "before": "interrupt\n",
+          "after": "invalid exception\n"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              19,
+              21
+            ]
+          },
+          "after": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              44,
+              45
+            ]
+          }
+        },
+        "topic": {
+          "before": "Широкий обработчик",
+          "after": "Недопустимый аргумент raise"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-013",
+      "fields": {
+        "question": {
+          "before": "Контейнер предоставляет pick(), удаляющий и возвращающий один элемент либо вызывающий IndexError при пустом контейнере, и load(items), добавляющий переданные элементы без гарантии порядка. Метод inspect() извлекает все элементы через pick() до IndexError, возвращает их через load(), затем выдаёт снимок. Почему такой inspect() способен менять наблюдаемое состояние?",
+          "after": "Контейнер предоставляет pick(), удаляющий и возвращающий один элемент либо вызывающий LookupError при пустом контейнере, и load(items), добавляющий переданные элементы без гарантии порядка. Метод inspect() извлекает все элементы через pick() до LookupError, возвращает их через load(), затем выдаёт tuple извлечённых элементов. Почему такой inspect() способен менять наблюдаемое состояние?"
+        },
+        "answer": {
+          "before": "Элементы извлекаются и загружаются заново; load может изменить порядок или перемешать их. Ошибка между извлечением и восстановлением также может оставить объект частично изменённым.",
+          "after": "Даже при успешном восстановлении того же мультимножества элементов их порядок может измениться: pick удаляет их в порядке выбора, а load не гарантирует прежний порядок и может перемешивать. Сбой до завершения восстановления также способен оставить контейнер частично изменённым."
+        },
+        "explanation": {
+          "before": "Даже если набор сохранён, структура не обязательно вернулась в прежнее состояние. Прямой снимок внутреннего хранилища может быть лучше в конкретном наследнике; общий алгоритм должен иметь явно описанный контракт.",
+          "after": "В BingoCage.load из лекции выполняется shuffle, поэтому сохранение содержимого не означает восстановления последовательности. Общий inspect работает лишь через pick/load и не знает внутреннего хранилища. Наследник с прямым доступом к хранилищу может переопределить inspect как снимок без извлечения, как LottoBlower; нельзя обещать нейтральность любой общей реализации."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              60,
+              68
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              60,
+              63,
+              68
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-016",
+      "fields": {
+        "question": {
+          "before": "У контейнера inspect() возвращает tuple всех текущих элементов: извлекает их по одному через pick() до IndexError при пустоте и восстанавливает через load(items). Метод loaded() возвращает bool(self.inspect()). Обоснуйте корректность признака непустоты и оцените время и дополнительную память при n элементах, если pick() стоит O(1), а load(items) — O(n).",
+          "after": "У конечного контейнера inspect() извлекает n элементов по одному через pick() до LookupError при пустоте, восстанавливает их через load(items) и возвращает tuple извлечённых элементов. Метод loaded() возвращает bool(self.inspect()). Докажите корректность признака непустоты и оцените время и дополнительную память, если pick() стоит O(1), load(items) — O(n), а формирование снимка — O(n). Считайте, что все операции завершаются успешно и содержимое восстанавливается."
+        },
+        "answer": {
+          "before": "Если inspect возвращает ровно все текущие элементы, его tuple пуст тогда и только тогда, когда объект пуст. Поэтому bool даёт правильный признак наличия.",
+          "after": "Снимок содержит ровно n текущих элементов, поэтому bool(tuple) истинно тогда и только тогда, когда контейнер непуст. При n>=1 время O(n): n извлечений, восстановление и построение tuple; дополнительная память O(n) под накопленные элементы и снимок. Для пустого контейнера обе оценки O(1)."
+        },
+        "explanation": {
+          "before": "Но inspect в общей реализации вызывает множество pick/load и может стоить O(n) и дополнительную память. В наследнике с доступной длиной прямой bool хранилища сохранит смысл при меньшей цене.",
+          "after": "loaded получает правильный результат ценой полного обхода, а не одного чтения признака пустоты. В общей реализации временно хранятся список и tuple ссылок, что меняет константу, но не линейный порядок памяти. Если у наследника есть готовое хранилище с размером за O(1), loaded можно переопределить через его длину без полного inspect."
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-019",
+      "fields": {
+        "question": {
+          "before": "Какое исключение требует обработки выбор случайной позиции в пустом диапазоне?",
+          "after": "Контракт pick() требует LookupError при пустом контейнере. Внутри pick сначала вызывается random.randrange(len(items)), затем удаляется элемент выбранной позиции. В приведённом фрагменте показан случай len(items)=0. Какой обработчик сработает и какой класс следует перехватывать в pick, чтобы выполнить заданный контракт?"
+        },
+        "answer": {
+          "before": "Стандартный вывод:\n```text\nvalue\n```",
+          "after": "Стандартный вывод:\n```text\nvalue\n```\nВ pick следует перехватить ValueError от randrange(0) и возбудить LookupError, например raise LookupError(\"empty container\") from e."
+        },
+        "explanation": {
+          "before": "randrange(0) отвергает пустой диапазон с ValueError. Перехват только IndexError в таком алгоритме выбора не переводит ошибку в договорённый LookupError. Индекс ещё не создан, поэтому список не успел вызвать IndexError.",
+          "after": "randrange(0) отвергает пустой диапазон до получения позиции. Поэтому список ещё не вызывал IndexError, и перехват только IndexError не выполняет контракт. В реальном LottoBlower из cell 68 стоит именно этот ошибочный except; корректный перевод относится к конкретному вызову randrange, чтобы не скрывать посторонние ошибки."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              68,
+              72
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              60,
+              68
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-003",
+      "fields": {
+        "question": {
+          "before": "Когда начинается тело генераторной функции: при вызове или при первом next?",
+          "after": "Что обозначают три параметра typing.Generator[YieldType, SendType, ReturnType]? Почему typing.Iterator[T] описывает генератор менее подробно?"
+        },
+        "answer": {
+          "before": "Вызов создаёт генератор, но обычное выполнение тела начинается при первом продвижении. На yield оно приостанавливается с сохранением локального состояния.",
+          "after": "YieldType — тип выдаваемых через yield значений, SendType — тип принимаемых через send сообщений, ReturnType — тип итогового значения завершения генератора. Iterator[T] описывает лишь тип выдаваемого элемента T."
+        },
+        "explanation": {
+          "before": "Следующий next продолжает с места остановки до очередного yield или завершения. Это объясняет отложенные побочные эффекты и ошибки; дефолтные аргументы функции всё равно определяются обычными правилами.",
+          "after": "Генератор с целыми выдачами и без значимых сообщений или итогового результата можно аннотировать Generator[int, None, None]. Если он принимает числа через send, второй параметр меняется. Эти аннотации описывают контракт для статического анализа и сами не проверяют значения при выполнении."
+        },
+        "difficulty": {
+          "before": "Простые",
+          "after": "Средние"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              71,
+              77
+            ]
+          },
+          "after": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              98,
+              99,
+              100,
+              102
+            ]
+          }
+        },
+        "topic": {
+          "before": "Момент исполнения",
+          "after": "Аннотация генератора"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-004",
+      "fields": {
+        "explanation": {
+          "before": "next(g) эквивалентен продвижению с None. В ещё не начатый генератор нельзя послать ненулевое сообщение: сначала его доводят до первого yield.",
+          "after": "next(g) эквивалентен продвижению с None. В ещё не начатый генератор нельзя отправить значение, отличное от None: сначала нужен next(g) или send(None), чтобы дойти до первого yield. Даже 0 или False до запуска запрещены; после остановки на yield переданное значение становится результатом этого выражения."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              101,
+              106
+            ]
+          },
+          "after": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              101,
+              102,
+              104,
+              105,
+              106
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-005",
+      "fields": {
+        "question": {
+          "before": "Как различаются g.close() и g.throw(ValueError(...)) по цели и точке действия?",
+          "after": "Как различаются g.close() и g.throw(ValueError(...)) для генератора, уже приостановленного на yield? Может ли он продолжить выдавать значения после каждого из этих вызовов?"
+        },
+        "answer": {
+          "before": "close завершает генератор, возбуждая внутри GeneratorExit. throw поднимает заданное исключение в точке текущего yield, и генератор может обработать его и продолжить.",
+          "after": "close возбуждает GeneratorExit в точке остановки и требует завершения. Новый yield при закрытии приводит к RuntimeError. throw возбуждает заданный ValueError в той же точке; генератор может обработать его и выдать следующее значение."
+        },
+        "explanation": {
+          "before": "При close нельзя выдать новое значение вместо завершения. Очистку удобно писать в finally; после нормального закрытия стандартное продвижение генератора вызывает StopIteration.",
+          "after": "При успешном закрытии дальнейшее продвижение заканчивается StopIteration. throw возвращает очередное выданное значение; необработанная ошибка выходит к вызывающему коду, а завершение без нового yield даёт StopIteration. Иная ошибка из очистки при close также может выйти наружу. Утверждение о выполнении очистки предполагает, что соответствующий участок тела уже был начат."
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-010",
+      "fields": {
+        "explanation": {
+          "before": "После first next активен try и генератор приостановлен. close внедряет GeneratorExit, проходящий через finally; затем генератор закрыт. Последующая материализация не выдаёт значений.",
+          "after": "После первого next активен try и генератор приостановлен. close внедряет GeneratorExit, проходящий через finally; затем генератор закрыт. Последующая материализация не выдаёт значений."
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-013",
+      "fields": {
+        "question": {
+          "before": "Почему проверка value in it может менять результат последующего перебора?",
+          "after": "У объекта определён корректный __next__, выдающий значение или StopIteration, но нет ни __iter__, ни __getitem__. Можно ли вызвать next(obj)? Можно ли передать obj в iter или цикл for? Объясните, какого условия полного протокола итератора не хватает."
+        },
+        "answer": {
+          "before": "Без собственного __contains__ проверка перебирает итератор до совпадения или конца. Эти элементы потребляются и не будут доступны следующим next.",
+          "after": "next(obj) может вызвать его __next__. Но iter(obj) и цикл for не смогут получить итератор и вызовут TypeError. Для полного протокола итератора нужен также __iter__, возвращающий self."
+        },
+        "explanation": {
+          "before": "Для повторно итерируемой коллекции поиск обычно создаёт отдельный итератор. Для однократного источника предварительная проверка наличия меняет состояние; на бесконечном источнике поиск отсутствующего элемента может не завершиться.",
+          "after": "Возможность одной операции next ещё не делает объект стандартным iterator, который обязан быть iterable. for сначала получает итератор через iter, а уже затем вызывает next. Добавление __iter__(self): return self связывает эти две стадии протокола, не перематывая состояние."
+        },
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              66,
+              69
+            ]
+          },
+          "after": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              13,
+              14,
+              17,
+              29
+            ]
+          }
+        },
+        "topic": {
+          "before": "Принадлежность",
+          "after": "Полный протокол итератора"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-015",
+      "fields": {
+        "question": {
+          "before": "Пользовательский генератор repeat(iterable, times) выполняет times последовательных проходов, каждый раз делая yield from iterable; times — целое ≥ 2. При каких входах он действительно повторит данные, а при каких нет? Это собственная функция, а не itertools.repeat.",
+          "after": "Почему close() сразу после создания генератора и close() после первого next по-разному влияют на finally? Проследите оба случая в коде."
+        },
+        "code": {
+          "before": "",
+          "after": "def g():\n    try:\n        yield 1\n    finally:\n        print(\"cleanup\")\n\nfresh = g()\nfresh.close()\nprint(\"fresh closed\")\nstarted = g()\nprint(next(started))\nstarted.close()"
+        },
+        "answer": {
+          "before": "С повторно итерируемой коллекцией, например списком, новый проход начинается заново. Если iterable — один итератор или генератор, первый проход исчерпает его, а последующие ничего не выдадут.",
+          "after": "Стандартный вывод:\n```text\nfresh closed\n1\ncleanup\n```"
+        },
+        "explanation": {
+          "before": "Для повторения конечного однократного входа надо сохранить элементы. Для бесконечного входа первый проход не закончится, и полная предварительная материализация невозможна. Это разные контракты повторения.",
+          "after": "У fresh тело вообще не началось, поэтому try/finally не был активирован: close закрывает объект без печати cleanup. У started первый next вошёл в try и остановился на yield; close возбуждает GeneratorExit в этой точке, и активный finally выполняется. Поэтому finally генератора не гарантирует очистку ресурса, который был захвачен снаружи ещё до начала его тела."
+        },
+        "expected_stdout": {
+          "before": null,
+          "after": "fresh closed\n1\ncleanup\n"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              86,
+              89
+            ]
+          },
+          "after": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              77,
+              107,
+              108,
+              109
+            ]
+          }
+        },
+        "topic": {
+          "before": "Повторный проход",
+          "after": "Закрытие до запуска"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-018",
+      "fields": {
+        "question": {
+          "before": "Выведите проверку принадлежности целого x диапазону start, stop, step при step ≠ 0.",
+          "after": "Пусть start, stop, step и x — целые числа, step != 0. Выведите арифметическую проверку принадлежности x встроенному range(start, stop, step) без перебора его элементов."
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-020",
+      "fields": {
+        "question": {
+          "before": "Докажите корректность ленивого суммирования квадратов чётных чисел конечного источника.",
+          "after": "Для конечного источника целых чисел алгоритм задаёт total=0 и затем для каждого x прибавляет x*x к total, только если x % 2 == 0. Фильтрация и возведение в квадрат могут быть ленивыми генераторами. Докажите, что после исчерпания источника total равен сумме квадратов всех его чётных элементов."
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N10-001",
+      "fields": {
+        "question": {
+          "before": "В какой момент defaultdict вызывает default_factory и какие операции обходятся без этого?",
+          "after": "У defaultdict(list) уже есть несколько ключей со списками. Что изменится после присваивания d.default_factory = None: исчезнут ли прежние данные и что произойдёт при чтении отсутствующего ключа через d[key]?"
+        },
+        "answer": {
+          "before": "При чтении отсутствующего ключа через d[key] вызывается фабрика без аргументов, результат вставляется в словарь. get и проверка in обычно не вызывают фабрику и не создают ключ.",
+          "after": "Прежние ключи и их списки сохранятся. Для имеющегося ключа чтение продолжит возвращать значение; чтение отсутствующего ключа через d[key] вызовет KeyError вместо создания нового списка."
+        },
+        "explanation": {
+          "before": "Поэтому чтение defaultdict может иметь побочный эффект, а проверку наличия нужно делать отдельно. Фабрика list создаёт новый список при каждом таком вызове; готовый список не является фабрикой.",
+          "after": "default_factory определяет только поведение для отсутствующего ключа и не является хранилищем существующих записей. Значение None отключает автоматическое создание. Как у обычного dict, d.get(key) и key in d по-прежнему позволяют проверять отсутствие без вставки."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              5,
+              8
+            ]
+          },
+          "after": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              5,
+              8,
+              9,
+              10
+            ]
+          }
+        },
+        "topic": {
+          "before": "Default factory",
+          "after": "Отключение фабрики defaultdict"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N10-015",
+      "fields": {
+        "question": {
+          "before": "Могут ли combinations([\"A\",\"A\",\"B\"],2) выдавать одинаковые по значению пары?",
+          "after": "groups — генератор, который последовательно выдаёт конечные итерируемые группы. Сравните chain(*groups) и chain.from_iterable(groups): когда читается внешний groups и какой вариант может начать выдавать элементы, если внешний источник групп бесконечен и каждая группа непуста? Считайте, что нужные импорты itertools сделаны."
+        },
+        "answer": {
+          "before": "Да: элементы различаются по позициям во входе, а не по значению. Пары из разных позиций могут выглядеть одинаково.",
+          "after": "Для chain(*groups) распаковка аргументов полностью читает groups ещё до вызова chain; бесконечная распаковка не завершится. chain.from_iterable(groups) принимает один внешний источник и читает очередную группу по запросу, поэтому может начать выдавать её элементы без исчерпания всех групп."
+        },
+        "explanation": {
+          "before": "Если нужны уникальные комбинации именно значений, сначала задают политику устранения дубликатов. Она меняет математическую задачу; нельзя считать, что itertools самостоятельно сравнит и схлопнет равные элементы.",
+          "after": "Ленивость самого chain не отменяет предварительную работу синтаксиса * при вызове функции. from_iterable позволяет лениво читать и внешний источник, и элементы очередной группы. Условие непустых конечных групп исключает зависание на бесконечном поиске первой непустой группы либо внутри одной бесконечной группы."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              103,
+              106
+            ]
+          },
+          "after": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              73,
+              75,
+              76,
+              77
+            ]
+          }
+        },
+        "topic": {
+          "before": "Повторяющиеся значения",
+          "after": "Ленивый внешний источник chain"
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N10-017",
+      "fields": {
+        "question": {
+          "before": "Почему число сочетаний длины r равно n!/(r!(n-r)!) для различных элементов?",
+          "after": "Пусть n и r — целые числа, n >= 0 и 0 <= r <= n. Выведите число сочетаний длины r без повторений из n различных элементов и объясните множитель r! в формуле n!/(r!(n-r)!)."
+        },
+        "answer": {
+          "before": "Каждое неупорядоченное множество из r элементов имеет r! упорядоченных перестановок. Делим число размещений n!/(n-r)! на r! и получаем C(n,r).",
+          "after": "Число сочетаний: $$\\binom{n}{r}=\\frac{n!}{r!\\,(n-r)!}.$$\nКаждое неупорядоченное множество из r элементов имеет r! упорядоченных перестановок. Делим число размещений n!/(n-r)! на r! и получаем C(n,r)."
+        }
+      },
+      "audit": "review_06_10.json",
+      "rendering_note": "Добавлена эквивалентная формула LaTeX для отображения; условия и математический смысл сохранены."
+    },
+    {
+      "id": "N10-019",
+      "fields": {
+        "question": {
+          "before": "Как поддерживать k наибольших значений потока через min-heap и почему корень полезен?",
+          "after": "Как поддерживать k наибольших значений конечного потока из n целых чисел через min-heap? k — целое >= 0, повторяющиеся значения учитываются с кратностью. Опишите также случаи k=0 и k>n и оцените время и память в модели O(1) на сравнение."
+        },
+        "answer": {
+          "before": "Первые k элементов образуют кучу. Затем значение больше корня заменяет минимум, остальные пропускают; в конце сортируют сохранённые k при необходимости.",
+          "after": "При k=0 вернуть пустой результат. Иначе собрать первые min(k,n) значений и heapify их. Если размер достиг k, каждое следующее значение больше корня заменяет минимум; меньшее или равное пропускается. Если n<k, сохраняются все n значений. При необходимости отсортировать сохранённые значения. Для k>=1 время O(n log(min(k,n)+1)), память O(min(k,n)); при пустом входе или k=0 можно завершить за O(1)."
+        },
+        "explanation": {
+          "before": "Инвариант: куча содержит k наибольших обработанных значений с учётом кратности. Новое меньше минимума не входит в top-k, большее вытесняет текущего наименьшего кандидата. Время O(n log k), память O(k) при обычной цене сравнений.",
+          "after": "Пока значений меньше k, каждый новый элемент входит в результат. После заполнения корень — наименьший из текущих кандидатов: больший новый элемент вытесняет его, равный не меняет мультимножество top-k. Так инвариант сохраняет min(k,m) наибольших значений каждого обработанного префикса длины m. Запись log(h+1) корректна и для h=1; финальная сортировка также укладывается в указанную границу."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              66,
+              67
+            ]
+          },
+          "after": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              66,
+              67,
+              68
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N10-020",
+      "fields": {
+        "question": {
+          "before": "Докажите корректность счётчика, увеличиваемого для каждого элемента потока.",
+          "after": "Дан конечный источник хешируемых элементов. Изначально счётчик пуст; частота отсутствующего ключа считается нулевой. Для каждого очередного x алгоритм увеличивает только его частоту на 1. Докажите, что итоговая частота каждого ключа равна числу его вхождений в источнике."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              35,
+              40
+            ]
+          },
+          "after": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              12,
+              14,
+              15,
+              35
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N06-006",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              104,
+              109
+            ]
+          },
+          "after": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              104,
+              106,
+              108,
+              110
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N06-013",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              103,
+              110
+            ]
+          },
+          "after": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              106,
+              108,
+              110
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N06-020",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              65,
+              69
+            ]
+          },
+          "after": {
+            "notebook": "0.06.Descriptors/lecture/Descriptors.ipynb",
+            "cells": [
+              64,
+              65,
+              66
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N07-004",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              69,
+              86
+            ]
+          },
+          "after": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              69,
+              70,
+              86,
+              87
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N07-008",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              23,
+              47
+            ]
+          },
+          "after": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              23,
+              25
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N07-012",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              69,
+              70
+            ]
+          },
+          "after": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              69,
+              70,
+              87
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N07-020",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              23,
+              25
+            ]
+          },
+          "after": {
+            "notebook": "0.07.Exceptions/lecture/Exceptions.ipynb",
+            "cells": [
+              23,
+              25,
+              55
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-001",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              5,
+              9
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              5,
+              6,
+              9
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-002",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              17,
+              19
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              6,
+              16,
+              17,
+              18,
+              19
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-003",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              38,
+              45
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              38,
+              45,
+              47,
+              48
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-004",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              73,
+              83
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              74,
+              83
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-009",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              59,
+              71
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              60,
+              71
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-010",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              47,
+              48
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              41,
+              47,
+              48
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-011",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              51,
+              57
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              51,
+              53,
+              56,
+              57
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N08-018",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              60,
+              61
+            ]
+          },
+          "after": {
+            "notebook": "0.08.Protocols/lecture/Protocols.ipynb",
+            "cells": [
+              75,
+              76,
+              77
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-002",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              35,
+              38
+            ]
+          },
+          "after": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              35,
+              37,
+              38
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N09-014",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              84,
+              85
+            ]
+          },
+          "after": {
+            "notebook": "0.09.Iterators/lecture/Iterators.ipynb",
+            "cells": [
+              81,
+              82,
+              84,
+              85
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N10-004",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              58,
+              64
+            ]
+          },
+          "after": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              59,
+              62,
+              63,
+              64
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N10-008",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              48,
+              49
+            ]
+          },
+          "after": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              48,
+              49,
+              54,
+              55
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N10-021",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              21,
+              23
+            ]
+          },
+          "after": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              21,
+              22,
+              23
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N10-023",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              103,
+              106
+            ]
+          },
+          "after": {
+            "notebook": "0.10.Collections/lecture/Collections.ipynb",
+            "cells": [
+              105,
+              106
+            ]
+          }
+        }
+      },
+      "audit": "review_06_10.json"
+    },
+    {
+      "id": "N11-001",
+      "fields": {
+        "question": {
+          "before": "Какие блоки не создают новую область видимости и что происходит с переменной for после цикла?",
+          "after": "Создают ли if, for, while и with отдельную область видимости? Что происходит с переменной for после непустого цикла?"
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N11-002",
+      "fields": {
+        "question": {
+          "before": "Почему два вызова одной функции не обязательно разделяют локальные переменные, но замыкание может удержать данные?",
+          "after": "Создаётся ли новое локальное пространство имён при каждом вызове функции и как возвращённое замыкание может сохранить данные внешнего вызова?"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.11.Decorators/lecture/Decorators.ipynb",
+            "cells": [
+              20,
+              25
+            ]
+          },
+          "after": {
+            "notebook": "0.11.Decorators/lecture/Decorators.ipynb",
+            "cells": [
+              22,
+              25,
+              26
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N11-009",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.11.Decorators/lecture/Decorators.ipynb",
+            "cells": [
+              40,
+              48
+            ]
+          },
+          "after": {
+            "notebook": "0.11.Decorators/lecture/Decorators.ipynb",
+            "cells": [
+              40,
+              45,
+              46
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N11-013",
+      "fields": {
+        "question": {
+          "before": "Почему hash(str(args)+str(kwargs)) — плохой единственный ключ кэша?",
+          "after": "Декоратор сохраняет результат по единственному ключу hash(str(args) + str(kwargs)), где args — кортеж позиционных аргументов вызова, kwargs — словарь именованных. Почему такой ключ может дать неверный результат кэширования?"
+        },
+        "explanation": {
+          "before": "Нужно хранить структурные ключи с равенством, например tuple позиционных и согласованное представление keywords, либо использовать проверенный lru_cache. Хеш служит ускорению поиска, а не доказательству идентичности вызовов.",
+          "after": "Хеш ускоряет поиск, но сам по себе не доказывает эквивалентность вызовов: словарь со структурными ключами дополнительно проверяет равенство. Политика ключа должна сохранять те различия аргументов, типов и порядка именованных аргументов, от которых зависит результат функции. Можно использовать functools.lru_cache с подходящими настройками и хешируемыми аргументами; он не заменяет выбор контракта кэшируемой функции."
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N11-017",
+      "fields": {
+        "question": {
+          "before": "Фабрика счётчика при каждом вызове создаёт n = 0 и возвращает step(), которая выполняет nonlocal n, увеличивает n на 1 и возвращает новое значение. Обоснуйте инвариант после k вызовов step() и независимость счётчиков от разных вызовов фабрики.",
+          "after": "Фабрика счётчика при каждом вызове создаёт n = 0 и возвращает функцию step. При своём вызове step выполняет nonlocal n, увеличивает n на 1 и возвращает новое значение. Обоснуйте инвариант после k успешных последовательных вызовов step и независимость счётчиков от разных вызовов фабрики."
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N11-018",
+      "fields": {
+        "answer": {
+          "before": "Без кэша одни и те же fib(k) вычисляются многократно в разных ветвях. При достаточном кэше каждое k от 0 до n вычисляется один раз, остальные обращения читают сохранённый результат.",
+          "after": "Без кэша одни и те же fib(k) вычисляются многократно в разных ветвях. При изначально пустом неограниченном кэше каждое достигнутое k вычисляется не более одного раза; повторные обращения используют сохранённое значение. При n >= 2 достигаются все k от 0 до n, при n = 0 или n = 1 — только соответствующий базовый случай."
+        },
+        "explanation": {
+          "before": "Число различных подзадач O(n), каждая выполняет ограниченное число обращений. Память кэша и глубина рекурсивного стека O(n); стоимость операций с большими числами отдельно растёт. Малый кэш может снова вытеснять нужные результаты.",
+          "after": "Для n >= 2 число различных подзадач равно n + 1, и каждая делает не более двух рекурсивных обращений. Число обращений, объём кэша и глубина стека имеют верхнюю оценку O(n); при n = 0 или 1 работа постоянна. Это оценка числа операций, а не полного времени с учётом растущих целых чисел. Вытеснение из малого кэша может вызвать повторные вычисления."
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N11-021",
+      "fields": {
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N12-001",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.12.NumPyPandas/lecture/NumPyPandas.ipynb",
+            "cells": [
+              3,
+              4
+            ]
+          },
+          "after": {
+            "notebook": "0.12.NumPyPandas/lecture/NumPyPandas.ipynb",
+            "cells": [
+              9,
+              18,
+              20,
+              23
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N12-002",
+      "fields": {
+        "explanation": {
+          "before": "Для вещественного шага arange число и значения точек могут влияться округлением. Если важно получить точно заданное количество точек, linspace выражает это требование напрямую.",
+          "after": "Для вещественного шага arange число и значения точек могут зависеть от округления. Если важно получить точно заданное количество точек, linspace выражает это требование напрямую."
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N12-006",
+      "fields": {
+        "question": {
+          "before": "Как различаются df[\"score\"], df[[\"score\"]] и df.groupby(\"group\")?",
+          "after": "У DataFrame df имена колонок уникальны, в нём есть колонки score и group. Чем различаются результаты df[\"score\"], df[[\"score\"]] и df.groupby(\"group\")?"
+        },
+        "answer": {
+          "before": "Первое обычно даёт Series, второе — DataFrame с одной колонкой. groupby создаёт объект группировки и ждёт последующей операции агрегирования или преобразования.",
+          "after": "df[\"score\"] даёт Series, df[[\"score\"]] — DataFrame с одной колонкой. df.groupby(\"group\") создаёт объект группировки; для получения результата нужна последующая операция, например sum, mean, agg или transform."
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N12-010",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.12.NumPyPandas/lecture/NumPyPandas.ipynb",
+            "cells": [
+              136,
+              139
+            ]
+          },
+          "after": {
+            "notebook": "0.12.NumPyPandas/lecture/NumPyPandas.ipynb",
+            "cells": [
+              138,
+              139
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N12-018",
+      "fields": {
+        "question": {
+          "before": "Выведите необходимое условие reshape из формы (d1,…,dk) в (e1,…,em).",
+          "after": "Размеры известной формы массива — неотрицательные целые числа. Выведите необходимое условие reshape из формы (d1,...,dk) в форму (e1,...,em) с известными размерами. Как вычисляют одну неизвестную ось -1 и что меняется, если произведение остальных размеров равно нулю?"
+        },
+        "answer": {
+          "before": "Число элементов равно произведению размеров, поэтому ∏di = ∏ej. При одной неизвестной оси -1 её размер находят делением общего числа элементов на произведение остальных.",
+          "after": "Сохранение числа элементов: $$\\prod_{i=1}^{k}d_i=\\prod_{j=1}^{m}e_j.$$\nПри полностью заданных формах число элементов должно сохраняться: произведение di равно произведению ej. Если одна ось задана как -1 и произведение остальных размеров P > 0, её размер равен N/P, где N — число элементов; частное должно быть целым неотрицательным числом. При P = 0 и N > 0 числа элементов несовместимы, а при P = 0 и N = 0 размер неизвестной оси не определяется однозначно. NumPy отвергает обе ситуации для формы с -1."
+        },
+        "explanation": {
+          "before": "Деление должно дать целое допустимое значение, и неизвестная ось должна быть единственной. Равенство размеров необходимо для преобразования, но не гарантирует, что оно пройдёт без копирования буфера.",
+          "after": "Неизвестная ось должна быть единственной. Нулевой массив можно преобразовать в полностью известную форму с тем же нулевым числом элементов, например (0,3), но форма (0,-1) не позволяет однозначно вывести неизвестный размер и вызывает ValueError. Совпадение числа элементов не гарантирует отсутствие копирования буфера."
+        }
+      },
+      "audit": "review_11_14.json",
+      "rendering_note": "Добавлена эквивалентная формула LaTeX для отображения; условия и математический смысл сохранены."
+    },
+    {
+      "id": "N12-020",
+      "fields": {
+        "question": {
+          "before": "Обоснуйте, что вычитание среднего строки делает её среднее нулевым в точной арифметике.",
+          "after": "Дана непустая строка из m числовых значений. Обоснуйте, что вычитание её арифметического среднего из каждого элемента делает среднее новой строки нулевым в точной арифметике."
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N13-004",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              25,
+              29
+            ]
+          },
+          "after": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              25,
+              26,
+              27,
+              28,
+              29
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N13-005",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              35,
+              39
+            ]
+          },
+          "after": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              35,
+              36,
+              37,
+              38,
+              39
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N13-006",
+      "fields": {
+        "answer": {
+          "before": "Date описывает календарную дату, datetime — дату и время, timedelta — длительность. Aware datetime имеет tzinfo, который определяет смещение от UTC для этого значения.",
+          "after": "date описывает календарную дату, datetime — дату и время, timedelta — длительность. datetime d является aware, когда d.tzinfo не равен None и d.utcoffset() не возвращает None; одного наличия атрибута tzinfo недостаточно."
+        },
+        "source": {
+          "before": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              50,
+              55
+            ]
+          },
+          "after": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              50,
+              54,
+              55
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N13-013",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              65,
+              71
+            ]
+          },
+          "after": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              65,
+              67,
+              69,
+              71
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N13-014",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              65,
+              71
+            ]
+          },
+          "after": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              65,
+              67,
+              69,
+              71
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N13-015",
+      "fields": {
+        "question": {
+          "before": "Как вычислить длительность двух aware-моментов и почему для результата иногда недостаточно атрибута days?",
+          "after": "Как вычислить фактически прошедшее время между двумя aware datetime, если их часовой пояс допускает перевод часов? Почему атрибута days недостаточно для получения общего числа секунд?"
+        },
+        "answer": {
+          "before": "Вычитают согласованные aware datetime, получая timedelta. Days показывает целые дни нормализованной длительности; для секунд всего промежутка используют total_seconds.",
+          "after": "Для реальной длительности сначала переводят оба момента в UTC через astimezone(UTC), затем вычисляют delta = end_utc - start_utc. Общее число секунд получают через delta.total_seconds(). days — только дневная часть нормализованного timedelta."
+        },
+        "explanation": {
+          "before": "Например, полтора дня содержат days=1, но 129600 секунд. При данных из разных часовых поясов важно сравнивать именно моменты и согласованно использовать UTC, а не складывать показания часов вручную.",
+          "after": "При одинаковом объекте tzinfo обычное вычитание datetime игнорирует смещение и считает разность показаний часов. При весеннем переводе часов между соседними полуднями может пройти 23 часа, хотя локальная разность даёт сутки. Перевод обоих реальных моментов в UTC учитывает смену смещения. Полтора дня дают days = 1, но 129600 секунд; для отрицательного часа days = -1, поэтому days не является длительностью в часах или секундах."
+        },
+        "difficulty": {
+          "before": "Средние",
+          "after": "Сложные"
+        },
+        "source": {
+          "before": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              53,
+              58
+            ]
+          },
+          "after": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              53,
+              54,
+              58
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N13-016",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              39,
+              47
+            ]
+          },
+          "after": {
+            "notebook": "0.13.Data/lecture/Data.ipynb",
+            "cells": [
+              39,
+              42,
+              43,
+              45,
+              46
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N14-006",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.14.Testing/lecture/Testing.ipynb",
+            "cells": [
+              39,
+              42
+            ]
+          },
+          "after": {
+            "notebook": "0.14.Testing/lecture/Testing.ipynb",
+            "cells": [
+              33,
+              34,
+              40,
+              42
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N14-012",
+      "fields": {
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N14-013",
+      "fields": {
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N14-015",
+      "fields": {
+        "question": {
+          "before": "Почему тест, ожидающий изменение общего списка предыдущим тестом, не проверяет собственный сценарий?",
+          "after": "Тест читает общий список и ожидает элемент, который добавляет другой тест. Почему такая подготовка делает проверку зависимой от порядка запуска и как сделать сценарий независимым?"
+        },
+        "difficulty": {
+          "before": "Сложные",
+          "after": "Средние"
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N14-017",
+      "fields": {
+        "question": {
+          "before": "Почему parametrize из n случаев даёт больше диагностической информации, чем n assert в цикле одного теста?",
+          "after": "По контракту f(x) возвращает 2*x. Один тест проверяет x = 1, 2, 3 с помощью assert внутри цикла. Опишите, как превратить эти проверки в независимые pytest-случаи с понятными именами. Как опция -x влияет на полноту отчёта?"
+        },
+        "answer": {
+          "before": "Каждый параметр становится самостоятельным тестовым элементом с отдельным итогом. Падение одного по умолчанию не исключает запуск остальных.",
+          "after": "Например, использовать @pytest.mark.parametrize(\"x, expected\", [(1, 2), (2, 4), (3, 6)], ids=[\"one\", \"two\", \"three\"]) над test_double(x, expected), который проверяет assert f(x) == expected. По умолчанию получаются три независимых тестовых элемента. С -x pytest остановится после первого сбоя."
+        },
+        "explanation": {
+          "before": "Цикл прекращается на первом ошибочном assert, поэтому остальные варианты неизвестны. При parametrize нужны понятные ids и отсутствие зависимостей состояния; настройки -x могут намеренно останавливать прогон после первого сбоя.",
+          "after": "Ожидаемые результаты получены из заданного контракта, а не из текущей реализации f. Каждый набор параметров имеет отдельный результат и понятное имя в отчёте. В цикле первый ложный assert прекращает остальные проверки; при параметризации их запуск независим, если не включён fail-fast. Сам f в этом задании — проверяемая функция с указанным контрактом, её реализацию переписывать не требуется."
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N14-019",
+      "fields": {
+        "question": {
+          "before": "Почему этот тест проходит, хотя проверяемое действие никогда не вызывается?",
+          "after": "Какой вывод получится и проверяет ли этот тест отказ validate_age от отрицательного возраста?"
+        },
+        "code": {
+          "before": "import pytest\ncalled = False\nwith pytest.raises(ValueError):\n    int(\"bad\")\n    called = True\nprint(called)",
+          "after": "import pytest\ncalled = False\n\ndef validate_age(age):\n    global called\n    called = True\n    if age < 0:\n        raise ValueError(\"negative age\")\n\nwith pytest.raises(ValueError):\n    age = int(\"bad\")\n    validate_age(age)\nprint(called)"
+        },
+        "explanation": {
+          "before": "Ожидаемая ошибка возникла в подготовительном int и прекратила тело. Контекст удовлетворён, но called не изменён. Реальный тест нужной операции требует вынести такую подготовку из raises.",
+          "after": "ValueError возник в подготовительном int(\"bad\"), после чего тело with прекратилось. validate_age не была вызвана, поэтому called остаётся False. Тест прошёл, но не проверил отказ от отрицательного возраста. Подготовку выносят из raises, а внутри оставляют validate_age с заранее подготовленным отрицательным числом."
+        },
+        "answer": {
+          "before": "Стандартный вывод:\n```text\nFalse\n```",
+          "after": "Стандартный вывод:\n```text\nFalse\n```\nТест проходит из-за ValueError в int(\"bad\"), но отказ validate_age от отрицательного возраста он не проверяет."
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N14-008",
+      "fields": {
+        "source": {
+          "before": {
+            "notebook": "0.14.Testing/lecture/Testing.ipynb",
+            "cells": [
+              23,
+              26
+            ]
+          },
+          "after": {
+            "notebook": "0.14.Testing/lecture/Testing.ipynb",
+            "cells": [
+              23,
+              26,
+              48
+            ]
+          }
+        }
+      },
+      "audit": "review_11_14.json"
+    },
+    {
+      "id": "N06-018",
+      "fields": {
+        "answer": {
+          "before": "Разбивают по дефису, преобразуют три компонента в int как year, month, day, затем вызывают инициализатор в его фактическом порядке, например Date(day, month, year).",
+          "after": "Фабрика @classmethod принимает строку s, разбивает её по дефису на year, month, day, преобразует компоненты в int и возвращает cls(day, month, year). Нужно отклонять неверное число частей, несоответствие формату YYYY-MM-DD и нечисловые поля. Успешного int недостаточно: отдельно проверяют допустимый месяц, день для этого месяца и года, включая високосный февраль. Если Date сам не проверяет календарную корректность, фабрика должна выполнить эту проверку до создания экземпляра."
+        }
+      },
+      "audit": "root_followup",
+      "rationale": "Ответ дополнен при итоговой проверке интерфейса: ошибки разбора и календарная корректность теперь явно перечислены в эталоне."
+    }
+  ],
+  "review_files": [
+    "audit/review_01_05.json",
+    "audit/review_06_10.json",
+    "audit/review_11_14.json"
+  ]
+}
