@@ -1,0 +1,42 @@
+name: Checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.12', '3.14']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: python -m unittest discover -s . -p "test_*.py" -v
+      - run: python validate_questions.py
+      - run: python build_pwa.py
+      - uses: actions/upload-artifact@v7
+        with:
+          name: pwa-${{ matrix.os }}-${{ matrix.python }}
+          path: dist
+  examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-verification.txt
+      - run: python verify_bank.py --execute --output verification-ci.json
+      - uses: actions/upload-artifact@v7
+        with:
+          name: example-verification
+          path: verification-ci.json
