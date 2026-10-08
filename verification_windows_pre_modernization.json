@@ -1,0 +1,89 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "win32",
+  "execution_requested": false,
+  "records": 438,
+  "new": 300,
+  "original": 138,
+  "by_lecture": {
+    "1": 27,
+    "2": 28,
+    "3": 46,
+    "4": 37,
+    "5": 34,
+    "6": 36,
+    "7": 37,
+    "8": 29,
+    "9": 48,
+    "11": 30,
+    "10": 24,
+    "12": 24,
+    "13": 18,
+    "14": 20
+  },
+  "new_by_type": {
+    "Теория": 75,
+    "Понимание кода": 90,
+    "Глубокое понимание": 45,
+    "Алгоритм / формула / доказательство": 45,
+    "Нестандартный случай / ошибка": 45
+  },
+  "code_results": [],
+  "unit_tests": {
+    "run": 20,
+    "passed": 19,
+    "skipped": 1,
+    "skipped_reason": "Source lecture repository unavailable"
+  },
+  "context_review": {
+    "reviewed_new_questions": 300,
+    "updated_ids": [
+      "N03-018",
+      "N04-018",
+      "N05-015",
+      "N05-018",
+      "N06-018",
+      "N08-002",
+      "N08-005",
+      "N08-013",
+      "N08-016",
+      "N09-014",
+      "N09-015",
+      "N09-016",
+      "N09-019",
+      "N11-014",
+      "N11-015",
+      "N11-017",
+      "N11-018",
+      "N13-014",
+      "N13-016",
+      "N14-013",
+      "N14-016"
+    ],
+    "code_changed": false
+  },
+  "artifact_checks": {
+    "new_readme_records_match": 300,
+    "oral_records_match": 437,
+    "classic_counts": [
+      2,
+      2,
+      2,
+      3
+    ],
+    "oral_seed": 11,
+    "classic_seed": 186
+  },
+  "limits": [
+    "No bulk execution of 135 new code examples on Windows",
+    "No legacy code execution",
+    "Source notebooks unavailable",
+    "No independent theory review"
+  ],
+  "browser_verification": {
+    "performed": false,
+    "reason": "Local server inaccessible to Codex browser; file URL forbidden by browser policy"
+  },
+  "compileall_passed": true,
+  "deck_semantics_checked": true
+}

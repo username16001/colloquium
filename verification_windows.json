@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-09",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "win32",
+  "records": 438,
+  "original": 138,
+  "new": 300,
+  "available": 437,
+  "bank_sha256": "488054e50e79ae38feb3a9386b238150c32eab42e2573e91600a6ceb3aff8696",
+  "semantic_review": {
+    "reviewed": 300,
+    "method": "Содержательная редакторская проверка моделью по 14 реальным ноутбукам и исходному README",
+    "changed": 126,
+    "content_or_difficulty": 67,
+    "source_only": 59,
+    "independent_teacher_review": false,
+    "review_files": [
+      "audit/review_01_05.json",
+      "audit/review_06_10.json",
+      "audit/review_11_14.json"
+    ]
+  },
+  "unit_tests": {
+    "run": 31,
+    "passed": 31,
+    "skipped": 0
+  },
+  "javascript_tests": {
+    "node": "24.19.0",
+    "run": 31,
+    "passed": 31,
+    "skipped": 0,
+    "test_dependency": "fake-indexeddb 6.2.4 installed from official npm registry with integrity verification"
+  },
+  "code_execution": {
+    "requested": true,
+    "total": 136,
+    "passed": 136,
+    "report": "verification_current.json",
+    "limits": "Windows Job Object: CPU 5s, memory 1GiB, one process; audit denies filesystem writes; wall-clock timeout 30s; output 1MiB; AST and audit checks; only reviewed new examples",
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "pytest": "8.4.2"
+  },
+  "validation": {
+    "errors": [],
+    "warnings": [
+      {
+        "id": "O03-2-002",
+        "field": "answer",
+        "message": "Missing answer; legacy correction may be separate"
+      }
+    ],
+    "stats": {
+      "records": 438,
+      "original": 138,
+      "new": 300,
+      "available": 437
+    }
+  },
+  "artifact_checks": {
+    "new_readme_records_match": 300,
+    "oral_records_match": 437,
+    "classic_counts": [
+      2,
+      2,
+      2,
+      3
+    ],
+    "original_objects_unchanged": 138,
+    "archive_checksums_passed": true,
+    "production_build": true,
+    "offline_resources": 8,
+    "pages_subpath_relative_paths": true
+  },
+  "browser_verification": {
+    "performed": true,
+    "browser": "Codex In-app Browser, desktop Chromium, Windows",
+    "url": "http://127.0.0.1:8877/dist/index.html",
+    "checks": [
+      "origin badges and N08-002 search",
+      "hidden answers and optional confidence",
+      "IndexedDB session/confidence restoration",
+      "exam count 2, early finish rejected, answers after completion",
+      "exam grading restoration across update",
+      "service worker waiting and explicit activation preserve history/session",
+      "reload with preview server stopped served cached app",
+      "export JSON and reimport three grades with pending session",
+      "syntax highlighting and exact code clipboard copy",
+      "classic answers hidden before completion; weighted score 9.95 for one simple score 9 and eight scores 10",
+      "KaTeX formula, no render errors",
+      "light/dark, viewport 390 and 1280, no page horizontal overflow in checked screens"
+    ],
+    "console_errors_or_warnings": 0,
+    "screenshots": [
+      "audit/screenshots/desktop-light.jpg",
+      "audit/screenshots/mobile-dark.jpg",
+      "audit/screenshots/desktop-math-light.jpg"
+    ],
+    "synthetic_test_data": true
+  },
+  "publication": {
+    "performed": false,
+    "push_performed": false,
+    "workflows_prepared": true,
+    "github_actions_run": false
+  },
+  "limitations": [
+    "No independent teacher review of theory/proofs",
+    "No bulk legacy snippet or full-notebook execution",
+    "No real iPhone/Mac Safari/Android installation tests",
+    "No actual GitHub Actions/Pages deployment",
+    "Local browser data can be cleared; export remains necessary"
+  ]
+}

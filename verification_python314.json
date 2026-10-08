@@ -1,0 +1,1618 @@
+{
+  "python": "3.14.0 (v3.14.0:ebf955df7a8, Oct  7 2025, 08:20:14) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "scope": "124 new code examples excluding NumPy/pandas lecture 12",
+  "code_results": [
+    {
+      "id": "N01-006",
+      "ok": true,
+      "actual": {
+        "stdout": "-4 3\n-4 -3\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "-4 3\n-4 -3\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N01-007",
+      "ok": true,
+      "actual": {
+        "stdout": "fd\nadg\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "fd\nadg\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N01-008",
+      "ok": true,
+      "actual": {
+        "stdout": "-3 -4.0\n2 4\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "-3 -4.0\n2 4\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N01-009",
+      "ok": true,
+      "actual": {
+        "stdout": "24\n8\n8 6\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "24\n8\n8 6\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N01-010",
+      "ok": true,
+      "actual": {
+        "stdout": "3 int\nTrue False\nTrue True\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "3 int\nTrue False\nTrue True\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N01-011",
+      "ok": true,
+      "actual": {
+        "stdout": "xyxy\nNone\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "xyxy\nNone\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N01-017",
+      "ok": true,
+      "actual": {
+        "stdout": "False True\nTrue True\nTrue False\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "False True\nTrue True\nTrue False\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N01-018",
+      "ok": true,
+      "actual": {
+        "stdout": "1 2\nstr int\nTrue\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "1 2\nstr int\nTrue\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N02-006",
+      "ok": true,
+      "actual": {
+        "stdout": "[0007] x=7\n[   Hi] Pyt\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[0007] x=7\n[   Hi] Pyt\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N02-007",
+      "ok": true,
+      "actual": {
+        "stdout": "10\n11\n12\n12\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "10\n11\n12\n12\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N02-008",
+      "ok": true,
+      "actual": {
+        "stdout": "1\n3\ndone\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "1\n3\ndone\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N02-009",
+      "ok": true,
+      "actual": {
+        "stdout": "4 ('A', 8)\n5 ('B', 9)\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "4 ('A', 8)\n5 ('B', 9)\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N02-010",
+      "ok": true,
+      "actual": {
+        "stdout": "[(0, 1), (1, 0), (2, 0), (2, 1)]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[(0, 1), (1, 0), (2, 0), (2, 1)]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N02-011",
+      "ok": true,
+      "actual": {
+        "stdout": "[]\n[9, 8]\n5\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[]\n[9, 8]\n5\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N02-018",
+      "ok": true,
+      "actual": {
+        "stdout": "9\n0\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "9\n0\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N02-019",
+      "ok": true,
+      "actual": {
+        "stdout": "[2, 3, 4]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[2, 3, 4]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N02-020",
+      "ok": true,
+      "actual": {
+        "stdout": "start\n",
+        "exception": "ValueError"
+      },
+      "expected": {
+        "stdout": "start\n",
+        "exception": "ValueError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-007",
+      "ok": true,
+      "actual": {
+        "stdout": "0\n8\n{'a': 0, 'b': 8}\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "0\n8\n{'a': 0, 'b': 8}\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-008",
+      "ok": true,
+      "actual": {
+        "stdout": "{'x': 9, 'y': 2, 'z': 3}\n{'x': 1, 'y': 2}\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "{'x': 9, 'y': 2, 'z': 3}\n{'x': 1, 'y': 2}\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-009",
+      "ok": true,
+      "actual": {
+        "stdout": "['a', 'b'] ['a']\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "['a', 'b'] ['a']\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-010",
+      "ok": true,
+      "actual": {
+        "stdout": "[2] [1, 3, 4]\n[1, 4] None\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[2] [1, 3, 4]\n[1, 4] None\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-011",
+      "ok": true,
+      "actual": {
+        "stdout": "True\n[2, 1] [1, 2]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "True\n[2, 1] [1, 2]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-012",
+      "ok": true,
+      "actual": {
+        "stdout": "('a', 4)\n{'b': 2}\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "('a', 4)\n{'b': 2}\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-019",
+      "ok": true,
+      "actual": {
+        "stdout": "{'a': [1, 2], 'b': [1, 2]}\nTrue\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "{'a': [1, 2], 'b': [1, 2]}\nTrue\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-020",
+      "ok": true,
+      "actual": {
+        "stdout": "ready\n",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "ready\n",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-021",
+      "ok": true,
+      "actual": {
+        "stdout": "True None\nFalse None\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "True None\nFalse None\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N03-022",
+      "ok": true,
+      "actual": {
+        "stdout": "[1, 2, 3]\n",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "[1, 2, 3]\n",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-006",
+      "ok": true,
+      "actual": {
+        "stdout": "[[1, 3], 2] [[1, 3], 9]\nFalse True\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[[1, 3], 2] [[1, 3], 9]\nFalse True\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-007",
+      "ok": true,
+      "actual": {
+        "stdout": "[[[5]], [[5]]]\nFalse True\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[[[5]], [[5]]]\nFalse True\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-008",
+      "ok": true,
+      "actual": {
+        "stdout": "[[], []] [[4], [4]]\nTrue False\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[[], []] [[4], [4]]\nTrue False\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-009",
+      "ok": true,
+      "actual": {
+        "stdout": "False True\n1 1\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "False True\n1 1\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-010",
+      "ok": true,
+      "actual": {
+        "stdout": "bytearray(b'aXcd')\nb'Xc'\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "bytearray(b'aXcd')\nb'Xc'\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-011",
+      "ok": true,
+      "actual": {
+        "stdout": "1 second 5\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "1 second 5\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-012",
+      "ok": true,
+      "actual": {
+        "stdout": "in 2\nin 1\nin 0\nout 0\nout 1\nout 2\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "in 2\nin 1\nin 0\nout 0\nout 1\nout 2\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-019",
+      "ok": true,
+      "actual": {
+        "stdout": "b'b'\n",
+        "exception": "BufferError"
+      },
+      "expected": {
+        "stdout": "b'b'\n",
+        "exception": "BufferError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-020",
+      "ok": true,
+      "actual": {
+        "stdout": "1 2 False\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "1 2 False\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-021",
+      "ok": true,
+      "actual": {
+        "stdout": "1\n",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "1\n",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N04-022",
+      "ok": true,
+      "actual": {
+        "stdout": "[[1, 2]] [[1, 2]] False\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[[1, 2]] [[1, 2]] False\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-006",
+      "ok": true,
+      "actual": {
+        "stdout": "14\n16\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "14\n16\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-007",
+      "ok": true,
+      "actual": {
+        "stdout": "fox ('run', 'rare') common {'color': 'red'}\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "fox ('run', 'rare') common {'color': 'red'}\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-008",
+      "ok": true,
+      "actual": {
+        "stdout": "3 8\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "3 8\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-009",
+      "ok": true,
+      "actual": {
+        "stdout": "",
+        "exception": "UnboundLocalError"
+      },
+      "expected": {
+        "stdout": "",
+        "exception": "UnboundLocalError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-010",
+      "ok": true,
+      "actual": {
+        "stdout": "9 7\n7\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "9 7\n7\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-011",
+      "ok": true,
+      "actual": {
+        "stdout": "12 12\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "12 12\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-012",
+      "ok": true,
+      "actual": {
+        "stdout": "",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-020",
+      "ok": true,
+      "actual": {
+        "stdout": "6\n",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "6\n",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-021",
+      "ok": true,
+      "actual": {
+        "stdout": "before\n",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "before\n",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N05-022",
+      "ok": true,
+      "actual": {
+        "stdout": "[] [1] False\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[] [1] False\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-007",
+      "ok": true,
+      "actual": {
+        "stdout": "A B\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "A B\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-008",
+      "ok": true,
+      "actual": {
+        "stdout": "B before\nA\nB after\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "B before\nA\nB after\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-009",
+      "ok": true,
+      "actual": {
+        "stdout": "13\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "13\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-010",
+      "ok": true,
+      "actual": {
+        "stdout": "3 1 False\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "3 1 False\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-011",
+      "ok": true,
+      "actual": {
+        "stdout": "9\n16\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "9\n16\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-012",
+      "ok": true,
+      "actual": {
+        "stdout": "[7]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[7]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-013",
+      "ok": true,
+      "actual": {
+        "stdout": "OPEN open True\nFalse\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "OPEN open True\nFalse\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-020",
+      "ok": true,
+      "actual": {
+        "stdout": "4\n",
+        "exception": "AttributeError"
+      },
+      "expected": {
+        "stdout": "4\n",
+        "exception": "AttributeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-021",
+      "ok": true,
+      "actual": {
+        "stdout": "5 True\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "5 True\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N06-022",
+      "ok": true,
+      "actual": {
+        "stdout": "",
+        "exception": "RecursionError"
+      },
+      "expected": {
+        "stdout": "",
+        "exception": "RecursionError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-006",
+      "ok": true,
+      "actual": {
+        "stdout": "general\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "general\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-007",
+      "ok": true,
+      "actual": {
+        "stdout": "try\nouter\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "try\nouter\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-008",
+      "ok": true,
+      "actual": {
+        "stdout": "cleanup\n7\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "cleanup\n7\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-009",
+      "ok": true,
+      "actual": {
+        "stdout": "RuntimeError ValueError\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "RuntimeError ValueError\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-010",
+      "ok": true,
+      "actual": {
+        "stdout": "enter\n10\nTrue\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "enter\n10\nTrue\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-011",
+      "ok": true,
+      "actual": {
+        "stdout": "before\noutside\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "before\noutside\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-012",
+      "ok": true,
+      "actual": {
+        "stdout": "caught\ndone\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "caught\ndone\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-019",
+      "ok": true,
+      "actual": {
+        "stdout": "2\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "2\n",
+        "exception": null
+      },
+      "stderr": "N07-019.py:5: SyntaxWarning: 'return' in a 'finally' block\n"
+    },
+    {
+      "id": "N07-020",
+      "ok": true,
+      "actual": {
+        "stdout": "TypeError ValueError\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "TypeError ValueError\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-021",
+      "ok": true,
+      "actual": {
+        "stdout": "interrupt\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "interrupt\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N07-022",
+      "ok": true,
+      "actual": {
+        "stdout": "enter\ncaught\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "enter\ncaught\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N08-006",
+      "ok": true,
+      "actual": {
+        "stdout": "True False\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "True False\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N08-007",
+      "ok": true,
+      "actual": {
+        "stdout": "3 [4, 6] [2, 4, 6]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "3 [4, 6] [2, 4, 6]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N08-008",
+      "ok": true,
+      "actual": {
+        "stdout": "7 7\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "7 7\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N08-009",
+      "ok": true,
+      "actual": {
+        "stdout": "defined\n",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "defined\n",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N08-010",
+      "ok": true,
+      "actual": {
+        "stdout": "insert 0\n[8]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "insert 0\n[8]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N08-011",
+      "ok": true,
+      "actual": {
+        "stdout": "True\ncannot hash\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "True\ncannot hash\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N08-018",
+      "ok": true,
+      "actual": {
+        "stdout": "True\n",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "True\n",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N08-019",
+      "ok": true,
+      "actual": {
+        "stdout": "value\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "value\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N08-020",
+      "ok": true,
+      "actual": {
+        "stdout": "start\n",
+        "exception": "ValueError"
+      },
+      "expected": {
+        "stdout": "start\n",
+        "exception": "ValueError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-006",
+      "ok": true,
+      "actual": {
+        "stdout": "2\n[4, 6]\n[]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "2\n[4, 6]\n[]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-007",
+      "ok": true,
+      "actual": {
+        "stdout": "created\nbody\n5\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "created\nbody\n5\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-008",
+      "ok": true,
+      "actual": {
+        "stdout": "[[1, 2], 3, 4]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[[1, 2], 3, 4]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-009",
+      "ok": true,
+      "actual": {
+        "stdout": "1\n14\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "1\n14\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-010",
+      "ok": true,
+      "actual": {
+        "stdout": "3\nclosed\n[]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "3\nclosed\n[]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-011",
+      "ok": true,
+      "actual": {
+        "stdout": "1\n9\n[]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "1\n9\n[]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-012",
+      "ok": true,
+      "actual": {
+        "stdout": "[0, 2, 4]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[0, 2, 4]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-021",
+      "ok": true,
+      "actual": {
+        "stdout": "",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-022",
+      "ok": true,
+      "actual": {
+        "stdout": "1\ncannot yield while closing\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "1\ncannot yield while closing\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-023",
+      "ok": true,
+      "actual": {
+        "stdout": "True\n[4]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "True\n[4]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N09-024",
+      "ok": true,
+      "actual": {
+        "stdout": "[1, 2]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[1, 2]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-006",
+      "ok": true,
+      "actual": {
+        "stdout": "None False 0\n[] ['c']\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "None False 0\n[] ['c']\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-007",
+      "ok": true,
+      "actual": {
+        "stdout": "0\n['a', 'a']\nTrue\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "0\n['a', 'a']\nTrue\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-008",
+      "ok": true,
+      "actual": {
+        "stdout": "[2, 1, 3]\n[3, 2, 1]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[2, 1, 3]\n[3, 2, 1]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-009",
+      "ok": true,
+      "actual": {
+        "stdout": "['b', 'c', 'a']\n('b', 2)\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "['b', 'c', 'a']\n('b', 2)\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-010",
+      "ok": true,
+      "actual": {
+        "stdout": "1 [2, 4]\n2 [1, 4]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "1 [2, 4]\n2 [1, 4]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-011",
+      "ok": true,
+      "actual": {
+        "stdout": "['a', 'b', 3, 4]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "['a', 'b', 3, 4]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-012",
+      "ok": true,
+      "actual": {
+        "stdout": "[1, 3]\n5\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[1, 3]\n5\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-021",
+      "ok": true,
+      "actual": {
+        "stdout": "{1: ['a', 'b'], 2: ['a', 'b']}\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "{1: ['a', 'b'], 2: ['a', 'b']}\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-022",
+      "ok": true,
+      "actual": {
+        "stdout": "[[7], [7]] True\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[[7], [7]] True\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-023",
+      "ok": true,
+      "actual": {
+        "stdout": "[('A', 'A'), ('A', 'B'), ('A', 'B')]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[('A', 'A'), ('A', 'B'), ('A', 'B')]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N10-024",
+      "ok": true,
+      "actual": {
+        "stdout": "start\n",
+        "exception": "ValueError"
+      },
+      "expected": {
+        "stdout": "start\n",
+        "exception": "ValueError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-006",
+      "ok": true,
+      "actual": {
+        "stdout": "[0, 1]\n9\n1\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[0, 1]\n9\n1\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-007",
+      "ok": true,
+      "actual": {
+        "stdout": "1 2 1 3\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "1 2 1 3\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-008",
+      "ok": true,
+      "actual": {
+        "stdout": "10\n2\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "10\n2\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-009",
+      "ok": true,
+      "actual": {
+        "stdout": "decorate\nready\nwrapper\nbody\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "decorate\nready\nwrapper\nbody\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-010",
+      "ok": true,
+      "actual": {
+        "stdout": "A in\nB in\nbody\nB out\nA out\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "A in\nB in\nbody\nB out\nA out\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-011",
+      "ok": true,
+      "actual": {
+        "stdout": "calc 3\n6\n6\n1 1\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "calc 3\n6\n6\n1 1\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-012",
+      "ok": true,
+      "actual": {
+        "stdout": "enter\n4\nexit\ncaught\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "enter\n4\nexit\ncaught\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-020",
+      "ok": true,
+      "actual": {
+        "stdout": "None\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "None\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-021",
+      "ok": true,
+      "actual": {
+        "stdout": "[1, 9] True\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[1, 9] True\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N11-022",
+      "ok": true,
+      "actual": {
+        "stdout": "[0, 1, 2]\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "[0, 1, 2]\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N13-007",
+      "ok": true,
+      "actual": {
+        "stdout": "archive.data.csv archive.data .csv\narchive.data.json\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "archive.data.csv archive.data .csv\narchive.data.json\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N13-008",
+      "ok": true,
+      "actual": {
+        "stdout": "{'1': [2, 3]} str list\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "{'1': [2, 3]} str list\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N13-009",
+      "ok": true,
+      "actual": {
+        "stdout": "{'a': None} True\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "{'a': None} True\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N13-010",
+      "ok": true,
+      "actual": {
+        "stdout": "3 Москва, Россия str\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "3 Москва, Россия str\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N13-011",
+      "ok": true,
+      "actual": {
+        "stdout": "2024-03-01 2\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "2024-03-01 2\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N13-017",
+      "ok": true,
+      "actual": {
+        "stdout": "start\n",
+        "exception": "AttributeError"
+      },
+      "expected": {
+        "stdout": "start\n",
+        "exception": "AttributeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N13-018",
+      "ok": true,
+      "actual": {
+        "stdout": "False\n",
+        "exception": "TypeError"
+      },
+      "expected": {
+        "stdout": "False\n",
+        "exception": "TypeError"
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N14-007",
+      "ok": true,
+      "actual": {
+        "stdout": "before\nfailed\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "before\nfailed\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N14-008",
+      "ok": true,
+      "actual": {
+        "stdout": "ValueError empty input\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "ValueError empty input\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N14-009",
+      "ok": true,
+      "actual": {
+        "stdout": "False\nTrue\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "False\nTrue\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N14-010",
+      "ok": true,
+      "actual": {
+        "stdout": "case 1\ncase 2\nstop\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "case 1\ncase 2\nstop\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N14-011",
+      "ok": true,
+      "actual": {
+        "stdout": "9\n1\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "9\n1\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N14-019",
+      "ok": true,
+      "actual": {
+        "stdout": "False\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "False\n",
+        "exception": null
+      },
+      "stderr": ""
+    },
+    {
+      "id": "N14-020",
+      "ok": true,
+      "actual": {
+        "stdout": "no setup\n",
+        "exception": null
+      },
+      "expected": {
+        "stdout": "no setup\n",
+        "exception": null
+      },
+      "stderr": ""
+    }
+  ]
+}
