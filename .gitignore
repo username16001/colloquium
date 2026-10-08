@@ -1,0 +1,26 @@
+# Local environments and private study material
+.deps/
+.venv/
+venv/
+node_modules/
+lectures/
+*.zip
+__pycache__/
+*.py[cod]
+.verify-*/
+tmp*/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+# Reproducible output: CI builds the Pages artifact from sources
+dist/
+index.html
+oral_questions.html
+exam_questions.html
+manifest.webmanifest
+sw.js
+icons/
+python-colloquium-progress*.json

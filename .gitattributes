@@ -1,0 +1,6 @@
+* text=auto eol=lf
+# Preserve archival checksums and the original block in the question collection.
+originals/* -text
+docs/QUESTIONS.md -text
+*.png -text
+*.jpg -text
