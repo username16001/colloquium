@@ -10,3 +10,14 @@
 .question-title,.rich,.source,.question-item h3{overflow-wrap:anywhere}.rich .line-content{overflow-wrap:normal}.question-dots button{min-width:44px;min-height:44px}.code-toolbar .btn{min-height:44px}.check-pill span{min-width:44px}.topbar .btn{min-height:44px}.btn[hidden]{display:none}
 
 .choices{border:0;padding:0;margin:0;align-content:start}.choices legend{margin-bottom:8px}.filter-choice{display:flex;align-items:center;gap:9px;min-height:44px;font-size:13px;font-weight:500}.filter-choice input{width:18px;min-height:18px;accent-color:var(--teal);flex:none}.filter-choice span{line-height:1.4}
+
+/* Keep action labels readable, including Safari's narrow flex layouts. */
+.btn{overflow-wrap:normal;word-break:normal;white-space:normal;hyphens:none}
+.button-row .btn{flex:0 1 auto;min-width:0}
+.study-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.study-actions .btn{width:100%}
+#view:focus{outline:none}
+button.lecture-row{width:100%;border:0;background:transparent;color:var(--ink);text-align:left;padding:6px 0;font:inherit;border-radius:9px}
+button.lecture-row:hover{background:var(--soft)}
+.history-question{font-size:13px;text-align:left;line-height:1.5;overflow-wrap:normal}
+@media(max-width:760px){.button-row .btn{flex:1 1 100%;width:100%}.study-actions{grid-template-columns:1fr}.card-title{flex-wrap:wrap}.lecture-grid .card-title{align-items:start}.history td:nth-child(2){min-width:180px}}
