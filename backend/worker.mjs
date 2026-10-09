@@ -1,5 +1,7 @@
 import bank from '../questions.json' with {type:'json'};
 import {gradeWithGroq,PROVIDER_ERRORS,PERMISSION_ERRORS} from './grading.mjs';
+import {transcribeWithGroq,AUDIO_TYPES,TRANSCRIPTION_ERRORS} from './transcription.mjs';
+import {MAX_AUDIO_BYTES} from '../web/voice.mjs';
 const questions=new Map(bank.questions.filter(q=>!q.duplicate_of && q.review?.status!=='excluded').map(q=>[q.id,q]));
 const encoder=new TextEncoder(),decoder=new TextDecoder();
 const base64=bytes=>btoa(String.fromCharCode(...bytes)).replaceAll('+','-').replaceAll('/','_').replaceAll('=','');
@@ -28,19 +30,29 @@ export function createWorker({fetcher=fetch,now=Date.now} = {}) {
     if (!origin || !allowed.includes(origin)) return reply({error:'Этот сайт не подключён к проверке.'},403);
     Object.assign(headers,{'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Methods':'POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Access-Control-Max-Age':'600'});
     const path=new URL(request.url).pathname;
-    if (path!=='/evaluate') return reply({error:'Страница не найдена.'},404);
+    if (!['/evaluate','/transcribe'].includes(path)) return reply({error:'Страница не найдена.'},404);
     if (request.method==='OPTIONS') return new Response(null,{status:204,headers});
     if (request.method!=='POST') return reply({error:'Метод не поддерживается.'},405);
     if (!env.GROQ_API_KEY || !env.VOICE_RATE_LIMIT) return reply({error:'Сервер проверки ещё не настроен.'},503);
-    if (!request.headers.get('Content-Type')?.startsWith('application/json')) return reply({error:'Ожидается JSON.'},415);
+    const audio=path==='/transcribe',contentType=request.headers.get('Content-Type')||'';
+    if (audio?!contentType.startsWith('multipart/form-data'):!contentType.startsWith('application/json')) return reply({error:audio?'Ожидается аудиозапись.':'Ожидается JSON.'},415);
     try {
       const {success}=await env.VOICE_RATE_LIMIT.limit({key:request.headers.get('CF-Connecting-IP') || 'local'});
       if (!success) return reply({error:'Слишком много проверок. Подождите минуту.'},429);
       // Bound the body while reading; Content-Length alone is controlled by the caller.
       const reader=request.body?.getReader();if (!reader) return reply({error:'Нет ответа.'},400);
       let size=0,chunks=[];
-      while (true) {const {done,value}=await reader.read();if(done)break;size+=value.byteLength;if(size>48000){await reader.cancel();return reply({error:'Ответ слишком длинный.'},413);}chunks.push(value);}
+      const maxBytes=audio?MAX_AUDIO_BYTES+16000:48000;
+      while (true) {const {done,value}=await reader.read();if(done)break;size+=value.byteLength;if(size>maxBytes){await reader.cancel();return reply({error:audio?'Запись слишком большая. Запишите ответ короче.':'Ответ слишком длинный.'},413);}chunks.push(value);}
       const bytes=new Uint8Array(size);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length;}
+      if(audio) {
+        let form;try{form=await new Response(bytes,{headers:{'Content-Type':contentType}}).formData();}catch{return reply({error:'Не удалось прочитать аудиозапись.'},400);}
+        const file=form.get('file');
+        if(!questions.has(form.get('questionId')))return reply({error:'Выберите вопрос перед записью ответа.'},400);
+        if(form.getAll('file').length!==1||!(file instanceof Blob)||file.size<100||file.size>MAX_AUDIO_BYTES)return reply({error:'Запись пустая или слишком большая. Запишите ответ ещё раз.'},400);
+        if(!AUDIO_TYPES.includes(file.type.split(';')[0]))return reply({error:'Формат записи не поддерживается.'},415);
+        return reply({text:await transcribeWithGroq(file,env,fetcher)});
+      }
       let body;try{body=JSON.parse(decoder.decode(bytes));}catch{return reply({error:'Некорректный JSON.'},400);}
       const question=questions.get(body?.questionId);
       if (!question || typeof body.answer!=='string' || !body.answer.trim() || body.answer.length>6000) return reply({error:'Выберите вопрос и ответьте на него (до 6000 символов).'},400);
@@ -51,12 +63,12 @@ export function createWorker({fetcher=fetch,now=Date.now} = {}) {
       return reply({result,context});
     } catch (error) {
       // Never echo upstream bodies, credentials, or student transcripts in logs or errors.
-      const safe=[...Object.values(PROVIDER_ERRORS),...Object.values(PERMISSION_ERRORS),'Лимит Groq исчерпан. Подождите и попробуйте снова.','Нейросеть временно недоступна. Попробуйте позже.','Проверка заняла слишком долго. Попробуйте снова.','Проверка не завершена. Попробуйте снова.','Нейросеть вернула неполный разбор. Попробуйте снова.'];
+      const safe=[...Object.values(PROVIDER_ERRORS),...Object.values(PERMISSION_ERRORS),...TRANSCRIPTION_ERRORS,'Лимит Groq исчерпан. Подождите и попробуйте снова.','Нейросеть временно недоступна. Попробуйте позже.','Проверка заняла слишком долго. Попробуйте снова.','Проверка не завершена. Попробуйте снова.','Нейросеть вернула неполный разбор. Попробуйте снова.'];
       if (error.status===429 && error.message==='Лимит Groq исчерпан. Подождите и попробуйте снова.') {
         headers['Retry-After']=String(error.retryAfter);
         return reply({error:error.message},429);
       }
-      return reply({error:safe.includes(error.message)?error.message:'Проверка не удалась. Ответ сохранён — попробуйте снова.'},502);
+      return reply({error:safe.includes(error.message)?error.message:audio?'Не удалось расшифровать запись. Попробуйте снова.':'Проверка не удалась. Ответ сохранён — попробуйте снова.'},502);
     }
   }};
 }

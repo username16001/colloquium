@@ -8,21 +8,56 @@ import time
 from pathlib import Path
 import urllib.error
 import urllib.request
+import uuid
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def check_audio(endpoint, origin, path):
+    """Use a synthetic test fixture only; never records the user's microphone."""
+    audio = path.read_bytes()
+    boundary = 'colloquium-' + uuid.uuid4().hex
+    mime = 'audio/mp4' if path.suffix.lower() in ['.m4a', '.mp4'] else 'audio/wav'
+    data = (
+        f'--{boundary}\r\nContent-Disposition: form-data; name="questionId"\r\n\r\nN01-001\r\n'
+        f'--{boundary}\r\nContent-Disposition: form-data; name="file"; filename="answer{path.suffix}"\r\n'
+        f'Content-Type: {mime}\r\n\r\n'
+    ).encode() + audio + f'\r\n--{boundary}--\r\n'.encode()
+    request = urllib.request.Request(endpoint.removesuffix('/evaluate') + '/transcribe', method='POST',
+        headers={'Origin': origin, 'Content-Type': 'multipart/form-data; boundary=' + boundary,
+                 'User-Agent': 'python-colloquium-check/2.0'}, data=data)
+    try:
+        with urllib.request.urlopen(request, timeout=45) as response:
+            result = json.load(response)
+    except urllib.error.HTTPError as error:
+        try:
+            detail = json.load(error).get('error', 'API error')
+        except (ValueError, AttributeError):
+            detail = 'non-JSON response'
+        raise SystemExit(f'audio: HTTP {error.code}: {detail}') from None
+    text = result.get('text', '')
+    if not isinstance(text, str) or not re.search(r'python|питон|пайтон', text, re.IGNORECASE):
+        raise SystemExit('Audio transcription did not recognize the synthetic Python answer: ' + str(text))
+    print(json.dumps({'case': 'audio', 'format': mime, 'text': text}, ensure_ascii=False), flush=True)
+    print('Live audio transcription smoke check passed. Physical iPhone microphone is not tested.')
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--origin', default='https://username16001.github.io')
     parser.add_argument('--delay', type=float, default=35, help='Pause between checks in seconds (0–60).')
-    parser.add_argument('--case', choices=['all', 'incomplete', 'code'], default='all')
+    parser.add_argument('--case', choices=['all', 'incomplete', 'code', 'audio'], default='all')
+    parser.add_argument('--audio-file', type=Path, default=ROOT / 'tests/fixtures/python-answer.wav')
     args = parser.parse_args()
     if not 0 <= args.delay <= 60:
         parser.error('--delay must be between 0 and 60 seconds')
     endpoint = json.loads((ROOT / 'voice_config.json').read_text(encoding='utf-8'))['endpoint']
     if not endpoint.startswith('https://'):
         raise SystemExit('Configure an HTTPS voice endpoint first.')
+    if args.case == 'audio':
+        check_audio(endpoint, args.origin, args.audio_file)
+        return
 
     last_request = None
 

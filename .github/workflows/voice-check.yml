@@ -6,7 +6,7 @@ on:
         description: 'Учебные примеры для проверки'
         default: all
         type: choice
-        options: [all, incomplete, code]
+        options: [all, incomplete, code, audio]
 permissions:
   contents: read
 jobs:
@@ -17,6 +17,14 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
-      - run: python scripts/check_voice.py --case "$CHECK_CASE"
+      - name: Prepare synthetic iPhone recording format
+        if: inputs.case == 'audio'
+        run: ffmpeg -v error -y -i tests/fixtures/python-answer.wav -c:a aac tmp-answer.m4a
+      - run: |
+          if [ "$CHECK_CASE" = "audio" ]; then
+            python scripts/check_voice.py --case audio --audio-file tmp-answer.m4a
+          else
+            python scripts/check_voice.py --case "$CHECK_CASE"
+          fi
         env:
           CHECK_CASE: ${{ inputs.case || 'all' }}
