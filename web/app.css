@@ -51,3 +51,20 @@ button.lecture-row:hover{background:var(--soft)}
 .history-correct{color:var(--teal)}.history-error{color:#c44444}
 .update-result:not(:empty){padding:12px 14px;background:var(--soft);border-radius:9px;margin-top:16px;overflow-wrap:normal}
 @media(max-width:760px){.home-lectures{grid-template-columns:1fr}.history-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.history-meta>div:last-child{grid-column:1/-1}}
+
+.session-toolbar{display:flex;justify-content:space-between;align-items:center;min-height:46px;margin-bottom:12px}
+.session-menu{position:relative}.session-menu>summary{list-style:none;cursor:pointer;font-size:24px;min-width:48px;min-height:44px;text-align:center;border:1px solid var(--line);border-radius:9px;background:var(--surface)}
+.session-menu>summary::-webkit-details-marker{display:none}
+.session-menu-items{position:absolute;right:0;top:calc(100% + 6px);z-index:4;width:250px;padding:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px #26374a20;display:grid;gap:4px}
+.session-toolbar{position:sticky;top:0;z-index:3;background:var(--bg)}
+.session-question{scroll-margin-top:64px}.session-question:focus{outline:none}
+.session-question .grading{min-height:82px}.session-question .grading .button-row{margin-top:0}
+.session-aside{align-self:start}.session-aside .question-dots{margin-bottom:0}
+.history-list{gap:10px}.history-entry{padding:12px 14px}
+.history-entry .history-question{font-size:14px;min-height:36px}
+.history-entry .history-meta{margin-top:8px;padding-top:8px;gap:6px 12px}
+.history-pagination{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:18px}
+.history-pagination>span{font-size:12px;color:var(--muted);text-align:center;white-space:nowrap}
+.history-pagination .btn{padding:9px 12px;font-size:12px}
+@media(max-width:1100px){.session-aside{order:1}}
+@media(max-width:760px){.in-session .content{padding-top:12px}.session-question .grading{min-height:126px}.history-entry .history-meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
