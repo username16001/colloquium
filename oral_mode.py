@@ -21,7 +21,7 @@ def generate_oral(questions,output,count=9,seed=None):
         return f'const {name.title()} = (()=>{{\n{source}\nreturn {{'+','.join(exports)+'};\n})();\n'
     app=(ROOT/'web/app.mjs').read_text(encoding='utf-8')
     app=re.sub(r"^import (\{.*?\}) from './(\w+).mjs';",lambda m:'const '+m[1]+' = '+m[2].title()+';',app,flags=re.M)
-    app=bundle('study')+bundle('storage')+app
+    app=bundle('study')+bundle('storage')+bundle('updates')+app
     vendor=ROOT/'web/vendor/katex'
     math_css=(vendor/'katex.min.css').read_text(encoding='utf-8')
     math_css=re.sub(r',url\(fonts/[^)]+\.(?:woff|ttf)\) format\("(?:woff|truetype)"\)','',math_css)

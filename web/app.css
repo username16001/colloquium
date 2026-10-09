@@ -38,3 +38,16 @@ button.lecture-row:hover{background:var(--soft)}
 .lecture-choice .small{grid-column:2}.lecture-choice .lecture-arrow{right:20px}.lecture-choice:hover{border-color:var(--teal)}
 #dialog-cancel:focus{outline:none;box-shadow:none}
 #dialog-cancel:focus-visible{outline:none;text-decoration:underline;text-underline-offset:4px}
+
+.home-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+.home-lectures{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 30px}
+.lecture-completion{text-align:right;white-space:nowrap}.lecture-completion strong{display:block;color:var(--teal)}
+.history-list{display:grid;gap:16px}
+.history-entry{padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--bg);min-width:0}
+.history-entry .history-question{border:0;background:transparent;padding:0;display:block;text-align:left;font-size:15px;line-height:1.6;color:var(--teal);overflow-wrap:normal;word-break:normal}
+.history-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.history-meta span{display:block;font-size:12px;color:var(--muted);white-space:nowrap}
+.history-meta strong,.history-meta time{display:block;font-size:13px;font-weight:600;white-space:nowrap}
+.history-correct{color:var(--teal)}.history-error{color:#c44444}
+.update-result:not(:empty){padding:12px 14px;background:var(--soft);border-radius:9px;margin-top:16px;overflow-wrap:normal}
+@media(max-width:760px){.home-lectures{grid-template-columns:1fr}.history-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.history-meta>div:last-child{grid-column:1/-1}}
