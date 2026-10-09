@@ -16,6 +16,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--origin', default='https://username16001.github.io')
     parser.add_argument('--delay', type=float, default=35, help='Pause between checks in seconds (0–60).')
+    parser.add_argument('--case', choices=['all', 'incomplete', 'code'], default='all')
     args = parser.parse_args()
     if not 0 <= args.delay <= 60:
         parser.error('--delay must be between 0 and 60 seconds')
@@ -70,27 +71,30 @@ def main():
                 raise SystemExit(f'{name}: invalid feedback')
         return body
 
-    check('correct-paraphrase', 'N01-001',
+    if args.case == 'all':
+        check('correct-paraphrase', 'N01-001',
           'Сначала x связано с целым 7, затем со строкой "7". Типы объектов int и str. '
           'Присваивание переключает имя на другой объект, а не меняет тип старого.', 'accepted')
-    wrong = check('incorrect', 'N01-001',
+        wrong = check('incorrect', 'N01-001',
                   'Тип всегда остаётся int: Python автоматически превращает строку "7" обратно в число.', 'needs_work')
-    if wrong['result']['score'] > 3 or not wrong['result']['errors']:
-        raise SystemExit('Incorrect factual answer should identify an error and score 0–3.')
-    partial = check('incomplete', 'N08-002',
+        if wrong['result']['score'] > 3 or not wrong['result']['errors']:
+            raise SystemExit('Incorrect factual answer should identify an error and score 0–3.')
+    if args.case in ['all', 'incomplete']:
+        partial = check('incomplete', 'N08-002',
                     'shuffle переставляет карты в самой колоде по индексам. Читать можно, '
                     'а записывать нельзя. Какой специальный метод добавить, не помню.', '')
-    if partial['result']['score'] >= 7:
-        raise SystemExit('Missing the requested method should not pass.')
-    if partial.get('context'):
-        check('clarification', 'N08-002',
+        if partial['result']['score'] >= 7:
+            raise SystemExit('Missing the requested method should not pass.')
+        if partial.get('context'):
+            check('clarification', 'N08-002',
               'Нужен __setitem__(self, index, value), который делает self._cards[index] = value. '
               'shuffle меняет колоду на месте и использует запись по индексам при обмене карт.',
               'accepted', partial['context'])
-    bank = json.loads((ROOT / 'questions.json').read_text(encoding='utf-8'))['questions']
-    code = next(q for q in bank if q['origin'] == 'new' and q.get('code') and not q.get('duplicate_of')
+    if args.case in ['all', 'code']:
+        bank = json.loads((ROOT / 'questions.json').read_text(encoding='utf-8'))['questions']
+        code = next(q for q in bank if q['origin'] == 'new' and q.get('code') and not q.get('duplicate_of')
                 and q.get('review', {}).get('status') != 'excluded')
-    check('code-reference', code['id'], (code.get('correction') or code['answer']) + '\n' + code.get('explanation', ''), 'accepted')
+        check('code-reference', code['id'], (code.get('correction') or code['answer']) + '\n' + code.get('explanation', ''), 'accepted')
     print('Live voice smoke checks passed. This is a small sample, not a full grading-quality review.')
 
 

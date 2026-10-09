@@ -1,6 +1,12 @@
 name: Check voice server manually
 on:
   workflow_dispatch:
+    inputs:
+      case:
+        description: 'Учебные примеры для проверки'
+        default: all
+        type: choice
+        options: [all, incomplete, code]
 permissions:
   contents: read
 jobs:
@@ -11,4 +17,6 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
-      - run: python scripts/check_voice.py
+      - run: python scripts/check_voice.py --case "$CHECK_CASE"
+        env:
+          CHECK_CASE: ${{ inputs.case || 'all' }}
