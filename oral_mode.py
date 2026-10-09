@@ -14,11 +14,13 @@ def generate_oral(questions,output,count=9,seed=None):
     voice_config=json.loads((ROOT/'voice_config.json').read_text(encoding='utf-8'))
     endpoint=voice_config.get('endpoint','')
     if not isinstance(endpoint,str):raise ValueError('Voice endpoint must be a string')
+    provider=voice_config.get('provider','groq')
+    if provider not in {'groq','anthropic'}:raise ValueError('Unknown voice grading provider')
     if endpoint:
         url=urlsplit(endpoint)
         if not url.hostname or url.username or url.password or url.scheme!='https' and not (url.scheme=='http' and url.hostname in {'localhost','127.0.0.1'}):
             raise ValueError('Voice endpoint must use HTTPS (localhost is allowed for development)')
-    data=json.dumps({'questions':rows,'count':min(100,count),'totalRecords':len(questions),'seed':seed,'initialIds':[q['id'] for q in initial],'version':'2.1.0','voiceEndpoint':endpoint},ensure_ascii=False).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
+    data=json.dumps({'questions':rows,'count':min(100,count),'totalRecords':len(questions),'seed':seed,'initialIds':[q['id'] for q in initial],'version':'2.1.0','voiceEndpoint':endpoint,'voiceProvider':provider},ensure_ascii=False).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     template=(ROOT/'oral_template.html').read_text(encoding='utf-8')
     # Inline our modules and math assets: the familiar HTML remains autonomous.
     def bundle(name):

@@ -24,6 +24,18 @@
 
 Не публикуйте `.dev.vars`, `.env` или ключ в `voice_config.json`. Адрес сервера публичный; ключ — секретный. Worker использует текущий `questions.json`, включая исправленные эталоны и исключение дубля. После изменения базы переопубликуйте и Worker.
 
+## Подключение Claude Haiku 5.5 для проверки ответов
+
+Поддержка Claude подготовлена в `backend/claude.mjs`. Пока `GRADING_PROVIDER` в `wrangler.jsonc` равен `groq`, оценки выставляет прежняя модель. Для переключения:
+
+1. Добавьте **ANTHROPIC_API_KEY**, тип **Secret**, в Cloudflare → Workers & Pages → colloquium-voice → Settings → Variables and Secrets. Альтернатива — `npx wrangler@4.149.0 secret put ANTHROPIC_API_KEY`. Не публикуйте значение ключа в файлах или переписке.
+2. В `wrangler.jsonc` задайте `GRADING_PROVIDER: "anthropic"`; `CLAUDE_MODEL` уже равен `claude-haiku-5-5`. В `voice_config.json` установите `provider: "anthropic"`, чтобы перед отправкой текста интерфейс правильно называл получателя.
+3. Опубликуйте Worker, выполните ручную проверку его настоящих ответов, пересоберите PWA и опубликуйте GitHub Pages. При ошибке API оценка не записывается; автоматического перехода на другого провайдера нет.
+
+Claude получает текст задания, эталон, объяснение и ответ студента через Messages API. Шкала, зачёт от 7 и один уточняющий вопрос сохранены; ответы приходят по строгой JSON Schema. Haiku 5.5 используется с `output_config.effort: "low"` и без старых параметров `temperature`, `top_p`, `top_k`. Блоки thinking не передаются клиенту. [Модель](https://platform.claude.com/docs/en/models/haiku-5-5/overview), [формат ответа](https://platform.claude.com/docs/en/build-with-claude/structured-outputs), [переход на Haiku 5.5](https://platform.claude.com/docs/en/models/haiku-5-5/migration-guide).
+
+**GROQ_API_KEY сохраняется для расшифровки аудио через Whisper.** Anthropic обрабатывает текст проверки; Groq — аудио. Старые оценки Groq и новые оценки Claude различаются в истории и сохраняют свои баллы при экспорте/импорте. Подпись незавершённого уточнения продолжает использовать прежний секрет, поэтому простая смена модели не сбрасывает диалог. Настройте бюджет и доступ к API в кабинете Anthropic; ключ не подтверждает наличие средств или доступность модели. Реальную проверку Claude нужно выполнить после добавления секрета.
+
 ## Проверка и ограничения
 
 - Модель по умолчанию — `qwen/qwen3.8-27b` через Groq, формат ответа — строгая JSON Schema. Выбор модели задаётся в `wrangler.jsonc`. [Документация Groq](https://console.groq.com/docs/structured-outputs).

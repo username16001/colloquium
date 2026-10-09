@@ -26,7 +26,8 @@ export function sanitizeVoiceRecord(value) {
   if (value.turns.length===2 && value.turns[0]?.result?.decision!=='follow_up') throw Error('Уточнение без вопроса');
   return {draft:text(value.draft ?? ''), followDraft:text(value.followDraft ?? ''), turns:value.turns.map((turn,i) => {
     if (!turn || typeof turn.context !== 'string' || turn.context.length > 30000) throw Error('Некорректный диалог');
-    return {answer:text(turn.answer),result:validateFeedback(turn.result,i === 1),context:turn.context};
+    if(turn.provider!==undefined&&!['groq','anthropic'].includes(turn.provider))throw Error('Неизвестная нейросеть');
+    return {answer:text(turn.answer),result:validateFeedback(turn.result,i === 1),context:turn.context,provider:turn.provider||'groq'};
   })};
 }
 export async function evaluateAnswer(endpoint, payload, {fetcher = globalThis.fetch, signal} = {}) {
@@ -47,7 +48,8 @@ export async function evaluateAnswer(endpoint, payload, {fetcher = globalThis.fe
   if (!response.ok) throw Error(typeof body.error === 'string' ? body.error : 'Проверка недоступна. Попробуйте позже.');
   const result = validateFeedback(body.result,!!payload.context);
   if (typeof body.context !== 'string' || body.context.length > 30000 || result.decision === 'follow_up' && !body.context) throw Error('Некорректный результат проверки');
-  return {result,context:body.context};
+  if(body.provider!==undefined&&!['groq','anthropic'].includes(body.provider))throw Error('Некорректный результат проверки');
+  return {result,context:body.context,provider:body.provider||'groq'};
 }
 export function createDictation({environment = globalThis,onText,onStatus,onError}) {
   const Constructor = environment.SpeechRecognition || environment.webkitSpeechRecognition;

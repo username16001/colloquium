@@ -1,5 +1,6 @@
 import bank from '../questions.json' with {type:'json'};
 import {gradeWithGroq,PROVIDER_ERRORS,PERMISSION_ERRORS} from './grading.mjs';
+import {gradeWithClaude,CLAUDE_ERRORS,CLAUDE_RATE_ERROR} from './claude.mjs';
 import {transcribeWithGroq,AUDIO_TYPES,TRANSCRIPTION_ERRORS} from './transcription.mjs';
 import {MAX_AUDIO_BYTES} from '../web/voice.mjs';
 const questions=new Map(bank.questions.filter(q=>!q.duplicate_of && q.review?.status!=='excluded').map(q=>[q.id,q]));
@@ -33,8 +34,13 @@ export function createWorker({fetcher=fetch,now=Date.now} = {}) {
     if (!['/evaluate','/transcribe'].includes(path)) return reply({error:'Страница не найдена.'},404);
     if (request.method==='OPTIONS') return new Response(null,{status:204,headers});
     if (request.method!=='POST') return reply({error:'Метод не поддерживается.'},405);
-    if (!env.GROQ_API_KEY || !env.VOICE_RATE_LIMIT) return reply({error:'Сервер проверки ещё не настроен.'},503);
     const audio=path==='/transcribe',contentType=request.headers.get('Content-Type')||'';
+    const provider=env.GRADING_PROVIDER||'groq';
+    const key=audio||provider==='groq'?env.GROQ_API_KEY:env.ANTHROPIC_API_KEY;
+    if (!['groq','anthropic'].includes(provider)||typeof key!=='string'||!key.trim()||!env.VOICE_RATE_LIMIT) return reply({error:'Сервер проверки ещё не настроен.'},503);
+    // Keep the existing signing key across provider switches so unfinished
+    // clarifications remain valid. It is independent of the grading API key.
+    const contextSecret=env.VOICE_CONTEXT_SECRET||env.GROQ_API_KEY||key;
     if (audio?!contentType.startsWith('multipart/form-data'):!contentType.startsWith('application/json')) return reply({error:audio?'Ожидается аудиозапись.':'Ожидается JSON.'},415);
     try {
       const {success}=await env.VOICE_RATE_LIMIT.limit({key:request.headers.get('CF-Connecting-IP') || 'local'});
@@ -57,14 +63,15 @@ export function createWorker({fetcher=fetch,now=Date.now} = {}) {
       const question=questions.get(body?.questionId);
       if (!question || typeof body.answer!=='string' || !body.answer.trim() || body.answer.length>6000) return reply({error:'Выберите вопрос и ответьте на него (до 6000 символов).'},400);
       let continuation=null;
-      if (body.context) {try{continuation=await readContext(body.context,env.GROQ_API_KEY,question.id,now());}catch(error){return reply({error:error.message},400);}}
-      const result=await gradeWithGroq(question,body.answer.trim(),continuation,env,fetcher);
-      const context=result.decision==='follow_up' ? await signContext({questionId:question.id,answer:body.answer.trim(),followUp:result.followUp,expires:now()+3600000},env.GROQ_API_KEY) : '';
-      return reply({result,context});
+      if (body.context) {try{continuation=await readContext(body.context,contextSecret,question.id,now());}catch(error){return reply({error:error.message},400);}}
+      const grade=provider==='anthropic'?gradeWithClaude:gradeWithGroq;
+      const result=await grade(question,body.answer.trim(),continuation,env,fetcher);
+      const context=result.decision==='follow_up' ? await signContext({questionId:question.id,answer:body.answer.trim(),followUp:result.followUp,expires:now()+3600000},contextSecret) : '';
+      return reply({result,context,provider});
     } catch (error) {
       // Never echo upstream bodies, credentials, or student transcripts in logs or errors.
-      const safe=[...Object.values(PROVIDER_ERRORS),...Object.values(PERMISSION_ERRORS),...TRANSCRIPTION_ERRORS,'Лимит Groq исчерпан. Подождите и попробуйте снова.','Нейросеть временно недоступна. Попробуйте позже.','Проверка заняла слишком долго. Попробуйте снова.','Проверка не завершена. Попробуйте снова.','Нейросеть вернула неполный разбор. Попробуйте снова.'];
-      if (error.status===429 && error.message==='Лимит Groq исчерпан. Подождите и попробуйте снова.') {
+      const safe=[...Object.values(PROVIDER_ERRORS),...Object.values(PERMISSION_ERRORS),...Object.values(CLAUDE_ERRORS),CLAUDE_RATE_ERROR,...TRANSCRIPTION_ERRORS,'Лимит Groq исчерпан. Подождите и попробуйте снова.','Нейросеть временно недоступна. Попробуйте позже.','Проверка заняла слишком долго. Попробуйте снова.','Проверка не завершена. Попробуйте снова.','Нейросеть вернула неполный разбор. Попробуйте снова.'];
+      if (error.status===429 && [CLAUDE_RATE_ERROR,'Лимит Groq исчерпан. Подождите и попробуйте снова.'].includes(error.message)) {
         headers['Retry-After']=String(error.retryAfter);
         return reply({error:error.message},429);
       }

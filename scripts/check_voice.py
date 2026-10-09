@@ -1,6 +1,6 @@
 """Manually smoke-test the deployed voice API with synthetic study answers.
 
-Uses no provider key. A few successful requests consume the owner's Groq quota.
+Uses no provider key. Successful requests consume the configured provider's quota.
 """
 import argparse
 import json
