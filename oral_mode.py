@@ -15,7 +15,7 @@ def generate_oral(questions,output,count=9,seed=None):
     endpoint=voice_config.get('endpoint','')
     if not isinstance(endpoint,str):raise ValueError('Voice endpoint must be a string')
     provider=voice_config.get('provider','groq')
-    if provider not in {'groq','anthropic'}:raise ValueError('Unknown voice grading provider')
+    if provider not in {'groq','anthropic','routerai'}:raise ValueError('Unknown voice grading provider')
     if endpoint:
         url=urlsplit(endpoint)
         if not url.hostname or url.username or url.password or url.scheme!='https' and not (url.scheme=='http' and url.hostname in {'localhost','127.0.0.1'}):

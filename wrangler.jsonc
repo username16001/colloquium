@@ -6,8 +6,9 @@
   "vars": {
     "ALLOWED_ORIGINS": "https://username16001.github.io",
     "GROQ_MODEL": "qwen/qwen3.8-27b",
-    "GRADING_PROVIDER": "groq",
-    "CLAUDE_MODEL": "claude-haiku-5-5"
+    "GRADING_PROVIDER": "routerai",
+    "CLAUDE_MODEL": "claude-haiku-5-5",
+    "ROUTERAI_MODEL": "openai/gpt-6-luna"
   },
   "ratelimits": [{"name":"VOICE_RATE_LIMIT","namespace_id":"1600109","simple":{"limit":10,"period":60}}],
   "observability": {"enabled":false}

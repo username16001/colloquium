@@ -48,6 +48,7 @@ def main():
     parser.add_argument('--origin', default='https://username16001.github.io')
     parser.add_argument('--delay', type=float, default=35, help='Pause between checks in seconds (0–60).')
     parser.add_argument('--case', choices=['all', 'incomplete', 'code', 'audio'], default='all')
+    parser.add_argument('--expect-provider', choices=['groq', 'anthropic', 'routerai'])
     parser.add_argument('--audio-file', type=Path, default=ROOT / 'tests/fixtures/python-answer.wav')
     args = parser.parse_args()
     if not 0 <= args.delay <= 60:
@@ -81,7 +82,7 @@ def main():
                 print(f'{name}: rate limit; retrying once in {wait}s', flush=True)
                 time.sleep(wait)
                 return check(name, question_id, answer, decision, context, retry=True)
-            # The Worker returns fixed, safe messages, never a Groq key or upstream body.
+            # The Worker returns fixed, safe messages, never a provider key or upstream body.
             try:
                 body = json.load(error)
                 detail = body.get('error', 'API error')
@@ -91,12 +92,14 @@ def main():
         except (urllib.error.URLError, TimeoutError):
             raise SystemExit(f'{name}: connection failed') from None
         result = body.get('result', {})
+        if args.expect_provider and body.get('provider') != args.expect_provider:
+            raise SystemExit(f'{name}: unexpected grading provider')
         score = result.get('score')
         if type(score) is not int or not 0 <= score <= 10:
             raise SystemExit(f'{name}: invalid score')
         if (result.get('decision') == 'accepted') != (score >= 7):
             raise SystemExit(f'{name}: inconsistent decision')
-        print(json.dumps({'case': name, 'question': question_id, 'result': result}, ensure_ascii=False), flush=True)
+        print(json.dumps({'case': name, 'question': question_id, 'provider': body.get('provider', 'legacy'), 'result': result}, ensure_ascii=False), flush=True)
         if decision and result.get('decision') != decision:
             raise SystemExit(f'{name}: unexpected decision {result.get("decision")} / {score}')
         if result.get('decision') == 'follow_up' and (context or not body.get('context') or not result.get('followUp')):

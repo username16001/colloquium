@@ -127,7 +127,7 @@ export function validateImport(input, questions) {
     if (dedup.has(key)) throw Error('Повтор оценки в одной сессии'); dedup.add(key);
     const q = questionMap.get(a.questionId), p = reconstructed[a.questionId] || {};
     const entry={questionId: a.questionId, sessionId: a.sessionId, at: a.at, correct: a.correct, confidence: a.confidence, lecture: q.lecture, origin: q.origin, firstAttempt: !p.attempts};
-    if (['groq','claude'].includes(a.assessment)) {
+    if (['groq','claude','routerai'].includes(a.assessment)) {
       if (!Number.isInteger(a.score) || a.score<0 || a.score>10 || a.correct !== (a.score>=7)) throw Error('Некорректная оценка нейросети');
       entry.assessment=a.assessment;entry.score=a.score;
     }

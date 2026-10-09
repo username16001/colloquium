@@ -27,7 +27,8 @@ jobs:
           if [ "$CHECK_CASE" = "audio" ]; then
             python scripts/check_voice.py --case audio --audio-file tmp-answer.m4a
           else
-            python scripts/check_voice.py --case "$CHECK_CASE"
+            EXPECTED_PROVIDER=$(python -c 'import json; print(json.load(open("voice_config.json"))["provider"])')
+            python scripts/check_voice.py --case "$CHECK_CASE" --expect-provider "$EXPECTED_PROVIDER"
           fi
         env:
           CHECK_CASE: ${{ inputs.case || 'all' }}

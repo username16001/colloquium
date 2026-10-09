@@ -1,6 +1,7 @@
 import bank from '../questions.json' with {type:'json'};
 import {gradeWithGroq,PROVIDER_ERRORS,PERMISSION_ERRORS} from './grading.mjs';
 import {gradeWithClaude,CLAUDE_ERRORS,CLAUDE_RATE_ERROR} from './claude.mjs';
+import {gradeWithRouterAI,ROUTERAI_ERRORS,ROUTERAI_RATE_ERROR} from './routerai.mjs';
 import {transcribeWithGroq,AUDIO_TYPES,TRANSCRIPTION_ERRORS} from './transcription.mjs';
 import {MAX_AUDIO_BYTES} from '../web/voice.mjs';
 const questions=new Map(bank.questions.filter(q=>!q.duplicate_of && q.review?.status!=='excluded').map(q=>[q.id,q]));
@@ -36,8 +37,8 @@ export function createWorker({fetcher=fetch,now=Date.now} = {}) {
     if (request.method!=='POST') return reply({error:'Метод не поддерживается.'},405);
     const audio=path==='/transcribe',contentType=request.headers.get('Content-Type')||'';
     const provider=env.GRADING_PROVIDER||'groq';
-    const key=audio||provider==='groq'?env.GROQ_API_KEY:env.ANTHROPIC_API_KEY;
-    if (!['groq','anthropic'].includes(provider)||typeof key!=='string'||!key.trim()||!env.VOICE_RATE_LIMIT) return reply({error:'Сервер проверки ещё не настроен.'},503);
+    const key=audio||provider==='groq'?env.GROQ_API_KEY:provider==='routerai'?env.ROUTERAI_API_KEY:env.ANTHROPIC_API_KEY;
+    if (!['groq','anthropic','routerai'].includes(provider)||typeof key!=='string'||!key.trim()||!env.VOICE_RATE_LIMIT) return reply({error:'Сервер проверки ещё не настроен.'},503);
     // Keep the existing signing key across provider switches so unfinished
     // clarifications remain valid. It is independent of the grading API key.
     const contextSecret=env.VOICE_CONTEXT_SECRET||env.GROQ_API_KEY||key;
@@ -64,14 +65,14 @@ export function createWorker({fetcher=fetch,now=Date.now} = {}) {
       if (!question || typeof body.answer!=='string' || !body.answer.trim() || body.answer.length>6000) return reply({error:'Выберите вопрос и ответьте на него (до 6000 символов).'},400);
       let continuation=null;
       if (body.context) {try{continuation=await readContext(body.context,contextSecret,question.id,now());}catch(error){return reply({error:error.message},400);}}
-      const grade=provider==='anthropic'?gradeWithClaude:gradeWithGroq;
+      const grade=provider==='routerai'?gradeWithRouterAI:provider==='anthropic'?gradeWithClaude:gradeWithGroq;
       const result=await grade(question,body.answer.trim(),continuation,env,fetcher);
       const context=result.decision==='follow_up' ? await signContext({questionId:question.id,answer:body.answer.trim(),followUp:result.followUp,expires:now()+3600000},contextSecret) : '';
       return reply({result,context,provider});
     } catch (error) {
       // Never echo upstream bodies, credentials, or student transcripts in logs or errors.
-      const safe=[...Object.values(PROVIDER_ERRORS),...Object.values(PERMISSION_ERRORS),...Object.values(CLAUDE_ERRORS),CLAUDE_RATE_ERROR,...TRANSCRIPTION_ERRORS,'Лимит Groq исчерпан. Подождите и попробуйте снова.','Нейросеть временно недоступна. Попробуйте позже.','Проверка заняла слишком долго. Попробуйте снова.','Проверка не завершена. Попробуйте снова.','Нейросеть вернула неполный разбор. Попробуйте снова.'];
-      if (error.status===429 && [CLAUDE_RATE_ERROR,'Лимит Groq исчерпан. Подождите и попробуйте снова.'].includes(error.message)) {
+      const safe=[...Object.values(PROVIDER_ERRORS),...Object.values(PERMISSION_ERRORS),...Object.values(CLAUDE_ERRORS),...Object.values(ROUTERAI_ERRORS),CLAUDE_RATE_ERROR,ROUTERAI_RATE_ERROR,...TRANSCRIPTION_ERRORS,'Лимит Groq исчерпан. Подождите и попробуйте снова.','Нейросеть временно недоступна. Попробуйте позже.','Проверка заняла слишком долго. Попробуйте снова.','Проверка не завершена. Попробуйте снова.','Нейросеть вернула неполный разбор. Попробуйте снова.'];
+      if (error.status===429 && [CLAUDE_RATE_ERROR,ROUTERAI_RATE_ERROR,'Лимит Groq исчерпан. Подождите и попробуйте снова.'].includes(error.message)) {
         headers['Retry-After']=String(error.retryAfter);
         return reply({error:error.message},429);
       }
