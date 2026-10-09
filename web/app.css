@@ -21,3 +21,20 @@ button.lecture-row{width:100%;border:0;background:transparent;color:var(--ink);t
 button.lecture-row:hover{background:var(--soft)}
 .history-question{font-size:13px;text-align:left;line-height:1.5;overflow-wrap:normal}
 @media(max-width:760px){.button-row .btn{flex:1 1 100%;width:100%}.study-actions{grid-template-columns:1fr}.card-title{flex-wrap:wrap}.lecture-grid .card-title{align-items:start}.history td:nth-child(2){min-width:180px}}
+
+.lecture-tabs{display:flex;gap:4px;background:var(--soft);padding:5px;border-radius:12px}
+.lecture-tab{flex:1;min-width:0;min-height:48px;padding:10px 8px;border:0;border-radius:9px;background:transparent;color:var(--muted);font-size:14px;font-weight:650;overflow-wrap:normal}
+.lecture-tab[aria-selected=true]{background:var(--surface);color:var(--ink);box-shadow:0 2px 8px #26374a10}
+.lecture-tab span{display:inline-block;font-size:12px;margin-left:7px;color:var(--muted)}
+.lecture-question summary{position:relative;cursor:pointer;list-style:none;padding-right:26px;min-height:44px}
+.lecture-question summary::-webkit-details-marker{display:none}
+.lecture-question summary h3{margin-top:7px;line-height:1.5}
+.lecture-arrow{position:absolute;right:0;top:50%;transform:translateY(-50%);color:var(--muted)}
+.lecture-question[open]>summary>.lecture-arrow{transform:translateY(-50%) rotate(180deg)}
+.lecture-question-body{border-top:1px solid var(--line);margin-top:18px;padding-top:18px}
+.lecture-answer>summary{color:var(--teal);font-weight:650;padding:10px 0;list-style:revert}
+.lecture-answer>summary::-webkit-details-marker{display:revert}
+.lecture-choice{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px 12px;text-align:left;color:var(--ink);font:inherit;cursor:pointer;padding-right:42px}
+.lecture-choice .small{grid-column:2}.lecture-choice .lecture-arrow{right:20px}.lecture-choice:hover{border-color:var(--teal)}
+#dialog-cancel:focus{outline:none;box-shadow:none}
+#dialog-cancel:focus-visible{outline:none;text-decoration:underline;text-underline-offset:4px}
