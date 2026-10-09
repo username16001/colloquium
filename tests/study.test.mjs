@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {DAY,freshState,usable,filtered,shuffle,recordAnswer,stats,recommend,ticket,validateImport,paginateHistory} from '../web/study.mjs';
+import {DAY,freshState,usable,filtered,shuffle,randomPractice,recordAnswer,stats,recommend,ticket,validateImport,paginateHistory} from '../web/study.mjs';
 const bank=JSON.parse(readFileSync(new URL('../questions.json',import.meta.url),'utf8')).questions;
 const q=bank.find(q=>q.id==='N08-002'), now=1_800_000_000_000;
 const grade=(s,correct,confidence=null,at=now,id=String(at))=>recordAnswer(s,q,correct,confidence,at,id);
@@ -19,6 +19,59 @@ test('fresh diagnostic set covers nine lectures with clear reasons',()=>{
   assert.equal(new Set(rows.map(r=>r.question.lecture)).size,9);
   assert.ok(rows.every(r=>r.reason.includes('диагностики')));
   assert.deepEqual(rows,recommend(bank,freshState(),{count:9,seed:4},now));
+});
+
+test('consecutive ungraded sessions use different questions even at the same time and seed',()=>{
+  for (const select of [randomPractice, (bank,s,o)=>recommend(bank,s,o,now).map(r=>r.question)]) {
+    const s=freshState();
+    for(let i=0;i<30;i++){
+      const previous=new Set(s.session?.ids||[]), rows=select(bank,s,{count:9,seed:'fixed'});
+      assert.equal(rows.length,9);assert.equal(new Set(rows.map(q=>q.id)).size,9);
+      assert.ok(rows.every(q=>!previous.has(q.id)));
+      s.session={id:'ungraded-'+i,mode:'smart',ids:rows.map(q=>q.id),index:0,finished:true,completed:true};
+    }
+    assert.deepEqual(s.progress,{});assert.deepEqual(s.history,[]);
+  }
+});
+
+test('equal-priority questions are varied by the random seed',()=>{
+  const first=new Set(Array.from({length:30},(_,seed)=>recommend(bank,freshState(),{count:9,seed},now)[0].question.id));
+  assert.ok(first.size>=15,`Only ${first.size} distinct first questions`);
+});
+
+test('the previous set survives progress import and is avoided on the next start',()=>{
+  const s=freshState(), first=recommend(bank,s,{count:9,seed:1},now).map(r=>r.question.id);
+  s.session={id:'finished',mode:'voice',ids:first,index:0,createdAt:now,finished:true,completed:true};
+  const restored=validateImport(JSON.parse(JSON.stringify(s)),bank);
+  const next=recommend(bank,restored,{count:9,seed:1},now).map(r=>r.question.id);
+  assert.ok(next.every(id=>!first.includes(id)));
+  assert.deepEqual(restored.history,[]);
+});
+
+test('small filtered pools use all alternatives before repeating and never invent questions',()=>{
+  const pool=usable(bank).filter(q=>q.origin==='new'&&q.lecture===1).slice(0,12);
+  const s=freshState();s.session={ids:pool.slice(0,9).map(q=>q.id)};
+  const snapshot=structuredClone(s);
+  for (const rows of [randomPractice(pool,s,{count:9,seed:7}),recommend(pool,s,{count:9,seed:7,lectures:[1],origin:'new'},now).map(r=>r.question)]) {
+    assert.equal(rows.length,9);assert.equal(new Set(rows.map(q=>q.id)).size,9);
+    assert.ok(pool.slice(9).every(q=>rows.slice(0,3).includes(q)));
+    assert.ok(rows.every(q=>pool.includes(q)));
+  }
+  assert.deepEqual(s,snapshot);
+});
+
+test('restricted error mode and exhausted pools remain usable',()=>{
+  const pool=usable(bank).slice(0,3),s=freshState();
+  for(const row of pool)s.progress[row.id]={lastCorrect:false};
+  s.session={ids:pool.map(q=>q.id)};
+  const errors=recommend(bank,s,{smartMode:'errors',count:9,seed:8},now).map(r=>r.question);
+  assert.equal(errors.length,3);assert.equal(new Set(errors.map(q=>q.id)).size,3);
+  assert.notEqual(errors[0].id,s.session.ids[0]);
+  const random=randomPractice(pool,s,{count:9,seed:8});
+  assert.equal(random.length,3);assert.notEqual(random[0].id,s.session.ids[0]);
+  assert.deepEqual(randomPractice([pool[0]],s,{count:9,seed:8}),[pool[0]]);
+  assert.deepEqual(recommend([pool[0]],s,{count:9,seed:8},now).map(r=>r.question),[pool[0]]);
+  assert.deepEqual(recommend(bank,s,{smartMode:'review'},now),[]);
 });
 test('one grade per question and session; separate sessions retained',()=>{
   const s=grade(freshState(),true,'know');assert.equal(s.progress[q.id].attempts,1);

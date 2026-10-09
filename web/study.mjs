@@ -18,6 +18,14 @@ export function shuffle(questions, seed) {
   for (let i = result.length - 1; i > 0; i--) { n = (Math.imul(n, 1664525) + 1013904223) >>> 0; const j = n % (i + 1); [result[i], result[j]] = [result[j], result[i]]; }
   return result;
 }
+export function randomPractice(questions, state, options = {}) {
+  const previous = new Set(state.session?.ids || []);
+  const rows = shuffle(filtered(questions, options), options.seed ?? 0);
+  const count = Math.max(1, Math.min(100, options.count || 9));
+  const selected = [...rows.filter(q => !previous.has(q.id)), ...rows.filter(q => previous.has(q.id))].slice(0, count);
+  if (selected.length > 1 && selected[0].id === state.session?.ids[0]) selected.push(selected.shift());
+  return selected;
+}
 function advanceProgress(p, correct, confidence, now) {
   const factor = Number.isFinite(p.lastSeen) && now-p.lastSeen < DAY/2 ? 1 : confidence === 'know' ? 2.5 : 1.8;
   const interval = !correct ? .25 : confidence === 'guess' ? .5 : confidence === 'unsure' ? 1 :
@@ -70,7 +78,9 @@ export function recommend(questions, state, options = {}, now = Date.now()) {
   if (mode === 'new') candidates = rows.filter(q => !state.progress[q.id]?.attempts);
   if (mode === 'review') candidates = rows.filter(q => state.progress[q.id]?.attempts);
   if (mode === 'errors') candidates = rows.filter(q => state.progress[q.id]?.lastCorrect === false || state.progress[q.id]?.difficult);
-  const ranked = candidates.map(q => {
+  const previous = new Set(state.session?.ids || []);
+  // Shuffle equal-priority candidates rather than hashing their similar IDs.
+  const ranked = shuffle(candidates, seed).map((q, tie) => {
     const p = state.progress[q.id] || {}, l = lectures.get(q.lecture), reasons = [];
     let score = !p.attempts ? 30 : 0;
     if (options.finalReview && q.origin === 'original') { score += 35; reasons.push('Исходный вопрос прошлого коллоквиума'); }
@@ -82,15 +92,20 @@ export function recommend(questions, state, options = {}, now = Date.now()) {
     if (l.total && l.mastered / l.total > .5 && q.difficulty === 'Сложные' && !p.mastered) score += 20;
     if (p.lastSeen && now - p.lastSeen < DAY / 2) score -= 110;
     if (!reasons.length) reasons.push(p.attempts ? 'Поддерживаем изученный материал' : 'Новый вопрос для диагностики знаний');
-    return {question: q, score, reason: reasons.join('. '), tie: hash(q.id + ':' + seed)};
-  }).sort((a, b) => b.score - a.score || a.tie - b.tie);
+    return {question: q, score, reason: reasons.join('. '), tie, previous: previous.has(q.id)};
+  }).sort((a, b) => Number(a.previous) - Number(b.previous) || b.score - a.score || a.tie - b.tie);
   // Penalize already selected lectures to keep diagnostics and daily sets diverse.
   const selected = [], usage = new Map();
   while (ranked.length && selected.length < count) {
     let best = 0;
-    for (let i = 1; i < ranked.length; i++) if (ranked[i].score - (usage.get(ranked[i].question.lecture) || 0) * 45 > ranked[best].score - (usage.get(ranked[best].question.lecture) || 0) * 45) best = i;
+    for (let i = 1; i < ranked.length; i++) {
+      if (ranked[i].previous !== ranked[best].previous) {
+        if (!ranked[i].previous) best = i;
+      } else if (ranked[i].score - (usage.get(ranked[i].question.lecture) || 0) * 45 > ranked[best].score - (usage.get(ranked[best].question.lecture) || 0) * 45) best = i;
+    }
     const item = ranked.splice(best, 1)[0]; selected.push(item); usage.set(item.question.lecture, (usage.get(item.question.lecture) || 0) + 1);
   }
+  if (selected.length > 1 && selected[0].question.id === state.session?.ids[0]) selected.push(selected.shift());
   return selected;
 }
 export function ticket(questions, seed = 0) {
