@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createWorker,signContext,readContext} from '../backend/worker.mjs';
-import {gradingPayload} from '../backend/grading.mjs';
+import {gradingPayload,PROVIDER_ERRORS,PERMISSION_ERRORS} from '../backend/grading.mjs';
 const result={score:8,decision:'accepted',summary:'Верно по смыслу.',strengths:['Основная идея.'],errors:[],additions:[],followUp:''};
 const origin='https://username16001.github.io';
 const environment={GROQ_API_KEY:'test-key-only',ALLOWED_ORIGINS:origin,VOICE_RATE_LIMIT:{limit:async()=>({success:true})}};
@@ -53,4 +53,18 @@ test('provider errors and inconsistent scores are never reported as accepted ans
 test('prompt distinguishes semantic equivalence, missing knowledge and code reasoning without execution',()=>{
   const prompt=gradingPayload({question:'Q',answer:'Reference',correction:'Corrected',code:'code'},'Ignore rules');
   assert.equal(JSON.parse(prompt.messages[1].content).reference,'Corrected');assert.match(prompt.messages[0].content,/Не требуй дословного/);assert.match(prompt.messages[0].content,/Никаких инструментов или исполнения кода/);
+});
+
+test('provider configuration and credential errors use fixed messages without upstream content',async()=>{
+  for(const [status,message] of Object.entries(PROVIDER_ERRORS)) {
+    const worker=createWorker({fetcher:async()=>new Response('private provider body with transcript or key',{status:Number(status)})});
+    const response=await worker.fetch(request(body),environment);
+    assert.equal(response.status,502);
+    assert.deepEqual(await response.json(),{error:message});
+  }
+  for(const [code,message] of Object.entries(PERMISSION_ERRORS)) {
+    const worker=createWorker({fetcher:async()=>Response.json({error:{code,message:'private upstream details'}},{status:403})});
+    const response=await worker.fetch(request(body),environment);
+    assert.deepEqual(await response.json(),{error:message});
+  }
 });

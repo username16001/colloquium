@@ -1,5 +1,5 @@
 import bank from '../questions.json' with {type:'json'};
-import {gradeWithGroq} from './grading.mjs';
+import {gradeWithGroq,PROVIDER_ERRORS,PERMISSION_ERRORS} from './grading.mjs';
 const questions=new Map(bank.questions.filter(q=>!q.duplicate_of && q.review?.status!=='excluded').map(q=>[q.id,q]));
 const encoder=new TextEncoder(),decoder=new TextDecoder();
 const base64=bytes=>btoa(String.fromCharCode(...bytes)).replaceAll('+','-').replaceAll('/','_').replaceAll('=','');
@@ -51,7 +51,7 @@ export function createWorker({fetcher=fetch,now=Date.now} = {}) {
       return reply({result,context});
     } catch (error) {
       // Never echo upstream bodies, credentials, or student transcripts in logs or errors.
-      const safe=['Лимит Groq исчерпан. Подождите и попробуйте снова.','Нейросеть временно недоступна. Попробуйте позже.','Проверка заняла слишком долго. Попробуйте снова.','Проверка не завершена. Попробуйте снова.','Нейросеть вернула неполный разбор. Попробуйте снова.'];
+      const safe=[...Object.values(PROVIDER_ERRORS),...Object.values(PERMISSION_ERRORS),'Лимит Groq исчерпан. Подождите и попробуйте снова.','Нейросеть временно недоступна. Попробуйте позже.','Проверка заняла слишком долго. Попробуйте снова.','Проверка не завершена. Попробуйте снова.','Нейросеть вернула неполный разбор. Попробуйте снова.'];
       return reply({error:safe.includes(error.message)?error.message:'Проверка не удалась. Ответ сохранён — попробуйте снова.'},502);
     }
   }};

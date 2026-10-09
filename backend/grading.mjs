@@ -1,5 +1,18 @@
 import {validateFeedback} from '../web/voice.mjs';
 
+// Only fixed messages reach the browser; never echo provider error bodies.
+export const PROVIDER_ERRORS = {
+  400:'Groq отклонил запрос проверки (400). Владелец сайта должен проверить настройки сервера.',
+  401:'Ключ Groq не принят. Владелец сайта должен обновить ключ сервера.',
+  403:'Groq отклонил доступ сервера (403). Проверка временно недоступна.',
+  404:'Модель проверки недоступна. Владелец сайта должен проверить настройки Groq.',
+  422:'Groq не смог обработать запрос проверки (422). Попробуйте позже.',
+};
+export const PERMISSION_ERRORS = {
+  model_permission_blocked_org:'Модель проверки запрещена в организации Groq. Владелец сайта должен разрешить её в настройках организации.',
+  model_permission_blocked_project:'Модель проверки запрещена в проекте Groq. Владелец сайта должен разрешить её в настройках проекта.',
+};
+
 export const RESULT_SCHEMA = {
   type:'object',additionalProperties:false,
   properties:{score:{type:'integer'},decision:{type:'string',enum:['accepted','needs_work','follow_up']},
@@ -25,9 +38,14 @@ export async function gradeWithGroq(question, answer, continuation, env, fetcher
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),35000);
   try {
     const response=await fetcher('https://api.groq.com/openai/v1/chat/completions', {
-      method:'POST',headers:{Authorization:'Bearer '+env.GROQ_API_KEY,'Content-Type':'application/json'},
+      method:'POST',headers:{Authorization:'Bearer '+env.GROQ_API_KEY.trim(),'Content-Type':'application/json',Accept:'application/json','User-Agent':'python-colloquium/2.0'},
       body:JSON.stringify(gradingPayload(question,answer,continuation,env.GROQ_MODEL || 'openai/gpt-oss-120b')),signal:controller.signal});
     if (response.status === 429) throw Error('Лимит Groq исчерпан. Подождите и попробуйте снова.');
+    if (response.status === 403) {
+      const details=await response.json().catch(()=>null);
+      if (PERMISSION_ERRORS[details?.error?.code]) throw Error(PERMISSION_ERRORS[details.error.code]);
+    }
+    if (PROVIDER_ERRORS[response.status]) throw Error(PROVIDER_ERRORS[response.status]);
     if (!response.ok) throw Error('Нейросеть временно недоступна. Попробуйте позже.');
     const data=await response.json();
     if (data.choices?.[0]?.finish_reason !== 'stop') throw Error('Проверка не завершена. Попробуйте снова.');
