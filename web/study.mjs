@@ -54,6 +54,13 @@ export function stats(questions, state, now = Date.now()) {
     lectures: Array.from({length: 14}, (_, i) => ({lecture: i + 1, ...group(qs.filter(q => q.lecture === i + 1))})),
     history: attempts};
 }
+export function paginateHistory(history, requestedPage = 0) {
+  const recent = history.slice(-30).reverse();
+  const pages = Math.max(1, Math.ceil(recent.length / 5));
+  const page = Math.max(0, Math.min(pages - 1, Number.isInteger(requestedPage) ? requestedPage : 0));
+  return {rows: recent.slice(page * 5, page * 5 + 5), page, pages, total: recent.length};
+}
+
 export function recommend(questions, state, options = {}, now = Date.now()) {
   const rows = filtered(questions, options), count = Math.max(1, Math.min(100, options.count || 9));
   const summary = stats(rows, state, now), lectures = new Map(summary.lectures.map(l => [l.lecture, l]));

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {DAY,freshState,usable,filtered,shuffle,recordAnswer,stats,recommend,ticket,validateImport} from '../web/study.mjs';
+import {DAY,freshState,usable,filtered,shuffle,recordAnswer,stats,recommend,ticket,validateImport,paginateHistory} from '../web/study.mjs';
 const bank=JSON.parse(readFileSync(new URL('../questions.json',import.meta.url),'utf8')).questions;
 const q=bank.find(q=>q.id==='N08-002'), now=1_800_000_000_000;
 const grade=(s,correct,confidence=null,at=now,id=String(at))=>recordAnswer(s,q,correct,confidence,at,id);
@@ -103,4 +103,21 @@ test('invalid imports fail before replacing data and cannot invent mastery',()=>
 test('unknown IDs and hostile keys cannot introduce questions or object properties',()=>{
   const s=freshState();s.progress=JSON.parse('{"__proto__":{"favorite":true},"unknown":{"attempts":1}}');
   assert.deepEqual(validateImport(s,bank).progress,{});assert.equal({}.favorite,undefined);
+});
+
+
+test('history pagination shows at most five newest grades and retains the source history',()=>{
+  const history=Array.from({length:34},(_,i)=>({questionId:String(i),at:i}));
+  const first=paginateHistory(history),last=paginateHistory(history,5);
+  assert.deepEqual(first.rows.map(a=>a.at),[33,32,31,30,29]);
+  assert.deepEqual(last.rows.map(a=>a.at),[8,7,6,5,4]);
+  assert.equal(first.pages,6);assert.equal(first.total,30);
+  assert.equal(history.length,34);assert.equal(history[0].at,0);
+});
+test('history pagination clamps pages and handles short or empty history',()=>{
+  assert.deepEqual(paginateHistory([],8),{rows:[],page:0,pages:1,total:0});
+  const history=Array.from({length:6},(_,i)=>({at:i}));
+  assert.deepEqual(paginateHistory(history,99).rows,[{at:0}]);
+  assert.equal(paginateHistory(history,-1).page,0);
+  assert.equal(paginateHistory(history,NaN).page,0);
 });
