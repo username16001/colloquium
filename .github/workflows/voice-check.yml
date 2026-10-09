@@ -19,7 +19,10 @@ jobs:
           python-version: '3.12'
       - name: Prepare synthetic iPhone recording format
         if: inputs.case == 'audio'
-        run: ffmpeg -v error -y -i tests/fixtures/python-answer.wav -c:a aac tmp-answer.m4a
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -v error -y -i tests/fixtures/python-answer.wav -c:a aac tmp-answer.m4a
       - run: |
           if [ "$CHECK_CASE" = "audio" ]; then
             python scripts/check_voice.py --case audio --audio-file tmp-answer.m4a
