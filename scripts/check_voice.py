@@ -4,6 +4,7 @@ Uses no provider key. A few successful requests consume the owner's Groq quota.
 """
 import argparse
 import json
+import time
 from pathlib import Path
 import urllib.error
 import urllib.request
@@ -14,12 +15,21 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--origin', default='https://username16001.github.io')
+    parser.add_argument('--delay', type=float, default=35, help='Pause between checks in seconds (0–60).')
     args = parser.parse_args()
+    if not 0 <= args.delay <= 60:
+        parser.error('--delay must be between 0 and 60 seconds')
     endpoint = json.loads((ROOT / 'voice_config.json').read_text(encoding='utf-8'))['endpoint']
     if not endpoint.startswith('https://'):
         raise SystemExit('Configure an HTTPS voice endpoint first.')
 
-    def check(name, question_id, answer, decision, context=''):
+    last_request = None
+
+    def check(name, question_id, answer, decision, context='', retry=False):
+        nonlocal last_request
+        if last_request is not None:
+            time.sleep(max(0, args.delay - (time.monotonic() - last_request)))
+        last_request = time.monotonic()
         request = urllib.request.Request(endpoint, method='POST', headers={
             'Origin': args.origin, 'Content-Type': 'application/json', 'User-Agent': 'python-colloquium-check/2.0',
         }, data=json.dumps({'questionId': question_id, 'answer': answer, 'context': context}).encode())
@@ -27,6 +37,14 @@ def main():
             with urllib.request.urlopen(request, timeout=45) as response:
                 body = json.load(response)
         except urllib.error.HTTPError as error:
+            if error.code == 429 and not retry:
+                try:
+                    wait = min(60, max(1, int(error.headers.get('Retry-After', '60'))))
+                except ValueError:
+                    wait = 60
+                print(f'{name}: rate limit; retrying once in {wait}s', flush=True)
+                time.sleep(wait)
+                return check(name, question_id, answer, decision, context, retry=True)
             # The Worker returns fixed, safe messages, never a Groq key or upstream body.
             try:
                 body = json.load(error)

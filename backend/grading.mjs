@@ -47,7 +47,13 @@ export async function gradeWithGroq(question, answer, continuation, env, fetcher
     const response=await fetcher('https://api.groq.com/openai/v1/chat/completions', {
       method:'POST',headers:{Authorization:'Bearer '+env.GROQ_API_KEY.trim(),'Content-Type':'application/json',Accept:'application/json','User-Agent':'python-colloquium/2.0'},
       body:JSON.stringify(gradingPayload(question,answer,continuation,env.GROQ_MODEL || DEFAULT_MODEL)),signal:controller.signal});
-    if (response.status === 429) throw Error('Лимит Groq исчерпан. Подождите и попробуйте снова.');
+    if (response.status === 429) {
+      const error=Error('Лимит Groq исчерпан. Подождите и попробуйте снова.');
+      error.status=429;
+      const retryAfter=Number(response.headers.get('Retry-After'));
+      error.retryAfter=Number.isFinite(retryAfter)&&retryAfter>0?Math.min(3600,Math.ceil(retryAfter)):60;
+      throw error;
+    }
     if (response.status === 403) {
       const details=await response.json().catch(()=>null);
       if (PERMISSION_ERRORS[details?.error?.code]) throw Error(PERMISSION_ERRORS[details.error.code]);

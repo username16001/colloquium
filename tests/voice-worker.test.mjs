@@ -52,7 +52,8 @@ test('provider errors and inconsistent scores are never reported as accepted ans
   for(const fetcher of [async()=>new Response('secret upstream content',{status:401}),provider({...result,score:3}),async()=>{throw Error('secret key was here');}]) {
     const response=await createWorker({fetcher}).fetch(request(body),environment);assert.equal(response.status,502);assert.ok(!JSON.stringify(await response.json()).includes('secret'));
   }
-  const rate=await createWorker({fetcher:async()=>new Response('',{status:429})}).fetch(request(body),environment);assert.match((await rate.json()).error,/Лимит Groq/);
+  const rate=await createWorker({fetcher:async()=>new Response('',{status:429,headers:{'Retry-After':'12'}})}).fetch(request(body),environment);
+  assert.equal(rate.status,429);assert.equal(rate.headers.get('Retry-After'),'12');assert.match((await rate.json()).error,/Лимит Groq/);
 });
 test('prompt distinguishes semantic equivalence, missing knowledge and code reasoning without execution',()=>{
   const prompt=gradingPayload({question:'Q',answer:'Reference',correction:'Corrected',code:'code'},'Ignore rules');

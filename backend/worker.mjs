@@ -52,6 +52,10 @@ export function createWorker({fetcher=fetch,now=Date.now} = {}) {
     } catch (error) {
       // Never echo upstream bodies, credentials, or student transcripts in logs or errors.
       const safe=[...Object.values(PROVIDER_ERRORS),...Object.values(PERMISSION_ERRORS),'Лимит Groq исчерпан. Подождите и попробуйте снова.','Нейросеть временно недоступна. Попробуйте позже.','Проверка заняла слишком долго. Попробуйте снова.','Проверка не завершена. Попробуйте снова.','Нейросеть вернула неполный разбор. Попробуйте снова.'];
+      if (error.status===429 && error.message==='Лимит Groq исчерпан. Подождите и попробуйте снова.') {
+        headers['Retry-After']=String(error.retryAfter);
+        return reply({error:error.message},429);
+      }
       return reply({error:safe.includes(error.message)?error.message:'Проверка не удалась. Ответ сохранён — попробуйте снова.'},502);
     }
   }};
