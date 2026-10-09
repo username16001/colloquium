@@ -5,7 +5,7 @@
   "compatibility_date": "2026-10-09",
   "vars": {
     "ALLOWED_ORIGINS": "https://username16001.github.io",
-    "GROQ_MODEL": "openai/gpt-oss-120b"
+    "GROQ_MODEL": "qwen/qwen3.8-27b"
   },
   "ratelimits": [{"name":"VOICE_RATE_LIMIT","namespace_id":"1600109","simple":{"limit":10,"period":60}}],
   "observability": {"enabled":false}

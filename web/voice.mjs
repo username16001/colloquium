@@ -29,7 +29,13 @@ export async function evaluateAnswer(endpoint, payload, {fetcher = globalThis.fe
   if (payload.answer.length > 6000) throw Error('Сократите ответ до 6000 символов.');
   const url = new URL(endpoint);
   if (url.protocol !== 'https:' && !(url.protocol === 'http:' && ['localhost','127.0.0.1'].includes(url.hostname))) throw Error('Нужен защищённый адрес сервера проверки.');
-  const response = await fetcher(url.href, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal,credentials:'omit',cache:'no-store'});
+  let response;
+  try {
+    response = await fetcher(url.href, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal,credentials:'omit',cache:'no-store'});
+  } catch (error) {
+    if (error.name === 'AbortError') throw error;
+    throw Error('Не удалось связаться с сервером проверки. Ответ сохранён — проверьте интернет и попробуйте снова.');
+  }
   let body;
   try {body = await response.json();} catch {throw Error('Сервер вернул непонятный ответ. Попробуйте позже.');}
   if (!response.ok) throw Error(typeof body.error === 'string' ? body.error : 'Проверка недоступна. Попробуйте позже.');

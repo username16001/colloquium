@@ -25,6 +25,9 @@ test('transport rejects unavailable endpoints, blank/large answers and malformed
   await assert.rejects(evaluateAnswer('https://worker.test/evaluate',{answer:'x'.repeat(6001)}),/Сократите/);
   await assert.rejects(evaluateAnswer('https://worker.test/evaluate',payload,{fetcher:async()=>Response.json({error:'Подождите.'},{status:429})}),/Подождите/);
   await assert.rejects(evaluateAnswer('https://worker.test/evaluate',payload,{fetcher:async()=>Response.json({result:follow,context:''})}),/Некорректный/);
+  await assert.rejects(evaluateAnswer('https://worker.test/evaluate',payload,{fetcher:async()=>{throw TypeError('Failed to fetch');}}),/Не удалось связаться с сервером/);
+  const aborted=new DOMException('Aborted','AbortError');
+  await assert.rejects(evaluateAnswer('https://worker.test/evaluate',payload,{fetcher:async()=>{throw aborted;}}),error=>error===aborted);
 });
 test('dictation retains prefix and replaces interim results instead of duplicating them',()=>{
   let instance,text='',active;

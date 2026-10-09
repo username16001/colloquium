@@ -42,6 +42,7 @@ def main():
             raise SystemExit(f'{name}: invalid score')
         if (result.get('decision') == 'accepted') != (score >= 7):
             raise SystemExit(f'{name}: inconsistent decision')
+        print(json.dumps({'case': name, 'question': question_id, 'result': result}, ensure_ascii=False), flush=True)
         if decision and result.get('decision') != decision:
             raise SystemExit(f'{name}: unexpected decision {result.get("decision")} / {score}')
         if result.get('decision') == 'follow_up' and (context or not body.get('context') or not result.get('followUp')):
@@ -49,7 +50,6 @@ def main():
         for field in ['strengths', 'errors', 'additions']:
             if not isinstance(result.get(field), list) or any(not isinstance(item, str) for item in result[field]):
                 raise SystemExit(f'{name}: invalid feedback')
-        print(json.dumps({'case': name, 'question': question_id, 'result': result}, ensure_ascii=False), flush=True)
         return body
 
     check('correct-paraphrase', 'N01-001',
@@ -72,7 +72,7 @@ def main():
     bank = json.loads((ROOT / 'questions.json').read_text(encoding='utf-8'))['questions']
     code = next(q for q in bank if q['origin'] == 'new' and q.get('code') and not q.get('duplicate_of')
                 and q.get('review', {}).get('status') != 'excluded')
-    check('code-reference', code['id'], code.get('correction') or code['answer'], 'accepted')
+    check('code-reference', code['id'], (code.get('correction') or code['answer']) + '\n' + code.get('explanation', ''), 'accepted')
     print('Live voice smoke checks passed. This is a small sample, not a full grading-quality review.')
 
 
