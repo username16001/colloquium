@@ -21,15 +21,21 @@ def main():
 
     def check(name, question_id, answer, decision, context=''):
         request = urllib.request.Request(endpoint, method='POST', headers={
-            'Origin': args.origin, 'Content-Type': 'application/json',
+            'Origin': args.origin, 'Content-Type': 'application/json', 'User-Agent': 'python-colloquium-check/2.0',
         }, data=json.dumps({'questionId': question_id, 'answer': answer, 'context': context}).encode())
         try:
             with urllib.request.urlopen(request, timeout=45) as response:
                 body = json.load(response)
         except urllib.error.HTTPError as error:
             # The Worker returns fixed, safe messages, never a Groq key or upstream body.
-            body = json.load(error)
-            raise SystemExit(f'{name}: HTTP {error.code}: {body.get("error", "API error")}') from None
+            try:
+                body = json.load(error)
+                detail = body.get('error', 'API error')
+            except (ValueError, AttributeError):
+                detail = 'non-JSON response (' + str(error.headers.get('Content-Type', 'unknown content type')) + ')'
+            raise SystemExit(f'{name}: HTTP {error.code}: {detail}') from None
+        except (urllib.error.URLError, TimeoutError):
+            raise SystemExit(f'{name}: connection failed') from None
         result = body.get('result', {})
         score = result.get('score')
         if type(score) is not int or not 0 <= score <= 10:
