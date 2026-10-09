@@ -13,6 +13,10 @@ tmp*/
 .env.*
 !.env.example
 *.log
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.wrangler/
 .DS_Store
 Thumbs.db
 # Reproducible output: CI builds the Pages artifact from sources

@@ -1,5 +1,6 @@
 """Interactive preparation using the same bank as generator.py, offline."""
 import base64,json,pathlib,random,re
+from urllib.parse import urlsplit
 from question_data import markdown,format_code
 ROOT=pathlib.Path(__file__).resolve().parent
 
@@ -10,7 +11,14 @@ def generate_oral(questions,output,count=9,seed=None):
         answer=q.get('correction') or q['answer']
         rows.append({**{k:q[k] for k in ['id','lecture','topic','type','difficulty','question','environment','origin']},'code':q['code'],'codeHtml':format_code(q['code']) if q['code'] else '', 'answerHtml':markdown(answer),'explanationHtml':markdown(q['explanation']),'originalAnswerHtml':markdown(q['answer']) if q.get('correction') else '', 'source':q['source'],'review':q.get('review',{})})
     initial=random.Random(seed).sample(rows,min(count,len(rows)))
-    data=json.dumps({'questions':rows,'count':min(100,count),'totalRecords':len(questions),'seed':seed,'initialIds':[q['id'] for q in initial],'version':'2.0.0'},ensure_ascii=False).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
+    voice_config=json.loads((ROOT/'voice_config.json').read_text(encoding='utf-8'))
+    endpoint=voice_config.get('endpoint','')
+    if not isinstance(endpoint,str):raise ValueError('Voice endpoint must be a string')
+    if endpoint:
+        url=urlsplit(endpoint)
+        if not url.hostname or url.username or url.password or url.scheme!='https' and not (url.scheme=='http' and url.hostname in {'localhost','127.0.0.1'}):
+            raise ValueError('Voice endpoint must use HTTPS (localhost is allowed for development)')
+    data=json.dumps({'questions':rows,'count':min(100,count),'totalRecords':len(questions),'seed':seed,'initialIds':[q['id'] for q in initial],'version':'2.1.0','voiceEndpoint':endpoint},ensure_ascii=False).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     template=(ROOT/'oral_template.html').read_text(encoding='utf-8')
     # Inline our modules and math assets: the familiar HTML remains autonomous.
     def bundle(name):
@@ -21,7 +29,7 @@ def generate_oral(questions,output,count=9,seed=None):
         return f'const {name.title()} = (()=>{{\n{source}\nreturn {{'+','.join(exports)+'};\n})();\n'
     app=(ROOT/'web/app.mjs').read_text(encoding='utf-8')
     app=re.sub(r"^import (\{.*?\}) from './(\w+).mjs';",lambda m:'const '+m[1]+' = '+m[2].title()+';',app,flags=re.M)
-    app=bundle('study')+bundle('storage')+bundle('updates')+app
+    app=bundle('voice')+bundle('study')+bundle('storage')+bundle('updates')+app
     vendor=ROOT/'web/vendor/katex'
     math_css=(vendor/'katex.min.css').read_text(encoding='utf-8')
     math_css=re.sub(r',url\(fonts/[^)]+\.(?:woff|ttf)\) format\("(?:woff|truetype)"\)','',math_css)

@@ -1,4 +1,5 @@
-// Pure, deterministic scheduling and statistics. An oral answer is self-assessed.
+import {sanitizeVoiceRecord} from './voice.mjs';
+// Pure, deterministic scheduling and statistics, shared by both preparation modes.
 export const DAY = 86400000;
 export const CONFIDENCE = ['guess', 'unsure', 'know'];
 export function freshState() {
@@ -125,7 +126,12 @@ export function validateImport(input, questions) {
     const key = a.sessionId + ':' + a.questionId;
     if (dedup.has(key)) throw Error('Повтор оценки в одной сессии'); dedup.add(key);
     const q = questionMap.get(a.questionId), p = reconstructed[a.questionId] || {};
-    clean.history.push({questionId: a.questionId, sessionId: a.sessionId, at: a.at, correct: a.correct, confidence: a.confidence, lecture: q.lecture, origin: q.origin, firstAttempt: !p.attempts});
+    const entry={questionId: a.questionId, sessionId: a.sessionId, at: a.at, correct: a.correct, confidence: a.confidence, lecture: q.lecture, origin: q.origin, firstAttempt: !p.attempts};
+    if (a.assessment === 'groq') {
+      if (!Number.isInteger(a.score) || a.score<0 || a.score>10 || a.correct !== (a.score>=7)) throw Error('Некорректная оценка нейросети');
+      entry.assessment='groq';entry.score=a.score;
+    }
+    clean.history.push(entry);
     reconstructed[a.questionId] = advanceProgress(p, a.correct, a.confidence, a.at);
   }
   for (const id of new Set([...Object.keys(clean.progress),...Object.keys(reconstructed)])) {
@@ -144,7 +150,7 @@ export function validateImport(input, questions) {
   if (['balanced','weak','review','new','errors'].includes(s.smartMode)) clean.settings.smartMode = s.smartMode;
   if (input.session) {
     const session = input.session;
-    if (!Array.isArray(session.ids) || session.ids.length < 1 || session.ids.length > 100 || !session.ids.every(id => ids.has(id) && !questions.find(q => q.id === id).duplicate_of) || new Set(session.ids).size !== session.ids.length || !Number.isInteger(session.index) || session.index < 0 || session.index >= Math.max(1,session.ids.length) || !['practice','smart','exam'].includes(session.mode) || typeof session.id !== 'string') throw Error('Некорректная сессия');
+    if (!Array.isArray(session.ids) || session.ids.length < 1 || session.ids.length > 100 || !session.ids.every(id => ids.has(id) && !questions.find(q => q.id === id).duplicate_of) || new Set(session.ids).size !== session.ids.length || !Number.isInteger(session.index) || session.index < 0 || session.index >= Math.max(1,session.ids.length) || !['practice','smart','exam','voice'].includes(session.mode) || typeof session.id !== 'string') throw Error('Некорректная сессия');
     clean.session = {id: session.id, ids: [...session.ids], index: session.index, mode: session.mode,
       createdAt: Number.isFinite(session.createdAt) ? session.createdAt : Date.now(), finished: session.finished === true, completed: session.completed === true,
       revealed: Object.fromEntries(session.ids.map(id => [id, session.mode === 'exam' && !session.finished ? false : session.revealed?.[id] === true])),
@@ -154,6 +160,10 @@ export function validateImport(input, questions) {
       if (CONFIDENCE.includes(session.confidence?.[id])) clean.session.confidence[id] = session.confidence[id];
       const grade = clean.history.find(a => a.sessionId === session.id && a.questionId === id);
       if (grade && (session.mode !== 'exam' || session.finished)) clean.session.ratings[id] = {correct: grade.correct, confidence: grade.confidence};
+      if (session.mode === 'voice' && session.oral?.[id]) {
+        clean.session.oral ||= {};
+        clean.session.oral[id]=sanitizeVoiceRecord(session.oral[id]);
+      }
     }
   }
   return clean;
